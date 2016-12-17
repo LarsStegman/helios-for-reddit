@@ -7,9 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		480F68EF1E04630600B8E963 /* HeliosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48876D581E045D7D00CD0C5C /* HeliosTests.swift */; };
+		480F68F01E04630600B8E963 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48876D5A1E045D7D00CD0C5C /* Info.plist */; };
+		480F68F21E04633100B8E963 /* LoginAuthorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480F68F11E04633100B8E963 /* LoginAuthorizer.swift */; };
+		487639361E04897400E9F9BD /* AuthorizationFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487639351E04897400E9F9BD /* AuthorizationFlow.swift */; };
+		487639381E05595000E9F9BD /* CodeAuthorizationFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487639371E05594F00E9F9BD /* CodeAuthorizationFlow.swift */; };
+		4876393B1E055D4300E9F9BD /* AppCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4876393A1E055D4300E9F9BD /* AppCredentials.swift */; };
+		4876393D1E055E1C00E9F9BD /* AuthorizationDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4876393C1E055E1C00E9F9BD /* AuthorizationDuration.swift */; };
+		487639421E0573D300E9F9BD /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 487639411E0573D300E9F9BD /* LICENSE */; };
+		487639451E0578BB00E9F9BD /* Sources.h in Headers */ = {isa = PBXBuildFile; fileRef = 48876D4D1E045D7D00CD0C5C /* Sources.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4876394A1E0579E600E9F9BD /* Scope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487639491E0579E600E9F9BD /* Scope.swift */; };
 		48876D541E045D7D00CD0C5C /* Helios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48876D4A1E045D7D00CD0C5C /* Helios.framework */; };
-		48876D591E045D7D00CD0C5C /* HeliosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48876D581E045D7D00CD0C5C /* HeliosTests.swift */; };
-		48876D5B1E045D7D00CD0C5C /* Helios.h in Headers */ = {isa = PBXBuildFile; fileRef = 48876D4D1E045D7D00CD0C5C /* Helios.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		48876D651E0461EA00CD0C5C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 48876D641E0461EA00CD0C5C /* .gitignore */; };
 /* End PBXBuildFile section */
 
@@ -24,8 +32,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		480F68F11E04633100B8E963 /* LoginAuthorizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginAuthorizer.swift; path = Sources/LoginAuthorizer.swift; sourceTree = SOURCE_ROOT; };
+		487639351E04897400E9F9BD /* AuthorizationFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthorizationFlow.swift; path = Sources/AuthorizationFlow.swift; sourceTree = SOURCE_ROOT; };
+		487639371E05594F00E9F9BD /* CodeAuthorizationFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CodeAuthorizationFlow.swift; path = Sources/CodeAuthorizationFlow.swift; sourceTree = SOURCE_ROOT; };
+		4876393A1E055D4300E9F9BD /* AppCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppCredentials.swift; path = Sources/AppCredentials.swift; sourceTree = SOURCE_ROOT; };
+		4876393C1E055E1C00E9F9BD /* AuthorizationDuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthorizationDuration.swift; path = Sources/AuthorizationDuration.swift; sourceTree = SOURCE_ROOT; };
+		487639411E0573D300E9F9BD /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		487639491E0579E600E9F9BD /* Scope.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Scope.swift; path = Sources/Scope.swift; sourceTree = SOURCE_ROOT; };
 		48876D4A1E045D7D00CD0C5C /* Helios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Helios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		48876D4D1E045D7D00CD0C5C /* Helios.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Helios.h; sourceTree = "<group>"; };
+		48876D4D1E045D7D00CD0C5C /* Sources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sources.h; sourceTree = "<group>"; };
 		48876D4E1E045D7D00CD0C5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48876D531E045D7D00CD0C5C /* HeliosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeliosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		48876D581E045D7D00CD0C5C /* HeliosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeliosTests.swift; sourceTree = "<group>"; };
@@ -52,9 +67,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		487639391E055D1A00E9F9BD /* RedditAuthorization */ = {
+			isa = PBXGroup;
+			children = (
+				4876393C1E055E1C00E9F9BD /* AuthorizationDuration.swift */,
+				480F68F11E04633100B8E963 /* LoginAuthorizer.swift */,
+				487639351E04897400E9F9BD /* AuthorizationFlow.swift */,
+				487639371E05594F00E9F9BD /* CodeAuthorizationFlow.swift */,
+				487639491E0579E600E9F9BD /* Scope.swift */,
+			);
+			name = RedditAuthorization;
+			sourceTree = "<group>";
+		};
 		48876D401E045D7C00CD0C5C = {
 			isa = PBXGroup;
 			children = (
+				487639411E0573D300E9F9BD /* LICENSE */,
 				48876D641E0461EA00CD0C5C /* .gitignore */,
 				48876D4C1E045D7D00CD0C5C /* Sources */,
 				48876D571E045D7D00CD0C5C /* Tests */,
@@ -74,8 +102,10 @@
 		48876D4C1E045D7D00CD0C5C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				48876D4D1E045D7D00CD0C5C /* Helios.h */,
+				48876D4D1E045D7D00CD0C5C /* Sources.h */,
 				48876D4E1E045D7D00CD0C5C /* Info.plist */,
+				487639391E055D1A00E9F9BD /* RedditAuthorization */,
+				4876393A1E055D4300E9F9BD /* AppCredentials.swift */,
 			);
 			name = Sources;
 			path = Helios;
@@ -98,7 +128,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48876D5B1E045D7D00CD0C5C /* Helios.h in Headers */,
+				487639451E0578BB00E9F9BD /* Sources.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,6 +184,7 @@
 					48876D491E045D7D00CD0C5C = {
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = 34S7DCU8S9;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					48876D521E045D7D00CD0C5C = {
@@ -186,6 +217,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				487639421E0573D300E9F9BD /* LICENSE in Resources */,
 				48876D651E0461EA00CD0C5C /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -194,6 +226,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				480F68F01E04630600B8E963 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +237,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				480F68F21E04633100B8E963 /* LoginAuthorizer.swift in Sources */,
+				487639361E04897400E9F9BD /* AuthorizationFlow.swift in Sources */,
+				4876393B1E055D4300E9F9BD /* AppCredentials.swift in Sources */,
+				487639381E05595000E9F9BD /* CodeAuthorizationFlow.swift in Sources */,
+				4876394A1E0579E600E9F9BD /* Scope.swift in Sources */,
+				4876393D1E055E1C00E9F9BD /* AuthorizationDuration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,7 +250,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48876D591E045D7D00CD0C5C /* HeliosTests.swift in Sources */,
+				480F68EF1E04630600B8E963 /* HeliosTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,18 +367,20 @@
 		48876D5F1E045D7D00CD0C5C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 34S7DCU8S9;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Helios/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nl.stegman.Helios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -348,13 +389,14 @@
 		48876D601E045D7D00CD0C5C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 34S7DCU8S9;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Helios/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nl.stegman.Helios;
@@ -368,6 +410,7 @@
 		48876D621E045D7D00CD0C5C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 34S7DCU8S9;
 				INFOPLIST_FILE = HeliosTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -380,6 +423,7 @@
 		48876D631E045D7D00CD0C5C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 34S7DCU8S9;
 				INFOPLIST_FILE = HeliosTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -408,6 +452,7 @@
 				48876D601E045D7D00CD0C5C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		48876D611E045D7D00CD0C5C /* Build configuration list for PBXNativeTarget "HeliosTests" */ = {
 			isa = XCConfigurationList;
@@ -416,6 +461,7 @@
 				48876D631E045D7D00CD0C5C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
