@@ -42,8 +42,10 @@ public protocol AuthorizationFlow {
 
     /// Retrieves the token from Reddit
     ///
+    /// - Parameter finishAuthorization: We need to access the network to request the access token
+    ///   which is asynchronous.
     /// - Throws:
-    func retrieveAccessToken() throws
+    func retrieveAccessToken(finishAuthorization: (_ authorized: Bool) -> Void) throws
 }
 
 public extension AuthorizationFlow {
@@ -63,6 +65,7 @@ internal extension AppCredentials {
 }
 
 public enum AuthorizationError: Error {
+    
     /// Reddit Request Errors
 
     /// The user has denied access to its account

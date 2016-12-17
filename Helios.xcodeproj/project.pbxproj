@@ -12,7 +12,7 @@
 		480F68F21E04633100B8E963 /* LoginAuthorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480F68F11E04633100B8E963 /* LoginAuthorizer.swift */; };
 		484D9DFC1E059E8F00FFFBCF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 484D9DFB1E059E8E00FFFBCF /* Security.framework */; };
 		487639361E04897400E9F9BD /* AuthorizationFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487639351E04897400E9F9BD /* AuthorizationFlow.swift */; };
-		487639381E05595000E9F9BD /* CodeAuthorizationFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487639371E05594F00E9F9BD /* CodeAuthorizationFlow.swift */; };
+		487639381E05595000E9F9BD /* CodeFlowAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487639371E05594F00E9F9BD /* CodeFlowAuthorization.swift */; };
 		4876393B1E055D4300E9F9BD /* AppCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4876393A1E055D4300E9F9BD /* AppCredentials.swift */; };
 		4876393D1E055E1C00E9F9BD /* AuthorizationDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4876393C1E055E1C00E9F9BD /* AuthorizationDuration.swift */; };
 		487639421E0573D300E9F9BD /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 487639411E0573D300E9F9BD /* LICENSE */; };
@@ -36,7 +36,7 @@
 		480F68F11E04633100B8E963 /* LoginAuthorizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginAuthorizer.swift; path = Sources/LoginAuthorizer.swift; sourceTree = SOURCE_ROOT; };
 		484D9DFB1E059E8E00FFFBCF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		487639351E04897400E9F9BD /* AuthorizationFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthorizationFlow.swift; path = Sources/AuthorizationFlow.swift; sourceTree = SOURCE_ROOT; };
-		487639371E05594F00E9F9BD /* CodeAuthorizationFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CodeAuthorizationFlow.swift; path = Sources/CodeAuthorizationFlow.swift; sourceTree = SOURCE_ROOT; };
+		487639371E05594F00E9F9BD /* CodeFlowAuthorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CodeFlowAuthorization.swift; path = Sources/CodeFlowAuthorization.swift; sourceTree = SOURCE_ROOT; };
 		4876393A1E055D4300E9F9BD /* AppCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppCredentials.swift; path = Sources/AppCredentials.swift; sourceTree = SOURCE_ROOT; };
 		4876393C1E055E1C00E9F9BD /* AuthorizationDuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthorizationDuration.swift; path = Sources/AuthorizationDuration.swift; sourceTree = SOURCE_ROOT; };
 		487639411E0573D300E9F9BD /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -84,7 +84,7 @@
 				4876393C1E055E1C00E9F9BD /* AuthorizationDuration.swift */,
 				480F68F11E04633100B8E963 /* LoginAuthorizer.swift */,
 				487639351E04897400E9F9BD /* AuthorizationFlow.swift */,
-				487639371E05594F00E9F9BD /* CodeAuthorizationFlow.swift */,
+				487639371E05594F00E9F9BD /* CodeFlowAuthorization.swift */,
 				487639491E0579E600E9F9BD /* Scope.swift */,
 			);
 			name = RedditAuthorization;
@@ -252,7 +252,7 @@
 				480F68F21E04633100B8E963 /* LoginAuthorizer.swift in Sources */,
 				487639361E04897400E9F9BD /* AuthorizationFlow.swift in Sources */,
 				4876393B1E055D4300E9F9BD /* AppCredentials.swift in Sources */,
-				487639381E05595000E9F9BD /* CodeAuthorizationFlow.swift in Sources */,
+				487639381E05595000E9F9BD /* CodeFlowAuthorization.swift in Sources */,
 				4876394A1E0579E600E9F9BD /* Scope.swift in Sources */,
 				4876393D1E055E1C00E9F9BD /* AuthorizationDuration.swift in Sources */,
 			);

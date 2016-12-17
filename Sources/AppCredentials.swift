@@ -8,9 +8,10 @@
 
 import Foundation
 
-public protocol AppCredentials {
-    var clientId: String { get }
-    var redirectUri: URL { get }
-    var authorizationDuration: AuthorizationDuration { get }
-    var authorizationScopes: [Scope] { get }
+public struct AppCredentials {
+    let clientId: String
+    let redirectUri: URL
+    let authorizationDuration: AuthorizationDuration
+    var authorizationScopes: [Scope]
+    var secret: String = ""
 }

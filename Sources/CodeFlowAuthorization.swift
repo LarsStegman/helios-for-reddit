@@ -8,16 +8,33 @@
 
 import Foundation
 
-public class CodeFlowAuthorization: AuthorizationFlow {
+public class CodeFlowAuthorization: NSObject, AuthorizationFlow, URLSessionDelegate {
 
     public var appCredentials: AppCredentials?
     public let responseType = "code"
     public var compact = false
+    public let accessTokenURL: URL = {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "https"
+        urlComponents.host = "www.reddit.com"
+        urlComponents.path = "/api/v1/access_token"
+        return urlComponents.url!
+    }()
 
     private var lastStartedState: String?
     private var lastReceivedCode: String?
 
+
+    private lazy var networkSession: URLSession = {
+        [unowned self] in
+        URLSession(configuration: .default, delegate: self, delegateQueue: nil)
+    }()
+    private var lastAuthorizationTask: URLSessionTask?
+
+
     public func startAuthorization(state: String) throws -> URL {
+        lastAuthorizationTask?.cancel()
+        lastAuthorizationTask = nil
         guard let credentials = appCredentials else {
             throw AuthorizationError.missingApplicationCredentials
         }
@@ -62,15 +79,35 @@ public class CodeFlowAuthorization: AuthorizationFlow {
         lastReceivedCode = receivedCode
     }
 
-    public func retrieveAccessToken() throws {
-        // TODO: Implement
+    public func retrieveAccessToken(finishAuthorization: (_ authorized: Bool) -> Void) throws {
+        guard let credentials = appCredentials else {
+            throw AuthorizationError.missingApplicationCredentials
+        }
+        guard let code = lastReceivedCode else {
+            throw CodeFlowAuthorizationError.missingCode
+        }
+
+        var request = URLRequest(url: accessTokenURL)
+        let authentication = Data("\(credentials.clientId):".utf8).base64EncodedString()
+        request.addValue(authentication, forHTTPHeaderField: "Authorization")
+        request.httpMethod = "POST"
+        request.httpBody = "grant_type=authorization_code&code=\(code)&redirect_uri=\(credentials.redirectUri.absoluteString)".data(using: .utf8)
+
+        lastAuthorizationTask = networkSession.dataTask(with: request)
+
+        lastAuthorizationTask?.resume()
+    }
+
+    public func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        guard task == lastAuthorizationTask else {
+            return
+        }
     }
 }
 
 // MARK: - Code flow specific errors
 /// These errors occur only in the code flow authorization
-enum CodeFlowAuthorizationError: Error {
-
+public enum CodeFlowAuthorizationError: Error {
     /// The authorization while trying to retrieve the access token was invalid.
     case invalidAuthorization
 
