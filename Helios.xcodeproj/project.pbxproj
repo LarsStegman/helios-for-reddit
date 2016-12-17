@@ -10,6 +10,7 @@
 		480F68EF1E04630600B8E963 /* HeliosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48876D581E045D7D00CD0C5C /* HeliosTests.swift */; };
 		480F68F01E04630600B8E963 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48876D5A1E045D7D00CD0C5C /* Info.plist */; };
 		480F68F21E04633100B8E963 /* LoginAuthorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480F68F11E04633100B8E963 /* LoginAuthorizer.swift */; };
+		484D9DFC1E059E8F00FFFBCF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 484D9DFB1E059E8E00FFFBCF /* Security.framework */; };
 		487639361E04897400E9F9BD /* AuthorizationFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487639351E04897400E9F9BD /* AuthorizationFlow.swift */; };
 		487639381E05595000E9F9BD /* CodeAuthorizationFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487639371E05594F00E9F9BD /* CodeAuthorizationFlow.swift */; };
 		4876393B1E055D4300E9F9BD /* AppCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4876393A1E055D4300E9F9BD /* AppCredentials.swift */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		480F68F11E04633100B8E963 /* LoginAuthorizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginAuthorizer.swift; path = Sources/LoginAuthorizer.swift; sourceTree = SOURCE_ROOT; };
+		484D9DFB1E059E8E00FFFBCF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		487639351E04897400E9F9BD /* AuthorizationFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthorizationFlow.swift; path = Sources/AuthorizationFlow.swift; sourceTree = SOURCE_ROOT; };
 		487639371E05594F00E9F9BD /* CodeAuthorizationFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CodeAuthorizationFlow.swift; path = Sources/CodeAuthorizationFlow.swift; sourceTree = SOURCE_ROOT; };
 		4876393A1E055D4300E9F9BD /* AppCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppCredentials.swift; path = Sources/AppCredentials.swift; sourceTree = SOURCE_ROOT; };
@@ -53,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				484D9DFC1E059E8F00FFFBCF /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +70,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		484D9DFA1E059E8E00FFFBCF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				484D9DFB1E059E8E00FFFBCF /* Security.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		487639391E055D1A00E9F9BD /* RedditAuthorization */ = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +98,7 @@
 				48876D4C1E045D7D00CD0C5C /* Sources */,
 				48876D571E045D7D00CD0C5C /* Tests */,
 				48876D4B1E045D7D00CD0C5C /* Products */,
+				484D9DFA1E059E8E00FFFBCF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
