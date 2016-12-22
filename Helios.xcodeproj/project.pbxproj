@@ -10,13 +10,13 @@
 		480F68EF1E04630600B8E963 /* HeliosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48876D581E045D7D00CD0C5C /* HeliosTests.swift */; };
 		480F68F01E04630600B8E963 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48876D5A1E045D7D00CD0C5C /* Info.plist */; };
 		480F68F21E04633100B8E963 /* LoginAuthorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480F68F11E04633100B8E963 /* LoginAuthorizer.swift */; };
+		482590A81E0738D0009E67BA /* Helios.h in Headers */ = {isa = PBXBuildFile; fileRef = 482590A71E0738D0009E67BA /* Helios.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		484D9DFC1E059E8F00FFFBCF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 484D9DFB1E059E8E00FFFBCF /* Security.framework */; };
 		487639361E04897400E9F9BD /* AuthorizationFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487639351E04897400E9F9BD /* AuthorizationFlow.swift */; };
 		487639381E05595000E9F9BD /* CodeFlowAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487639371E05594F00E9F9BD /* CodeFlowAuthorization.swift */; };
 		4876393B1E055D4300E9F9BD /* AppCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4876393A1E055D4300E9F9BD /* AppCredentials.swift */; };
 		4876393D1E055E1C00E9F9BD /* AuthorizationDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4876393C1E055E1C00E9F9BD /* AuthorizationDuration.swift */; };
 		487639421E0573D300E9F9BD /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 487639411E0573D300E9F9BD /* LICENSE */; };
-		487639451E0578BB00E9F9BD /* Sources.h in Headers */ = {isa = PBXBuildFile; fileRef = 48876D4D1E045D7D00CD0C5C /* Sources.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4876394A1E0579E600E9F9BD /* Scope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487639491E0579E600E9F9BD /* Scope.swift */; };
 		48876D541E045D7D00CD0C5C /* Helios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48876D4A1E045D7D00CD0C5C /* Helios.framework */; };
 		48876D651E0461EA00CD0C5C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 48876D641E0461EA00CD0C5C /* .gitignore */; };
@@ -34,7 +34,9 @@
 
 /* Begin PBXFileReference section */
 		480F68F11E04633100B8E963 /* LoginAuthorizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginAuthorizer.swift; path = Sources/LoginAuthorizer.swift; sourceTree = SOURCE_ROOT; };
+		482590A71E0738D0009E67BA /* Helios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Helios.h; path = Sources/Helios.h; sourceTree = SOURCE_ROOT; };
 		484D9DFB1E059E8E00FFFBCF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		48637D671E05EBE900ADEE6A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Sources/Info.plist; sourceTree = SOURCE_ROOT; };
 		487639351E04897400E9F9BD /* AuthorizationFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthorizationFlow.swift; path = Sources/AuthorizationFlow.swift; sourceTree = SOURCE_ROOT; };
 		487639371E05594F00E9F9BD /* CodeFlowAuthorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CodeFlowAuthorization.swift; path = Sources/CodeFlowAuthorization.swift; sourceTree = SOURCE_ROOT; };
 		4876393A1E055D4300E9F9BD /* AppCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppCredentials.swift; path = Sources/AppCredentials.swift; sourceTree = SOURCE_ROOT; };
@@ -42,8 +44,6 @@
 		487639411E0573D300E9F9BD /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		487639491E0579E600E9F9BD /* Scope.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Scope.swift; path = Sources/Scope.swift; sourceTree = SOURCE_ROOT; };
 		48876D4A1E045D7D00CD0C5C /* Helios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Helios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		48876D4D1E045D7D00CD0C5C /* Sources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sources.h; sourceTree = "<group>"; };
-		48876D4E1E045D7D00CD0C5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48876D531E045D7D00CD0C5C /* HeliosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeliosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		48876D581E045D7D00CD0C5C /* HeliosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeliosTests.swift; sourceTree = "<group>"; };
 		48876D5A1E045D7D00CD0C5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -95,7 +95,7 @@
 			children = (
 				487639411E0573D300E9F9BD /* LICENSE */,
 				48876D641E0461EA00CD0C5C /* .gitignore */,
-				48876D4C1E045D7D00CD0C5C /* Sources */,
+				48876D4C1E045D7D00CD0C5C /* Helios */,
 				48876D571E045D7D00CD0C5C /* Tests */,
 				48876D4B1E045D7D00CD0C5C /* Products */,
 				484D9DFA1E059E8E00FFFBCF /* Frameworks */,
@@ -111,15 +111,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		48876D4C1E045D7D00CD0C5C /* Sources */ = {
+		48876D4C1E045D7D00CD0C5C /* Helios */ = {
 			isa = PBXGroup;
 			children = (
-				48876D4D1E045D7D00CD0C5C /* Sources.h */,
-				48876D4E1E045D7D00CD0C5C /* Info.plist */,
+				482590A71E0738D0009E67BA /* Helios.h */,
+				48637D671E05EBE900ADEE6A /* Info.plist */,
 				487639391E055D1A00E9F9BD /* RedditAuthorization */,
 				4876393A1E055D4300E9F9BD /* AppCredentials.swift */,
 			);
-			name = Sources;
 			path = Helios;
 			sourceTree = "<group>";
 		};
@@ -140,7 +139,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				487639451E0578BB00E9F9BD /* Sources.h in Headers */,
+				482590A81E0738D0009E67BA /* Helios.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -60,7 +60,7 @@ public extension AuthorizationFlow {
 
 internal extension AppCredentials {
     var scopeList: String {
-        return authorizationScopes.reduce("") { $0 + "," + $1.rawValue }
+        return authorizationScopes.map( { $0.rawValue }).joined(separator: ",")
     }
 }
 
