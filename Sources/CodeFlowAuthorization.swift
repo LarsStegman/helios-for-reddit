@@ -98,7 +98,7 @@ public class CodeFlowAuthorization: NSObject, AuthorizationFlow,
         }
         finishedAuthorization = finishAuthorization
         var request = URLRequest(url: accessTokenURL)
-        let authentication = "Basic \(Data("\(credentials.clientId):".utf8).base64EncodedString())"
+        let authentication = "Basic \("\(credentials.clientId):".data(using: .utf8)!.base64EncodedString())"
         request.addValue(authentication, forHTTPHeaderField: "Authorization")
 
         request.httpMethod = "POST"
@@ -116,6 +116,10 @@ public class CodeFlowAuthorization: NSObject, AuthorizationFlow,
             return
         }
 
+        processAccessTokenData(data: data)
+    }
+
+    private func processAccessTokenData(data: Data) {
         guard let json = (try? JSONSerialization.jsonObject(with: data, options: .allowFragments))
             as? [String: Any] else {
                 finishedAuthorization?(CodeFlowAuthorizationError.invalidResponse)
@@ -128,7 +132,7 @@ public class CodeFlowAuthorization: NSObject, AuthorizationFlow,
                 finishedAuthorization?(CodeFlowAuthorizationError
                     .invalidAuthorization(code: errorCode, message: message))
             } else if let errorString = error as? String {
-                
+
             }
             return
         }
