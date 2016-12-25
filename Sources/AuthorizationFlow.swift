@@ -45,7 +45,7 @@ public protocol AuthorizationFlow {
     /// - Parameter finishAuthorization: We need to access the network to request the access token
     ///   which is asynchronous.
     /// - Throws:
-    func retrieveAccessToken(finishAuthorization: (_ authorized: Bool) -> Void) throws
+    func retrieveAccessToken(finishAuthorization: @escaping (_ error: Error?) -> Void) throws
 }
 
 public extension AuthorizationFlow {
