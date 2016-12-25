@@ -98,6 +98,9 @@ public class CodeFlowAuthorization: NSObject, AuthorizationFlow,
         }
         finishedAuthorization = finishAuthorization
         var request = URLRequest(url: accessTokenURL)
+        let authentication = "Basic \(Data("\(credentials.clientId):".utf8).base64EncodedString())"
+        request.addValue(authentication, forHTTPHeaderField: "Authorization")
+
         request.httpMethod = "POST"
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.httpBody = ("grant_type=authorization_code&code=\(code)&redirect_uri=" +
@@ -105,17 +108,6 @@ public class CodeFlowAuthorization: NSObject, AuthorizationFlow,
         request.addValue(credentials.userAgentString, forHTTPHeaderField: "User-Agent")
         lastAuthorizationTask = networkSession.dataTask(with: request)
         lastAuthorizationTask?.resume()
-    }
-
-    public func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge,
-                           completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-        guard let id = appCredentials?.clientId else {
-            completionHandler(.cancelAuthenticationChallenge, nil)
-            return
-        }
-
-        let credential = URLCredential(user: id, password: "", persistence: .forSession)
-        completionHandler(.useCredential, credential)
     }
 
     public func urlSession(_ session: URLSession, dataTask: URLSessionDataTask,
