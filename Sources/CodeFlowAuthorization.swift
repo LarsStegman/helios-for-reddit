@@ -14,7 +14,9 @@ public class CodeFlowAuthorization: NSObject, AuthorizationFlow,
     public var appCredentials: AppCredentials?
     public var responseType = "code"
     public var compact = false
-
+    private var authorizationKey: String {
+        return (appCredentials?.localAppId ?? "helios") + "-reddit-authorization"
+    }
     public let accessTokenURL: URL = {
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
@@ -106,6 +108,7 @@ public class CodeFlowAuthorization: NSObject, AuthorizationFlow,
         request.httpBody = ("grant_type=authorization_code&code=\(code)&redirect_uri=" +
              "\(credentials.redirectUri.absoluteString)").data(using: .utf8)
         request.addValue(credentials.userAgentString, forHTTPHeaderField: "User-Agent")
+        print(credentials.userAgentString)
         lastAuthorizationTask = networkSession.dataTask(with: request)
         lastAuthorizationTask?.resume()
     }
@@ -125,6 +128,7 @@ public class CodeFlowAuthorization: NSObject, AuthorizationFlow,
                 finishedAuthorization?(CodeFlowAuthorizationError.invalidResponse)
                 return
         }
+        print(json)
         guard json["error"] == nil else {
             let message = json["message"] as? String ?? "Failed to authorize"
             let error = json["error"]
@@ -132,14 +136,40 @@ public class CodeFlowAuthorization: NSObject, AuthorizationFlow,
                 finishedAuthorization?(CodeFlowAuthorizationError
                     .invalidAuthorization(code: errorCode, message: message))
             } else if let errorString = error as? String {
-
+                switch errorString {
+                case "unsupported_grant_type": finishedAuthorization?(CodeFlowAuthorizationError.unsupportedGrantType)
+                case "NO_TEXT": finishedAuthorization?(CodeFlowAuthorizationError.missingCode)
+                case "invalid_grant": finishedAuthorization?(CodeFlowAuthorizationError.invalidGrant)
+                default: finishedAuthorization?(CodeFlowAuthorizationError.unknownError)
+                }
             }
             return
         }
-        print(json) // Save the tokens in keychain
+        storeAccessTokens(from: json)
         lastAuthorizationTask = nil
         lastReceivedCode = nil
-        finishedAuthorization?(nil)
+    }
+
+    private func storeAccessTokens(from data: [String: Any]) {
+        guard let expiresIn = data["expires_in"] as? TimeInterval,
+            let refreshToken = data["refresh_token"] as? String,
+            let accessToken = data["access_token"] as? String,
+            let tokenType = data["token_type"] as? String,
+            let scopeString = data["scope"] as? String else {
+                return
+        }
+        let scopes = scopeString.components(separatedBy: " ").map({ return Scope(rawValue: $0)! })
+        let expirationDate = Date(timeIntervalSinceNow: expiresIn)
+        let authorization = Authorization(accessToken: accessToken, refreshToken: refreshToken,
+                                          tokenType: tokenType, scopes: scopes,
+                                          expiresAt: expirationDate)
+        let success = KeyChainAdapter.saveAuthorization(key: authorizationKey,
+                                                        authorization: authorization)
+        if success {
+            finishedAuthorization?(nil)
+        } else {
+            finishedAuthorization?(AuthorizationError.failedToStoreAuthorizationCredentials)
+        }
     }
 }
 
@@ -161,4 +191,6 @@ public enum CodeFlowAuthorizationError: Error {
 
     /// The provided code has expired.
     case invalidGrant
+
+    case unknownError
 }

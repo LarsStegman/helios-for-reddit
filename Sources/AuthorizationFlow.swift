@@ -99,4 +99,7 @@ public enum AuthorizationError: Error {
 
     /// Reddit didn't give us the needed information :(
     case invalidResponse
+
+    /// Unable to store the authorization details
+    case failedToStoreAuthorizationCredentials
 }

@@ -20,6 +20,8 @@
 		4876394A1E0579E600E9F9BD /* Scope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487639491E0579E600E9F9BD /* Scope.swift */; };
 		48876D541E045D7D00CD0C5C /* Helios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48876D4A1E045D7D00CD0C5C /* Helios.framework */; };
 		48876D651E0461EA00CD0C5C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 48876D641E0461EA00CD0C5C /* .gitignore */; };
+		48EBF8461E12720C00A4281E /* Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF8451E12720C00A4281E /* Authorization.swift */; };
+		48EBF8481E1438AA00A4281E /* KeyChainAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF8471E1438AA00A4281E /* KeyChainAdapter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		48876D581E045D7D00CD0C5C /* HeliosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeliosTests.swift; sourceTree = "<group>"; };
 		48876D5A1E045D7D00CD0C5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48876D641E0461EA00CD0C5C /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		48EBF8451E12720C00A4281E /* Authorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authorization.swift; sourceTree = SOURCE_ROOT; };
+		48EBF8471E1438AA00A4281E /* KeyChainAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyChainAdapter.swift; path = Sources/KeyChainAdapter.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +90,8 @@
 				487639351E04897400E9F9BD /* AuthorizationFlow.swift */,
 				487639371E05594F00E9F9BD /* CodeFlowAuthorization.swift */,
 				487639491E0579E600E9F9BD /* Scope.swift */,
+				48EBF8451E12720C00A4281E /* Authorization.swift */,
+				48EBF8471E1438AA00A4281E /* KeyChainAdapter.swift */,
 			);
 			name = RedditAuthorization;
 			sourceTree = "<group>";
@@ -253,6 +259,8 @@
 				4876393B1E055D4300E9F9BD /* AppCredentials.swift in Sources */,
 				487639381E05595000E9F9BD /* CodeFlowAuthorization.swift in Sources */,
 				4876394A1E0579E600E9F9BD /* Scope.swift in Sources */,
+				48EBF8481E1438AA00A4281E /* KeyChainAdapter.swift in Sources */,
+				48EBF8461E12720C00A4281E /* Authorization.swift in Sources */,
 				4876393D1E055E1C00E9F9BD /* AuthorizationDuration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

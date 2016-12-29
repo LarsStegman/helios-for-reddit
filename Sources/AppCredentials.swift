@@ -28,4 +28,7 @@ public protocol AppCredentials {
     /// The user agent you want to use. It's recommended you set this by Reddit because they might
     /// think you're a bot that's spamming them if you don't.
     var userAgentString: String { get }
+
+    /// Something that can be used as an identifier for the system.
+    var localAppId: String { get }
 }
