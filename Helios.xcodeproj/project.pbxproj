@@ -9,19 +9,22 @@
 /* Begin PBXBuildFile section */
 		480F68EF1E04630600B8E963 /* HeliosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48876D581E045D7D00CD0C5C /* HeliosTests.swift */; };
 		480F68F01E04630600B8E963 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48876D5A1E045D7D00CD0C5C /* Info.plist */; };
-		480F68F21E04633100B8E963 /* LoginAuthorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480F68F11E04633100B8E963 /* LoginAuthorizer.swift */; };
 		482590A81E0738D0009E67BA /* Helios.h in Headers */ = {isa = PBXBuildFile; fileRef = 482590A71E0738D0009E67BA /* Helios.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		484D9DFC1E059E8F00FFFBCF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 484D9DFB1E059E8E00FFFBCF /* Security.framework */; };
-		487639361E04897400E9F9BD /* AuthorizationFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487639351E04897400E9F9BD /* AuthorizationFlow.swift */; };
-		487639381E05595000E9F9BD /* CodeFlowAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487639371E05594F00E9F9BD /* CodeFlowAuthorization.swift */; };
-		4876393B1E055D4300E9F9BD /* AppCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4876393A1E055D4300E9F9BD /* AppCredentials.swift */; };
-		4876393D1E055E1C00E9F9BD /* AuthorizationDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4876393C1E055E1C00E9F9BD /* AuthorizationDuration.swift */; };
 		487639421E0573D300E9F9BD /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 487639411E0573D300E9F9BD /* LICENSE */; };
-		4876394A1E0579E600E9F9BD /* Scope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487639491E0579E600E9F9BD /* Scope.swift */; };
 		48876D541E045D7D00CD0C5C /* Helios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48876D4A1E045D7D00CD0C5C /* Helios.framework */; };
 		48876D651E0461EA00CD0C5C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 48876D641E0461EA00CD0C5C /* .gitignore */; };
-		48EBF8461E12720C00A4281E /* Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF8451E12720C00A4281E /* Authorization.swift */; };
-		48EBF8481E1438AA00A4281E /* KeyChainAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF8471E1438AA00A4281E /* KeyChainAdapter.swift */; };
+		48EBF8621E15CB2600A4281E /* KeyChainAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF85C1E15CB2600A4281E /* KeyChainAdapter.swift */; };
+		48EBF8631E15CB2600A4281E /* Scope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF85D1E15CB2600A4281E /* Scope.swift */; };
+		48EBF8641E15CB2600A4281E /* CodeFlowAuthorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF85E1E15CB2600A4281E /* CodeFlowAuthorizer.swift */; };
+		48EBF8651E15CB2600A4281E /* CodeFlowAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF85F1E15CB2600A4281E /* CodeFlowAuthorization.swift */; };
+		48EBF8661E15CB2600A4281E /* AuthorizationFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF8601E15CB2600A4281E /* AuthorizationFlow.swift */; };
+		48EBF8671E15CB2600A4281E /* AuthorizationDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF8611E15CB2600A4281E /* AuthorizationDuration.swift */; };
+		48EBF86A1E15CB7A00A4281E /* AppCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF8691E15CB7A00A4281E /* AppCredentials.swift */; };
+		48EBF86C1E15CBD100A4281E /* Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF86B1E15CBD100A4281E /* Authorization.swift */; };
+		48EBF8701E15CC1100A4281E /* Kind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF86D1E15CC1100A4281E /* Kind.swift */; };
+		48EBF8711E15CC1100A4281E /* Thing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF86E1E15CC1100A4281E /* Thing.swift */; };
+		48EBF8721E15CC1100A4281E /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF86F1E15CC1100A4281E /* Account.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,23 +38,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		480F68F11E04633100B8E963 /* LoginAuthorizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginAuthorizer.swift; path = Sources/LoginAuthorizer.swift; sourceTree = SOURCE_ROOT; };
 		482590A71E0738D0009E67BA /* Helios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Helios.h; path = Sources/Helios.h; sourceTree = SOURCE_ROOT; };
 		484D9DFB1E059E8E00FFFBCF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		48637D671E05EBE900ADEE6A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Sources/Info.plist; sourceTree = SOURCE_ROOT; };
-		487639351E04897400E9F9BD /* AuthorizationFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthorizationFlow.swift; path = Sources/AuthorizationFlow.swift; sourceTree = SOURCE_ROOT; };
-		487639371E05594F00E9F9BD /* CodeFlowAuthorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CodeFlowAuthorization.swift; path = Sources/CodeFlowAuthorization.swift; sourceTree = SOURCE_ROOT; };
-		4876393A1E055D4300E9F9BD /* AppCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppCredentials.swift; path = Sources/AppCredentials.swift; sourceTree = SOURCE_ROOT; };
-		4876393C1E055E1C00E9F9BD /* AuthorizationDuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthorizationDuration.swift; path = Sources/AuthorizationDuration.swift; sourceTree = SOURCE_ROOT; };
 		487639411E0573D300E9F9BD /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		487639491E0579E600E9F9BD /* Scope.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Scope.swift; path = Sources/Scope.swift; sourceTree = SOURCE_ROOT; };
 		48876D4A1E045D7D00CD0C5C /* Helios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Helios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48876D531E045D7D00CD0C5C /* HeliosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeliosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		48876D581E045D7D00CD0C5C /* HeliosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeliosTests.swift; sourceTree = "<group>"; };
 		48876D5A1E045D7D00CD0C5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48876D641E0461EA00CD0C5C /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		48EBF8451E12720C00A4281E /* Authorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authorization.swift; sourceTree = SOURCE_ROOT; };
-		48EBF8471E1438AA00A4281E /* KeyChainAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyChainAdapter.swift; path = Sources/KeyChainAdapter.swift; sourceTree = SOURCE_ROOT; };
+		48EBF85C1E15CB2600A4281E /* KeyChainAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyChainAdapter.swift; path = Sources/Authorization/KeyChainAdapter.swift; sourceTree = SOURCE_ROOT; };
+		48EBF85D1E15CB2600A4281E /* Scope.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Scope.swift; path = Sources/Authorization/Scope.swift; sourceTree = SOURCE_ROOT; };
+		48EBF85E1E15CB2600A4281E /* CodeFlowAuthorizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CodeFlowAuthorizer.swift; path = Sources/Authorization/CodeFlowAuthorizer.swift; sourceTree = SOURCE_ROOT; };
+		48EBF85F1E15CB2600A4281E /* CodeFlowAuthorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CodeFlowAuthorization.swift; path = Sources/Authorization/CodeFlowAuthorization.swift; sourceTree = SOURCE_ROOT; };
+		48EBF8601E15CB2600A4281E /* AuthorizationFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthorizationFlow.swift; path = Sources/Authorization/AuthorizationFlow.swift; sourceTree = SOURCE_ROOT; };
+		48EBF8611E15CB2600A4281E /* AuthorizationDuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthorizationDuration.swift; path = Sources/Authorization/AuthorizationDuration.swift; sourceTree = SOURCE_ROOT; };
+		48EBF8691E15CB7A00A4281E /* AppCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppCredentials.swift; path = Sources/AppCredentials.swift; sourceTree = SOURCE_ROOT; };
+		48EBF86B1E15CBD100A4281E /* Authorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Authorization.swift; path = Sources/Authorization/Authorization.swift; sourceTree = SOURCE_ROOT; };
+		48EBF86D1E15CC1100A4281E /* Kind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Kind.swift; path = Sources/Model/Kind.swift; sourceTree = SOURCE_ROOT; };
+		48EBF86E1E15CC1100A4281E /* Thing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Thing.swift; path = Sources/Model/Thing.swift; sourceTree = SOURCE_ROOT; };
+		48EBF86F1E15CC1100A4281E /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Account.swift; path = Sources/Model/Account.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,13 +91,13 @@
 		487639391E055D1A00E9F9BD /* RedditAuthorization */ = {
 			isa = PBXGroup;
 			children = (
-				4876393C1E055E1C00E9F9BD /* AuthorizationDuration.swift */,
-				480F68F11E04633100B8E963 /* LoginAuthorizer.swift */,
-				487639351E04897400E9F9BD /* AuthorizationFlow.swift */,
-				487639371E05594F00E9F9BD /* CodeFlowAuthorization.swift */,
-				487639491E0579E600E9F9BD /* Scope.swift */,
-				48EBF8451E12720C00A4281E /* Authorization.swift */,
-				48EBF8471E1438AA00A4281E /* KeyChainAdapter.swift */,
+				48EBF86B1E15CBD100A4281E /* Authorization.swift */,
+				48EBF85C1E15CB2600A4281E /* KeyChainAdapter.swift */,
+				48EBF85D1E15CB2600A4281E /* Scope.swift */,
+				48EBF85E1E15CB2600A4281E /* CodeFlowAuthorizer.swift */,
+				48EBF85F1E15CB2600A4281E /* CodeFlowAuthorization.swift */,
+				48EBF8601E15CB2600A4281E /* AuthorizationFlow.swift */,
+				48EBF8611E15CB2600A4281E /* AuthorizationDuration.swift */,
 			);
 			name = RedditAuthorization;
 			sourceTree = "<group>";
@@ -120,10 +126,9 @@
 		48876D4C1E045D7D00CD0C5C /* Helios */ = {
 			isa = PBXGroup;
 			children = (
+				48EBF8681E15CB3000A4281E /* Sources */,
 				482590A71E0738D0009E67BA /* Helios.h */,
 				48637D671E05EBE900ADEE6A /* Info.plist */,
-				487639391E055D1A00E9F9BD /* RedditAuthorization */,
-				4876393A1E055D4300E9F9BD /* AppCredentials.swift */,
 			);
 			path = Helios;
 			sourceTree = "<group>";
@@ -136,6 +141,26 @@
 			);
 			name = Tests;
 			path = HeliosTests;
+			sourceTree = "<group>";
+		};
+		48EBF8531E15BF6A00A4281E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				48EBF86D1E15CC1100A4281E /* Kind.swift */,
+				48EBF86E1E15CC1100A4281E /* Thing.swift */,
+				48EBF86F1E15CC1100A4281E /* Account.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		48EBF8681E15CB3000A4281E /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				48EBF8691E15CB7A00A4281E /* AppCredentials.swift */,
+				487639391E055D1A00E9F9BD /* RedditAuthorization */,
+				48EBF8531E15BF6A00A4281E /* Model */,
+			);
+			name = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,14 +279,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				480F68F21E04633100B8E963 /* LoginAuthorizer.swift in Sources */,
-				487639361E04897400E9F9BD /* AuthorizationFlow.swift in Sources */,
-				4876393B1E055D4300E9F9BD /* AppCredentials.swift in Sources */,
-				487639381E05595000E9F9BD /* CodeFlowAuthorization.swift in Sources */,
-				4876394A1E0579E600E9F9BD /* Scope.swift in Sources */,
-				48EBF8481E1438AA00A4281E /* KeyChainAdapter.swift in Sources */,
-				48EBF8461E12720C00A4281E /* Authorization.swift in Sources */,
-				4876393D1E055E1C00E9F9BD /* AuthorizationDuration.swift in Sources */,
+				48EBF8631E15CB2600A4281E /* Scope.swift in Sources */,
+				48EBF8721E15CC1100A4281E /* Account.swift in Sources */,
+				48EBF8671E15CB2600A4281E /* AuthorizationDuration.swift in Sources */,
+				48EBF8701E15CC1100A4281E /* Kind.swift in Sources */,
+				48EBF8651E15CB2600A4281E /* CodeFlowAuthorization.swift in Sources */,
+				48EBF8621E15CB2600A4281E /* KeyChainAdapter.swift in Sources */,
+				48EBF86C1E15CBD100A4281E /* Authorization.swift in Sources */,
+				48EBF8641E15CB2600A4281E /* CodeFlowAuthorizer.swift in Sources */,
+				48EBF86A1E15CB7A00A4281E /* AppCredentials.swift in Sources */,
+				48EBF8711E15CC1100A4281E /* Thing.swift in Sources */,
+				48EBF8661E15CB2600A4281E /* AuthorizationFlow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
