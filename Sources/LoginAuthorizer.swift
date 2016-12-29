@@ -11,8 +11,12 @@ import Foundation
 public class CodeFlowAuthorizer {
 
     public var flow: CodeFlowAuthorization
-    public var delegate: CodeFlowAuthorizerDelegate?
-
+    public struct LoginAuthorizerNotifications {
+        static let failedAuthorizationName = Notification.Name("failedLoginNotification")
+        static let finishedAuthorizationName = Notification.Name("completedLoginNotification")
+        static let defaultName = Notification.Name("loginAuthorizerNotification")
+    }
+    
     public init(using flow: CodeFlowAuthorization) {
         self.flow = flow
     }
@@ -27,11 +31,17 @@ public class CodeFlowAuthorizer {
             let url = try flow.startAuthorization(state: state)
             return url
         } catch AuthorizationError.missingApplicationCredentials {
-            delegate?.loginAuthorizer(authorizer: self, authorizationFailedWith: .internalError)
+            NotificationCenter.default
+                .post(name: LoginAuthorizerNotifications.failedAuthorizationName,
+                      object: LoginAuthorizerError.internalError)
         } catch AuthorizationError.invalidStateString {
-            delegate?.loginAuthorizer(authorizer: self, authorizationFailedWith: .internalError)
+            NotificationCenter.default
+                .post(name: LoginAuthorizerNotifications.failedAuthorizationName,
+                      object: LoginAuthorizerError.internalError)
         } catch {
-            delegate?.loginAuthorizer(authorizer: self, authorizationFailedWith: .unknownError)
+            NotificationCenter.default
+                .post(name: LoginAuthorizerNotifications.failedAuthorizationName,
+                      object: LoginAuthorizerError.unknownError)
         }
         return nil
     }
@@ -42,7 +52,9 @@ public class CodeFlowAuthorizer {
         components?.queryItems = nil
         guard let calledUri = components?.url, calledUri == flow.appCredentials?.redirectUri,
             let parameters = query else {
-            delegate?.loginAuthorizer(authorizer: self, authorizationFailedWith: .redditError)
+            NotificationCenter.default
+                .post(name: LoginAuthorizerNotifications.failedAuthorizationName,
+                      object: LoginAuthorizerError.redditError)
             return
         }
 
@@ -50,32 +62,59 @@ public class CodeFlowAuthorizer {
             try flow.handleResponse(callbackURIParameters: parameters)
             try flow.retrieveAccessToken(finishAuthorization: finishAuthorization)
         } catch AuthorizationError.accessDenied {
-            delegate?.loginAuthorizer(authorizer: self, authorizationFailedWith: .accessDenied)
+            NotificationCenter.default
+                .post(name: LoginAuthorizerNotifications.failedAuthorizationName,
+                      object: LoginAuthorizerError.accessDenied)
         } catch let error as AuthorizationError
             where [.unsupportedResponseType, .invalidRequest, .invalidScope].contains(error) {
-            delegate?.loginAuthorizer(authorizer: self, authorizationFailedWith: .internalError)
+            NotificationCenter.default
+                .post(name: LoginAuthorizerNotifications.failedAuthorizationName,
+                      object: LoginAuthorizerError.internalError)
         } catch let error as AuthorizationError
             where [.unknownResponseError, .invalidResponse, .invalidState].contains(error) {
-            delegate?.loginAuthorizer(authorizer: self, authorizationFailedWith: .redditError)
+            NotificationCenter.default
+                .post(name: LoginAuthorizerNotifications.failedAuthorizationName,
+                      object: LoginAuthorizerError.redditError)
         } catch {
-            delegate?.loginAuthorizer(authorizer: self, authorizationFailedWith: .unknownError)
+            NotificationCenter.default
+                .post(name: LoginAuthorizerNotifications.failedAuthorizationName,
+                      object: LoginAuthorizerError.unknownError)
         }
     }
 
     
+    /// Call when the authorization has finished
+    ///
+    /// - Parameter error: The error if one has occured.
     private func finishAuthorization(withError error: Error?) {
+        guard let error = error else {
+            NotificationCenter.default
+                .post(name: LoginAuthorizerNotifications.finishedAuthorizationName, object: nil)
+            return
+        }
 
+        switch error {
+        case CodeFlowAuthorizationError.invalidResponse:
+            NotificationCenter.default
+                .post(name: LoginAuthorizerNotifications.finishedAuthorizationName,
+                      object: LoginAuthorizerError.redditError)
+        case CodeFlowAuthorizationError.invalidAuthorization(code: _, message: _),
+             CodeFlowAuthorizationError.unsupportedGrantType,
+             CodeFlowAuthorizationError.missingCode,
+             CodeFlowAuthorizationError.invalidGrant,
+             AuthorizationError.failedToStoreAuthorizationCredentials: NotificationCenter.default
+                .post(name: LoginAuthorizerNotifications.finishedAuthorizationName,
+                      object: LoginAuthorizerError.internalError)
+        default: NotificationCenter.default
+            .post(name: LoginAuthorizerNotifications.failedAuthorizationName,
+                  object: LoginAuthorizerError.unknownError)
+        }
     }
 }
 
-public protocol CodeFlowAuthorizerDelegate {
-    func loginAuthorizer(authorizer: CodeFlowAuthorizer,
-                         authorizationFailedWith error: LoginAuthorizerError)
 
-    func loginAuthorizer(authorizer: CodeFlowAuthorizer, didFinishAuthorizing success: Bool)
-}
 
-/// Errors tthat might be shown to a user
+/// Errors that might be shown to a user
 ///
 /// - accessDenied: The user has denied access to their account
 /// - internalError: Something went wrong with configuring the request
