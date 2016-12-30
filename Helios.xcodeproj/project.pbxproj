@@ -14,6 +14,11 @@
 		487639421E0573D300E9F9BD /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 487639411E0573D300E9F9BD /* LICENSE */; };
 		48876D541E045D7D00CD0C5C /* Helios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48876D4A1E045D7D00CD0C5C /* Helios.framework */; };
 		48876D651E0461EA00CD0C5C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 48876D641E0461EA00CD0C5C /* .gitignore */; };
+		489E81B51E16FBA70091DDCF /* MesageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E81B41E16FBA70091DDCF /* MesageParser.swift */; };
+		489E81BB1E1703E00091DDCF /* Distinguishment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E81B71E1703E00091DDCF /* Distinguishment.swift */; };
+		489E81BC1E1703E00091DDCF /* Edited.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E81B81E1703E00091DDCF /* Edited.swift */; };
+		489E81BD1E1703E00091DDCF /* Flair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E81B91E1703E00091DDCF /* Flair.swift */; };
+		489E81BE1E1703E00091DDCF /* ModerationProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E81BA1E1703E00091DDCF /* ModerationProperties.swift */; };
 		48EBF8621E15CB2600A4281E /* KeyChainAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF85C1E15CB2600A4281E /* KeyChainAdapter.swift */; };
 		48EBF8631E15CB2600A4281E /* Scope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF85D1E15CB2600A4281E /* Scope.swift */; };
 		48EBF8641E15CB2600A4281E /* CodeFlowAuthorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF85E1E15CB2600A4281E /* CodeFlowAuthorizer.swift */; };
@@ -25,6 +30,10 @@
 		48EBF8701E15CC1100A4281E /* Kind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF86D1E15CC1100A4281E /* Kind.swift */; };
 		48EBF8711E15CC1100A4281E /* Thing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF86E1E15CC1100A4281E /* Thing.swift */; };
 		48EBF8721E15CC1100A4281E /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF86F1E15CC1100A4281E /* Account.swift */; };
+		48EBF8781E16EC3A00A4281E /* Listing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF8771E16EC3A00A4281E /* Listing.swift */; };
+		48EBF87C1E16ED0C00A4281E /* Votable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF87B1E16ED0C00A4281E /* Votable.swift */; };
+		48EBF87E1E16EDAF00A4281E /* Created.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF87D1E16EDAF00A4281E /* Created.swift */; };
+		48EBF8801E16EF3E00A4281E /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF87F1E16EF3E00A4281E /* Comment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +56,11 @@
 		48876D581E045D7D00CD0C5C /* HeliosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeliosTests.swift; sourceTree = "<group>"; };
 		48876D5A1E045D7D00CD0C5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48876D641E0461EA00CD0C5C /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		489E81B41E16FBA70091DDCF /* MesageParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MesageParser.swift; path = Sources/ModelParser/MesageParser.swift; sourceTree = SOURCE_ROOT; };
+		489E81B71E1703E00091DDCF /* Distinguishment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Distinguishment.swift; path = Sources/Model/Distinguishment.swift; sourceTree = SOURCE_ROOT; };
+		489E81B81E1703E00091DDCF /* Edited.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Edited.swift; path = Sources/Model/Edited.swift; sourceTree = SOURCE_ROOT; };
+		489E81B91E1703E00091DDCF /* Flair.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Flair.swift; path = Sources/Model/Flair.swift; sourceTree = SOURCE_ROOT; };
+		489E81BA1E1703E00091DDCF /* ModerationProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModerationProperties.swift; path = Sources/Model/ModerationProperties.swift; sourceTree = SOURCE_ROOT; };
 		48EBF85C1E15CB2600A4281E /* KeyChainAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyChainAdapter.swift; path = Sources/Authorization/KeyChainAdapter.swift; sourceTree = SOURCE_ROOT; };
 		48EBF85D1E15CB2600A4281E /* Scope.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Scope.swift; path = Sources/Authorization/Scope.swift; sourceTree = SOURCE_ROOT; };
 		48EBF85E1E15CB2600A4281E /* CodeFlowAuthorizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CodeFlowAuthorizer.swift; path = Sources/Authorization/CodeFlowAuthorizer.swift; sourceTree = SOURCE_ROOT; };
@@ -58,6 +72,10 @@
 		48EBF86D1E15CC1100A4281E /* Kind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Kind.swift; path = Sources/Model/Kind.swift; sourceTree = SOURCE_ROOT; };
 		48EBF86E1E15CC1100A4281E /* Thing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Thing.swift; path = Sources/Model/Thing.swift; sourceTree = SOURCE_ROOT; };
 		48EBF86F1E15CC1100A4281E /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Account.swift; path = Sources/Model/Account.swift; sourceTree = SOURCE_ROOT; };
+		48EBF8771E16EC3A00A4281E /* Listing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Listing.swift; path = Sources/Model/Listing.swift; sourceTree = SOURCE_ROOT; };
+		48EBF87B1E16ED0C00A4281E /* Votable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Votable.swift; path = Sources/Model/Votable.swift; sourceTree = SOURCE_ROOT; };
+		48EBF87D1E16EDAF00A4281E /* Created.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Created.swift; path = Sources/Model/Created.swift; sourceTree = SOURCE_ROOT; };
+		48EBF87F1E16EF3E00A4281E /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Comment.swift; path = Sources/Model/Comment.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,12 +161,28 @@
 			path = HeliosTests;
 			sourceTree = "<group>";
 		};
+		489E81B61E16FBC20091DDCF /* ModelParser */ = {
+			isa = PBXGroup;
+			children = (
+				489E81B41E16FBA70091DDCF /* MesageParser.swift */,
+			);
+			name = ModelParser;
+			sourceTree = "<group>";
+		};
 		48EBF8531E15BF6A00A4281E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				489E81B71E1703E00091DDCF /* Distinguishment.swift */,
+				489E81B81E1703E00091DDCF /* Edited.swift */,
+				489E81B91E1703E00091DDCF /* Flair.swift */,
+				489E81BA1E1703E00091DDCF /* ModerationProperties.swift */,
 				48EBF86D1E15CC1100A4281E /* Kind.swift */,
 				48EBF86E1E15CC1100A4281E /* Thing.swift */,
 				48EBF86F1E15CC1100A4281E /* Account.swift */,
+				48EBF8771E16EC3A00A4281E /* Listing.swift */,
+				48EBF87B1E16ED0C00A4281E /* Votable.swift */,
+				48EBF87D1E16EDAF00A4281E /* Created.swift */,
+				48EBF87F1E16EF3E00A4281E /* Comment.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -159,6 +193,7 @@
 				48EBF8691E15CB7A00A4281E /* AppCredentials.swift */,
 				487639391E055D1A00E9F9BD /* RedditAuthorization */,
 				48EBF8531E15BF6A00A4281E /* Model */,
+				489E81B61E16FBC20091DDCF /* ModelParser */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -279,16 +314,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				489E81BC1E1703E00091DDCF /* Edited.swift in Sources */,
+				489E81BD1E1703E00091DDCF /* Flair.swift in Sources */,
 				48EBF8631E15CB2600A4281E /* Scope.swift in Sources */,
 				48EBF8721E15CC1100A4281E /* Account.swift in Sources */,
 				48EBF8671E15CB2600A4281E /* AuthorizationDuration.swift in Sources */,
 				48EBF8701E15CC1100A4281E /* Kind.swift in Sources */,
+				48EBF87E1E16EDAF00A4281E /* Created.swift in Sources */,
 				48EBF8651E15CB2600A4281E /* CodeFlowAuthorization.swift in Sources */,
+				489E81BB1E1703E00091DDCF /* Distinguishment.swift in Sources */,
 				48EBF8621E15CB2600A4281E /* KeyChainAdapter.swift in Sources */,
 				48EBF86C1E15CBD100A4281E /* Authorization.swift in Sources */,
+				48EBF8781E16EC3A00A4281E /* Listing.swift in Sources */,
+				489E81BE1E1703E00091DDCF /* ModerationProperties.swift in Sources */,
 				48EBF8641E15CB2600A4281E /* CodeFlowAuthorizer.swift in Sources */,
+				48EBF8801E16EF3E00A4281E /* Comment.swift in Sources */,
 				48EBF86A1E15CB7A00A4281E /* AppCredentials.swift in Sources */,
+				489E81B51E16FBA70091DDCF /* MesageParser.swift in Sources */,
 				48EBF8711E15CC1100A4281E /* Thing.swift in Sources */,
+				48EBF87C1E16ED0C00A4281E /* Votable.swift in Sources */,
 				48EBF8661E15CB2600A4281E /* AuthorizationFlow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
