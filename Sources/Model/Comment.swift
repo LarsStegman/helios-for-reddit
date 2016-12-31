@@ -13,7 +13,7 @@ import Foundation
 public struct Comment: Created, Thing, Votable {
     public let id: String
     public let fullname: String
-    public let kind: Kind
+    public static let kind: Kind = .comment
 
     public let author: String
     public let authorFlair: Flair
@@ -38,6 +38,7 @@ public struct Comment: Created, Thing, Votable {
     public private(set) var score: Int
     public let scoreHidden: Bool
     public let numberOfTimesGilded: Int
+    public let moderationProperties: ModerationProperties?
 
     public var saved: Bool
 

@@ -27,6 +27,14 @@ public enum Vote {
     case upvote
     case downvote
     case noVote
+
+    init(value: Bool?) {
+        if let value = value {
+            self = value ? .upvote : .downvote
+        } else {
+            self = .noVote
+        }
+    }
 }
 
 
