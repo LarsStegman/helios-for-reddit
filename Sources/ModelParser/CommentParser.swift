@@ -9,7 +9,13 @@
 import Foundation
 
 extension Comment {
-    init?(json json: [String: Any]) {
+
+    /// Initializes a comment from a JSON dictionary. If the dictionary does not contain the 
+    /// neccessary keys, this initializer will fail.
+    ///
+    /// - Parameters:
+    ///   - json: The json dictionary describing a comment.
+    convenience init?(json json: [String: Any]) {
         guard let id = json["id"] as? String,
             let fullname = json["name"] as? String,
 
@@ -31,7 +37,7 @@ extension Comment {
             let created = json["created"] as? TimeInterval,
             let createdUtc = json["created_utc"] as? TimeInterval,
 
-            let liked = json["liked"] as? Bool?,
+            let likedVal = json["liked"] as? Bool?,
             let upvotes = json["ups"] as? Int,
             let downvotes = json["downs"] as? Int,
             let score = json["score"] as? Int,
@@ -47,45 +53,41 @@ extension Comment {
                 return nil
         }
 
-        self.id = id
-        self.fullname = fullname
-        self.author = author
-        self.authorFlair = Flair(text: authorFlairText, cssClass: authorFlairCss)
-        self.authorLink = authorLink
+        let authorFlair = Flair(text: authorFlairText, cssClass: authorFlairCss)
+        let distinguished: Distinguishment?
         if let text = distinguishmentText {
-            self.distinguished = Distinguishment(text: text)
+            distinguished = Distinguishment(rawValue: text)
         }
 
-        self.linkId = linkId
-        self.linkTitle = linkTitle
+        let linkUrl: URL?
         if let text = linkUrlText {
-            self.linkUrl = URL(string: text)
+            linkUrl = URL(string: text)
         }
 
-        self.parentId = parentId
-        self.body = body
-        self.htmlBody = htmlBody
-        if let edited = TimeInterval.init(editedText) {
-            self.edited = .edited(at: edited)
+        let edited: Edited
+        if let editedTime = TimeInterval.init(editedText) {
+            edited = .edited(at: editedTime)
         } else {
-            self.edited = .notEdited
+            edited = .notEdited
         }
 
-        self.replies = rawReplies.map({ RedditParser.parse(object: $0) })
-        self.created = created
-        self.createdUtc = createdUtc
-        self.liked = Vote(value: liked)
-        self.upvotes = upvotes
-        self.downvotes = downvotes
-        self.score = score
-        self.scoreHidden = scoreHidden
-        self.numberOfTimesGilded = numberOfTimesGilded
+        let replies = rawReplies.flatMap({ RedditParser.parse(object: $0) })
+        let liked = Vote(value: likedVal)
+
+        let moderationProperties: ModerationProperties?
         if let numReports = numberOfTimesReported {
-            self.moderationProperties = ModerationProperties(approvedBy: approvedBy, bannedBy: bannedBy, numberOfReports: numReports)
+            moderationProperties = ModerationProperties(approvedBy: approvedBy, bannedBy: bannedBy,
+                                                        numberOfReports: numReports)
         }
 
-        self.saved = saved
-        self.subreddit = subreddit
-        self.subredditId = subredditId        
+        Comment(id: id, fullname: fullname, author: author, authorFlair: authorFlair,
+                       authorLink: authorLink, distinguished: distinguished, linkId: linkId,
+                       linkTitle: linkTitle, linkUrl: linkUrl, parentId: parentId, body: body,
+                       htmlBody: htmlBody, edited: edited, replies: replies, created: created,
+                       createdUtc: createdUtc, liked: liked, upvotes: upvotes, downvotes: downvotes,
+                       score: score, scoreHidden: scoreHidden,
+                       numberOfTimesGilded: numberOfTimesGilded,
+                       moderationProperties: moderationProperties, saved: saved,
+                       subreddit: subreddit, subredditId: subredditId)
     }
 }
