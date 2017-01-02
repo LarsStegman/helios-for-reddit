@@ -8,16 +8,8 @@
 
 import Foundation
 
-public enum Distinguishment {
+public enum Distinguishment: String {
     case admin
     case moderator
-    case special(name: String)
-
-    init(text: String) {
-        switch text {
-        case "moderator": self = .moderator
-        case "admin": self = .admin
-        default: self = .special(name: text)
-        }
-    }
+    case special
 }

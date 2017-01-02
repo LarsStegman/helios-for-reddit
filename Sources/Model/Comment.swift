@@ -10,7 +10,7 @@ import Foundation
 
 
 /// A comment
-public struct Comment: Created, Thing, Votable {
+public class Comment: Created, Thing, Votable {
     public let id: String
     public let fullname: String
     public static let kind: Kind = .comment
@@ -45,7 +45,42 @@ public struct Comment: Created, Thing, Votable {
     public let subreddit: String
     public let subredditId: String
 
-    public mutating func upvote() {
+    init(id: String, fullname: String, author: String, authorFlair: Flair, authorLink: String?,
+         distinguished: Distinguishment?, linkId: String, linkTitle: String?, linkUrl: URL?,
+         parentId: String, body: String, htmlBody: String, edited: Edited, replies: [Thing],
+         created: TimeInterval, createdUtc: TimeInterval, liked: Vote, upvotes: Int, downvotes: Int,
+         score: Int, scoreHidden: Bool, numberOfTimesGilded: Int,
+         moderationProperties: ModerationProperties?, saved: Bool, subreddit: String,
+         subredditId: String) {
+        self.id = id
+        self.fullname = fullname
+        self.author = author
+        self.authorFlair = authorFlair
+        self.authorLink = authorLink
+        self.distinguished = distinguished
+        self.linkId = linkId
+        self.linkTitle = linkTitle
+        self.linkUrl = linkUrl
+        self.parentId = parentId
+        self.body = body
+        self.htmlBody = htmlBody
+        self.edited = edited
+        self.replies = replies
+        self.created = created
+        self.createdUtc = createdUtc
+        self.liked = liked
+        self.upvotes = upvotes
+        self.downvotes = downvotes
+        self.score = score
+        self.scoreHidden = scoreHidden
+        self.numberOfTimesGilded = numberOfTimesGilded
+        self.moderationProperties = moderationProperties
+        self.saved = saved
+        self.subreddit = subreddit
+        self.subredditId = subredditId
+    }
+
+    public func upvote() {
         switch liked {
         case .upvote: return
         case .downvote:
@@ -60,7 +95,7 @@ public struct Comment: Created, Thing, Votable {
         // TODO: Call reddit
     }
 
-    public mutating func downvote() {
+    public func downvote() {
         switch liked {
         case .upvote:
             upvotes -= 1
@@ -75,7 +110,7 @@ public struct Comment: Created, Thing, Votable {
         // TODO: Call reddit
     }
     
-    public mutating func unvote() {
+    public func unvote() {
         switch liked {
         case .upvote:
             upvotes -= 1

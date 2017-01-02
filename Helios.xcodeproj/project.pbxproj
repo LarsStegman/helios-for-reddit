@@ -22,6 +22,8 @@
 		489E81BC1E1703E00091DDCF /* Edited.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E81B81E1703E00091DDCF /* Edited.swift */; };
 		489E81BD1E1703E00091DDCF /* Flair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E81B91E1703E00091DDCF /* Flair.swift */; };
 		489E81BE1E1703E00091DDCF /* ModerationProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E81BA1E1703E00091DDCF /* ModerationProperties.swift */; };
+		48AC96D41E19C30F005539D5 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AC96D31E19C30F005539D5 /* Link.swift */; };
+		48AC96D61E19CBFB005539D5 /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AC96D51E19CBFB005539D5 /* Thumbnail.swift */; };
 		48EBF8621E15CB2600A4281E /* KeyChainAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF85C1E15CB2600A4281E /* KeyChainAdapter.swift */; };
 		48EBF8631E15CB2600A4281E /* Scope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF85D1E15CB2600A4281E /* Scope.swift */; };
 		48EBF8641E15CB2600A4281E /* CodeFlowAuthorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF85E1E15CB2600A4281E /* CodeFlowAuthorizer.swift */; };
@@ -67,6 +69,8 @@
 		489E81B81E1703E00091DDCF /* Edited.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Edited.swift; path = Sources/Model/Edited.swift; sourceTree = SOURCE_ROOT; };
 		489E81B91E1703E00091DDCF /* Flair.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Flair.swift; path = Sources/Model/Flair.swift; sourceTree = SOURCE_ROOT; };
 		489E81BA1E1703E00091DDCF /* ModerationProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModerationProperties.swift; path = Sources/Model/ModerationProperties.swift; sourceTree = SOURCE_ROOT; };
+		48AC96D31E19C30F005539D5 /* Link.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Link.swift; path = Sources/Model/Link.swift; sourceTree = SOURCE_ROOT; };
+		48AC96D51E19CBFB005539D5 /* Thumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Thumbnail.swift; path = Sources/Model/Thumbnail.swift; sourceTree = SOURCE_ROOT; };
 		48EBF85C1E15CB2600A4281E /* KeyChainAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyChainAdapter.swift; path = Sources/Authorization/KeyChainAdapter.swift; sourceTree = SOURCE_ROOT; };
 		48EBF85D1E15CB2600A4281E /* Scope.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Scope.swift; path = Sources/Authorization/Scope.swift; sourceTree = SOURCE_ROOT; };
 		48EBF85E1E15CB2600A4281E /* CodeFlowAuthorizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CodeFlowAuthorizer.swift; path = Sources/Authorization/CodeFlowAuthorizer.swift; sourceTree = SOURCE_ROOT; };
@@ -192,6 +196,8 @@
 				48EBF87B1E16ED0C00A4281E /* Votable.swift */,
 				48EBF87D1E16EDAF00A4281E /* Created.swift */,
 				48EBF87F1E16EF3E00A4281E /* Comment.swift */,
+				48AC96D31E19C30F005539D5 /* Link.swift */,
+				48AC96D51E19CBFB005539D5 /* Thumbnail.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -326,6 +332,7 @@
 				4887A97F1E181DCB00068756 /* ListingParser.swift in Sources */,
 				489E81BC1E1703E00091DDCF /* Edited.swift in Sources */,
 				489E81BD1E1703E00091DDCF /* Flair.swift in Sources */,
+				48AC96D41E19C30F005539D5 /* Link.swift in Sources */,
 				48EBF8631E15CB2600A4281E /* Scope.swift in Sources */,
 				48EBF8721E15CC1100A4281E /* Account.swift in Sources */,
 				48EBF8671E15CB2600A4281E /* AuthorizationDuration.swift in Sources */,
@@ -340,6 +347,7 @@
 				489E81BE1E1703E00091DDCF /* ModerationProperties.swift in Sources */,
 				48EBF8641E15CB2600A4281E /* CodeFlowAuthorizer.swift in Sources */,
 				48EBF8801E16EF3E00A4281E /* Comment.swift in Sources */,
+				48AC96D61E19CBFB005539D5 /* Thumbnail.swift in Sources */,
 				48EBF86A1E15CB7A00A4281E /* AppCredentials.swift in Sources */,
 				4887A9811E1827D100068756 /* CommentParser.swift in Sources */,
 				489E81B51E16FBA70091DDCF /* MessageParser.swift in Sources */,

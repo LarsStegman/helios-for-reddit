@@ -163,6 +163,7 @@ public class CodeFlowAuthorization: NSObject, AuthorizationFlow,
         let authorization = Authorization(accessToken: accessToken, refreshToken: refreshToken,
                                           tokenType: tokenType, scopes: scopes,
                                           expiresAt: expirationDate)
+        print(authorization)
         let success = KeyChainAdapter.saveAuthorization(key: authorizationKey,
                                                         authorization: authorization)
         if success {

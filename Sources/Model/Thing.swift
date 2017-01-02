@@ -11,6 +11,6 @@ import Foundation
 public protocol Thing {
     var id: String { get }
     var fullname: String { get }
-    var kind: Kind { get }
+    static var kind: Kind { get }
 }
 
