@@ -10,5 +10,5 @@ import Foundation
 
 public struct Flair {
     let text: String
-    let cssClass: String
+    let cssClass: String?
 }

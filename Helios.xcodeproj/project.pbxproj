@@ -17,7 +17,14 @@
 		4887A97D1E181AC100068756 /* RedditParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4887A97C1E181AC100068756 /* RedditParser.swift */; };
 		4887A97F1E181DCB00068756 /* ListingParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4887A97E1E181DCB00068756 /* ListingParser.swift */; };
 		4887A9811E1827D100068756 /* CommentParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4887A9801E1827D100068756 /* CommentParser.swift */; };
-		489E81B51E16FBA70091DDCF /* MessageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E81B41E16FBA70091DDCF /* MessageParser.swift */; };
+		48885A641E1C543A00265874 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48885A631E1C543A00265874 /* Account.swift */; };
+		48885A6A1E1C55C500265874 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48885A651E1C55C500265874 /* Header.swift */; };
+		48885A6B1E1C55C500265874 /* SubmissionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48885A661E1C55C500265874 /* SubmissionType.swift */; };
+		48885A6C1E1C55C500265874 /* Subreddit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48885A671E1C55C500265874 /* Subreddit.swift */; };
+		48885A6D1E1C55C500265874 /* SubredditType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48885A681E1C55C500265874 /* SubredditType.swift */; };
+		48885A6E1E1C55C500265874 /* UserSubredditRelations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48885A691E1C55C500265874 /* UserSubredditRelations.swift */; };
+		48885A711E1C55D900265874 /* LinkParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48885A6F1E1C55D900265874 /* LinkParser.swift */; };
+		48885A721E1C55D900265874 /* SubredditParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48885A701E1C55D900265874 /* SubredditParser.swift */; };
 		489E81BB1E1703E00091DDCF /* Distinguishment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E81B71E1703E00091DDCF /* Distinguishment.swift */; };
 		489E81BC1E1703E00091DDCF /* Edited.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E81B81E1703E00091DDCF /* Edited.swift */; };
 		489E81BD1E1703E00091DDCF /* Flair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E81B91E1703E00091DDCF /* Flair.swift */; };
@@ -34,7 +41,6 @@
 		48EBF86C1E15CBD100A4281E /* Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF86B1E15CBD100A4281E /* Authorization.swift */; };
 		48EBF8701E15CC1100A4281E /* Kind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF86D1E15CC1100A4281E /* Kind.swift */; };
 		48EBF8711E15CC1100A4281E /* Thing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF86E1E15CC1100A4281E /* Thing.swift */; };
-		48EBF8721E15CC1100A4281E /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF86F1E15CC1100A4281E /* Account.swift */; };
 		48EBF8781E16EC3A00A4281E /* Listing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF8771E16EC3A00A4281E /* Listing.swift */; };
 		48EBF87C1E16ED0C00A4281E /* Votable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF87B1E16ED0C00A4281E /* Votable.swift */; };
 		48EBF87E1E16EDAF00A4281E /* Created.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF87D1E16EDAF00A4281E /* Created.swift */; };
@@ -64,7 +70,14 @@
 		4887A97C1E181AC100068756 /* RedditParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RedditParser.swift; path = Sources/ModelParser/RedditParser.swift; sourceTree = SOURCE_ROOT; };
 		4887A97E1E181DCB00068756 /* ListingParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListingParser.swift; path = Sources/ModelParser/ListingParser.swift; sourceTree = SOURCE_ROOT; };
 		4887A9801E1827D100068756 /* CommentParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentParser.swift; path = Sources/ModelParser/CommentParser.swift; sourceTree = SOURCE_ROOT; };
-		489E81B41E16FBA70091DDCF /* MessageParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageParser.swift; path = Sources/ModelParser/MessageParser.swift; sourceTree = SOURCE_ROOT; };
+		48885A631E1C543A00265874 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Account.swift; path = Sources/Model/Account.swift; sourceTree = SOURCE_ROOT; };
+		48885A651E1C55C500265874 /* Header.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Header.swift; path = Sources/Model/Subreddit/Header.swift; sourceTree = SOURCE_ROOT; };
+		48885A661E1C55C500265874 /* SubmissionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubmissionType.swift; path = Sources/Model/Subreddit/SubmissionType.swift; sourceTree = SOURCE_ROOT; };
+		48885A671E1C55C500265874 /* Subreddit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Subreddit.swift; path = Sources/Model/Subreddit/Subreddit.swift; sourceTree = SOURCE_ROOT; };
+		48885A681E1C55C500265874 /* SubredditType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubredditType.swift; path = Sources/Model/Subreddit/SubredditType.swift; sourceTree = SOURCE_ROOT; };
+		48885A691E1C55C500265874 /* UserSubredditRelations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserSubredditRelations.swift; path = Sources/Model/Subreddit/UserSubredditRelations.swift; sourceTree = SOURCE_ROOT; };
+		48885A6F1E1C55D900265874 /* LinkParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LinkParser.swift; path = Sources/ModelParser/LinkParser.swift; sourceTree = SOURCE_ROOT; };
+		48885A701E1C55D900265874 /* SubredditParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubredditParser.swift; path = Sources/ModelParser/SubredditParser.swift; sourceTree = SOURCE_ROOT; };
 		489E81B71E1703E00091DDCF /* Distinguishment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Distinguishment.swift; path = Sources/Model/Distinguishment.swift; sourceTree = SOURCE_ROOT; };
 		489E81B81E1703E00091DDCF /* Edited.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Edited.swift; path = Sources/Model/Edited.swift; sourceTree = SOURCE_ROOT; };
 		489E81B91E1703E00091DDCF /* Flair.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Flair.swift; path = Sources/Model/Flair.swift; sourceTree = SOURCE_ROOT; };
@@ -81,7 +94,6 @@
 		48EBF86B1E15CBD100A4281E /* Authorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Authorization.swift; path = Sources/Authorization/Authorization.swift; sourceTree = SOURCE_ROOT; };
 		48EBF86D1E15CC1100A4281E /* Kind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Kind.swift; path = Sources/Model/Kind.swift; sourceTree = SOURCE_ROOT; };
 		48EBF86E1E15CC1100A4281E /* Thing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Thing.swift; path = Sources/Model/Thing.swift; sourceTree = SOURCE_ROOT; };
-		48EBF86F1E15CC1100A4281E /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Account.swift; path = Sources/Model/Account.swift; sourceTree = SOURCE_ROOT; };
 		48EBF8771E16EC3A00A4281E /* Listing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Listing.swift; path = Sources/Model/Listing.swift; sourceTree = SOURCE_ROOT; };
 		48EBF87B1E16ED0C00A4281E /* Votable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Votable.swift; path = Sources/Model/Votable.swift; sourceTree = SOURCE_ROOT; };
 		48EBF87D1E16EDAF00A4281E /* Created.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Created.swift; path = Sources/Model/Created.swift; sourceTree = SOURCE_ROOT; };
@@ -174,12 +186,25 @@
 		489E81B61E16FBC20091DDCF /* ModelParser */ = {
 			isa = PBXGroup;
 			children = (
-				489E81B41E16FBA70091DDCF /* MessageParser.swift */,
+				48885A6F1E1C55D900265874 /* LinkParser.swift */,
+				48885A701E1C55D900265874 /* SubredditParser.swift */,
 				4887A97C1E181AC100068756 /* RedditParser.swift */,
 				4887A97E1E181DCB00068756 /* ListingParser.swift */,
 				4887A9801E1827D100068756 /* CommentParser.swift */,
 			);
 			name = ModelParser;
+			sourceTree = "<group>";
+		};
+		48D35FEC1E1B0A3000E4FDF3 /* Subreddit */ = {
+			isa = PBXGroup;
+			children = (
+				48885A651E1C55C500265874 /* Header.swift */,
+				48885A661E1C55C500265874 /* SubmissionType.swift */,
+				48885A671E1C55C500265874 /* Subreddit.swift */,
+				48885A681E1C55C500265874 /* SubredditType.swift */,
+				48885A691E1C55C500265874 /* UserSubredditRelations.swift */,
+			);
+			name = Subreddit;
 			sourceTree = "<group>";
 		};
 		48EBF8531E15BF6A00A4281E /* Model */ = {
@@ -192,12 +217,13 @@
 				489E81BA1E1703E00091DDCF /* ModerationProperties.swift */,
 				48EBF86D1E15CC1100A4281E /* Kind.swift */,
 				48EBF86E1E15CC1100A4281E /* Thing.swift */,
-				48EBF86F1E15CC1100A4281E /* Account.swift */,
 				48EBF8771E16EC3A00A4281E /* Listing.swift */,
 				48EBF87B1E16ED0C00A4281E /* Votable.swift */,
 				48EBF87D1E16EDAF00A4281E /* Created.swift */,
 				48EBF87F1E16EF3E00A4281E /* Comment.swift */,
 				48AC96D51E19CBFB005539D5 /* Thumbnail.swift */,
+				48D35FEC1E1B0A3000E4FDF3 /* Subreddit */,
+				48885A631E1C543A00265874 /* Account.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -329,28 +355,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48885A711E1C55D900265874 /* LinkParser.swift in Sources */,
 				4887A97F1E181DCB00068756 /* ListingParser.swift in Sources */,
 				489E81BC1E1703E00091DDCF /* Edited.swift in Sources */,
 				489E81BD1E1703E00091DDCF /* Flair.swift in Sources */,
 				48EBF8631E15CB2600A4281E /* Scope.swift in Sources */,
+				48885A6E1E1C55C500265874 /* UserSubredditRelations.swift in Sources */,
 				48D35FDF1E1AE23300E4FDF3 /* Link.swift in Sources */,
-				48EBF8721E15CC1100A4281E /* Account.swift in Sources */,
 				48EBF8671E15CB2600A4281E /* AuthorizationDuration.swift in Sources */,
 				48EBF8701E15CC1100A4281E /* Kind.swift in Sources */,
 				48EBF87E1E16EDAF00A4281E /* Created.swift in Sources */,
+				48885A6B1E1C55C500265874 /* SubmissionType.swift in Sources */,
+				48885A6A1E1C55C500265874 /* Header.swift in Sources */,
 				48EBF8651E15CB2600A4281E /* CodeFlowAuthorization.swift in Sources */,
+				48885A721E1C55D900265874 /* SubredditParser.swift in Sources */,
+				48885A641E1C543A00265874 /* Account.swift in Sources */,
 				489E81BB1E1703E00091DDCF /* Distinguishment.swift in Sources */,
 				48EBF8621E15CB2600A4281E /* KeyChainAdapter.swift in Sources */,
 				48EBF86C1E15CBD100A4281E /* Authorization.swift in Sources */,
 				4887A97D1E181AC100068756 /* RedditParser.swift in Sources */,
 				48EBF8781E16EC3A00A4281E /* Listing.swift in Sources */,
 				489E81BE1E1703E00091DDCF /* ModerationProperties.swift in Sources */,
+				48885A6D1E1C55C500265874 /* SubredditType.swift in Sources */,
 				48EBF8641E15CB2600A4281E /* CodeFlowAuthorizer.swift in Sources */,
 				48EBF8801E16EF3E00A4281E /* Comment.swift in Sources */,
 				48AC96D61E19CBFB005539D5 /* Thumbnail.swift in Sources */,
 				48EBF86A1E15CB7A00A4281E /* AppCredentials.swift in Sources */,
 				4887A9811E1827D100068756 /* CommentParser.swift in Sources */,
-				489E81B51E16FBA70091DDCF /* MessageParser.swift in Sources */,
+				48885A6C1E1C55C500265874 /* Subreddit.swift in Sources */,
 				48EBF8711E15CC1100A4281E /* Thing.swift in Sources */,
 				48EBF87C1E16ED0C00A4281E /* Votable.swift in Sources */,
 				48EBF8661E15CB2600A4281E /* AuthorizationFlow.swift in Sources */,

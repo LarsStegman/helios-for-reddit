@@ -20,7 +20,7 @@ public class Link: Created, Thing, Votable {
     public var upvotes: Int
     public var downvotes: Int
 
-    public let author: String
+    public let author: String?
     public let authorFlair: Flair?
 
     public var clicked: Bool
@@ -52,7 +52,7 @@ public class Link: Created, Thing, Votable {
     public let createdUtc: TimeInterval
 
     init(id: String, fullname: String, title: String, url: URL, domain: String, score: Int,
-         upvotes: Int, downvotes: Int, author: String, authorFlair: Flair?, clicked: Bool,
+         upvotes: Int, downvotes: Int, author: String?, authorFlair: Flair?, clicked: Bool,
          hidden: Bool, isSelf: Bool, liked: Vote, linkFlair: Flair?, locked: Bool,
          media: [String: Any]?, mediaEmbed: [String: Any]?, numberOfComments: Int, isOver18: Bool,
          permalink: String, saved: Bool, selftext: String, htmlSelftext: String, subreddit: String,

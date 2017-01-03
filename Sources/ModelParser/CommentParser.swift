@@ -20,8 +20,8 @@ extension Comment {
             let fullname = json["name"] as? String,
 
             let author = json["author"] as? String,
-            let authorFlairText = json["author_flair_text"] as? String,
-            let authorFlairCss = json["author_flair_css_class"] as? String,
+            let authorFlairText = json["author_flair_text"] as? String?,
+            let authorFlairCss = json["author_flair_css_class"] as? String?,
             let authorLink = json["link_author"] as? String?,
             let distinguishmentText = json["distinguished"] as? String?,
 
@@ -53,7 +53,11 @@ extension Comment {
                 return nil
         }
 
-        let authorFlair = Flair(text: authorFlairText, cssClass: authorFlairCss)
+        let authorFlair: Flair?
+        if let authorText = authorFlairText {
+            authorFlair = Flair(text: authorText, cssClass: authorFlairCss)
+        }
+
         let distinguished: Distinguishment?
         if let text = distinguishmentText {
             distinguished = Distinguishment(rawValue: text)

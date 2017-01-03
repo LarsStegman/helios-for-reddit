@@ -123,7 +123,7 @@ public class CodeFlowAuthorization: NSObject, AuthorizationFlow,
     }
 
     private func processAccessTokenData(data: Data) {
-        guard let json = (try? JSONSerialization.jsonObject(with: data, options: .allowFragments))
+        guard let json = (try? JSONSerialization.jsonObject(with: data))
             as? [String: Any] else {
                 finishedAuthorization?(CodeFlowAuthorizationError.invalidResponse)
                 return

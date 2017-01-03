@@ -16,7 +16,7 @@ public class Comment: Created, Thing, Votable {
     public static let kind: Kind = .comment
 
     public let author: String
-    public let authorFlair: Flair
+    public let authorFlair: Flair?
     public let authorLink: String?
     public let distinguished: Distinguishment?
 
@@ -45,7 +45,7 @@ public class Comment: Created, Thing, Votable {
     public let subreddit: String
     public let subredditId: String
 
-    init(id: String, fullname: String, author: String, authorFlair: Flair, authorLink: String?,
+    init(id: String, fullname: String, author: String, authorFlair: Flair?, authorLink: String?,
          distinguished: Distinguishment?, linkId: String, linkTitle: String?, linkUrl: URL?,
          parentId: String, body: String, htmlBody: String, edited: Edited, replies: [Thing],
          created: TimeInterval, createdUtc: TimeInterval, liked: Vote, upvotes: Int, downvotes: Int,

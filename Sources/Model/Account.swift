@@ -2,12 +2,8 @@
 //  Account.swift
 //  Helios
 //
-//  Created by Lars Stegman on 29-12-16.
-//  Copyright © 2016 Stegman. All rights reserved.
+//  Created by Lars Stegman on 03-01-17.
+//  Copyright © 2017 Stegman. All rights reserved.
 //
 
 import Foundation
-
-public struct Account {
-    
-}
