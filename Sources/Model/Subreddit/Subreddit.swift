@@ -68,5 +68,7 @@ public class Subreddit: Thing {
         self.submitLinkLabel = submitLinkLabel
         self.submitTextLabel = submitTextLabel
         self.type = type
+
+        self.currentUserSubredditRelations = currentUserSubredditRelations
     }
 }

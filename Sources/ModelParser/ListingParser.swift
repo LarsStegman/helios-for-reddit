@@ -9,7 +9,7 @@
 import Foundation
 
 extension Listing {
-    init?(json json: [String: Any]) {
+    init?(json: [String: Any]) {
         guard let before = json["before"] as? String?,
             let after = json["after"] as? String?,
             let rawChildren = json["children"] as? [[String: Any]],

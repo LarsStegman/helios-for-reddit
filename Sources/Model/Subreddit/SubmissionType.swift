@@ -18,7 +18,7 @@ public enum SubmissionType {
         case "any": self = .any
         case "self": self = ._self
         case "link": self = .link
-        default: return
+        default: return nil
         }
     }
 }

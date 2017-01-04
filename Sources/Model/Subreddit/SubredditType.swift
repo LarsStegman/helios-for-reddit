@@ -22,7 +22,7 @@ public enum SubredditType {
         case "restricted": self = .restricted
         case "gold_restricted": self = .goldRestricted
         case "archived": self = .archived
-        default: return
+        default: return nil
         }
     }
 }

@@ -9,7 +9,7 @@
 import Foundation
 
 extension Link {
-    convenience init?(json json: [String: Any]) {
+    convenience init?(json: [String: Any]) {
         guard let id = json["id"] as? String,
             let fullname = json["name"] as? String,
 
@@ -49,20 +49,20 @@ extension Link {
 
             let editedString = json["edited"] as? String,
             let distinguishedStr = json["distinguished"] as? String?,
-            let sticked = json["stickied"] as? Bool,
+            let stickied = json["stickied"] as? Bool,
             let created = json["created"] as? TimeInterval,
             let createdUtc = json["created_utc"] as? TimeInterval else {
                 return nil
         }
 
-        let authorFlair: Flair?
+        var authorFlair: Flair? = nil
         if let authorText = authorFlairText {
             authorFlair = Flair(text: authorText, cssClass: authorFlairCss)
         }
 
         let liked = Vote(value: likedVal)
 
-        let linkFlair: Flair?
+        var linkFlair: Flair? = nil
         if let linkText = linkFlairText {
             linkFlair = Flair(text: linkText, cssClass: linkFlairCss)
         }
@@ -75,12 +75,12 @@ extension Link {
             edited = .notEdited
         }
 
-        let distinguished: Distinguishment?
+        var distinguished: Distinguishment? = nil
         if let text = distinguishedStr {
             distinguished = Distinguishment(rawValue: text)
         }
 
-        Link(id: id, fullname: fullname, title: title, url: url, domain: domain, score: score,
+        self.init(id: id, fullname: fullname, title: title, url: url, domain: domain, score: score,
              upvotes: upvotes, downvotes: downvotes, author: author, authorFlair: authorFlair,
              clicked: clicked, hidden: hidden, isSelf: isSelf, liked: liked,
              linkFlair: linkFlair, locked: locked, media: media, mediaEmbed: mediaEmbed,

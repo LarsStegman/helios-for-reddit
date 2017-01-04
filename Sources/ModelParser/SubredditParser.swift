@@ -9,7 +9,7 @@
 import Foundation
 
 extension Subreddit {
-    convenience init?(json json: [String: Any]) {
+    convenience init?(json: [String: Any]) {
         guard let id = json["id"] as? String,
             let fullname = json["name"] as? String,
 
@@ -43,7 +43,7 @@ extension Subreddit {
                 return nil
         }
 
-        let header: Header?
+        var header: Header? = nil
         if let headerImgText = headerImgText, let url = URL(string: headerImgText),
             let size = headerSize, let title = headerTitle {
             let size = CGSize(width: size[0], height: size[1])
@@ -56,7 +56,7 @@ extension Subreddit {
         let userRelations = UserSubredditRelations(banned: banned, contributing: contributer,
                                                    moderator: moderator, subscriber: subscriber)
 
-        Subreddit(id: id, fullname: fullname, title: title, displayName: displayName,
+        self.init(id: id, fullname: fullname, title: title, displayName: displayName,
                   description: description, numberOfSubscribers: numberOfSubscribers,
                   numberOfAccountsActive: numberOfAccountsActive, isOver18: isOver18, url: url,
                   header: header, commentScoreHiddenDuration: hiddenDuration,

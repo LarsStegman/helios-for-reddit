@@ -11,7 +11,7 @@ import Security
 
 class KeyChainAdapter {
 
-    class func saveAuthorization(key key: String, authorization authorization: Authorization) -> Bool {
+    class func saveAuthorization(key: String, authorization: Authorization) -> Bool {
         guard let data = authorization.data else {
             return false
         }

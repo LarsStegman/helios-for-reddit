@@ -26,7 +26,7 @@ public enum Thumbnail {
         case "self" : self = ._self
         case "image" : self = .image
         case _ where URL(string: text) != nil : self = .link(url: URL(string: text)!)
-        default: return
+        default: return nil
         }
     }
 }
