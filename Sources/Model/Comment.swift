@@ -28,7 +28,7 @@ public class Comment: Created, Thing, Votable {
     public let body: String
     public let htmlBody: String
     public let edited: Edited
-    public var replies: [Thing]
+    public var replies: Listing?
     public let created: TimeInterval
     public let createdUtc: TimeInterval
     
@@ -47,27 +47,31 @@ public class Comment: Created, Thing, Votable {
 
     init(id: String, fullname: String, author: String, authorFlair: Flair?, authorLink: String?,
          distinguished: Distinguishment?, linkId: String, linkTitle: String?, linkUrl: URL?,
-         parentId: String, body: String, htmlBody: String, edited: Edited, replies: [Thing],
+         parentId: String, body: String, htmlBody: String, edited: Edited, replies: Listing?,
          created: TimeInterval, createdUtc: TimeInterval, liked: Vote, upvotes: Int, downvotes: Int,
          score: Int, scoreHidden: Bool, numberOfTimesGilded: Int,
          moderationProperties: ModerationProperties?, saved: Bool, subreddit: String,
          subredditId: String) {
         self.id = id
         self.fullname = fullname
+
         self.author = author
         self.authorFlair = authorFlair
         self.authorLink = authorLink
         self.distinguished = distinguished
+
         self.linkId = linkId
         self.linkTitle = linkTitle
         self.linkUrl = linkUrl
         self.parentId = parentId
+
         self.body = body
         self.htmlBody = htmlBody
         self.edited = edited
         self.replies = replies
         self.created = created
         self.createdUtc = createdUtc
+
         self.liked = liked
         self.upvotes = upvotes
         self.downvotes = downvotes
@@ -75,7 +79,9 @@ public class Comment: Created, Thing, Votable {
         self.scoreHidden = scoreHidden
         self.numberOfTimesGilded = numberOfTimesGilded
         self.moderationProperties = moderationProperties
+
         self.saved = saved
+
         self.subreddit = subreddit
         self.subredditId = subredditId
     }

@@ -33,7 +33,6 @@ extension Comment {
             let body = json["body"] as? String,
             let htmlBody = json["body_html"] as? String,
             let editedText = json["edited"] as? String,
-            let rawReplies = json["replies"] as? [Any],
             let created = json["created"] as? TimeInterval,
             let createdUtc = json["created_utc"] as? TimeInterval,
 
@@ -53,17 +52,17 @@ extension Comment {
                 return nil
         }
 
-        let authorFlair: Flair?
+        var authorFlair: Flair? = nil
         if let authorText = authorFlairText {
             authorFlair = Flair(text: authorText, cssClass: authorFlairCss)
         }
 
-        let distinguished: Distinguishment?
+        var distinguished: Distinguishment?
         if let text = distinguishmentText {
             distinguished = Distinguishment(rawValue: text)
         }
 
-        let linkUrl: URL?
+        var linkUrl: URL? = nil
         if let text = linkUrlText {
             linkUrl = URL(string: text)
         }
@@ -75,23 +74,29 @@ extension Comment {
             edited = .notEdited
         }
 
-        let replies = rawReplies.flatMap({ RedditParser.parse(object: $0) })
+        var replies: Listing? = nil
+        if let rawReplies = json["replies"] as? [String: Any],
+            let data = rawReplies["data"] as? [String: Any],
+            let kind = rawReplies["kind"] as? String,
+            Kind(rawValue: kind.lowercased()) == .listing {
+            replies = Listing(json: data)
+        }
+
         let liked = Vote(value: likedVal)
 
-        let moderationProperties: ModerationProperties?
+        var moderationProperties: ModerationProperties? = nil
         if let numReports = numberOfTimesReported {
             moderationProperties = ModerationProperties(approvedBy: approvedBy, bannedBy: bannedBy,
                                                         numberOfReports: numReports)
         }
 
         Comment(id: id, fullname: fullname, author: author, authorFlair: authorFlair,
-                       authorLink: authorLink, distinguished: distinguished, linkId: linkId,
-                       linkTitle: linkTitle, linkUrl: linkUrl, parentId: parentId, body: body,
-                       htmlBody: htmlBody, edited: edited, replies: replies, created: created,
-                       createdUtc: createdUtc, liked: liked, upvotes: upvotes, downvotes: downvotes,
-                       score: score, scoreHidden: scoreHidden,
-                       numberOfTimesGilded: numberOfTimesGilded,
-                       moderationProperties: moderationProperties, saved: saved,
-                       subreddit: subreddit, subredditId: subredditId)
+                authorLink: authorLink, distinguished: distinguished, linkId: linkId,
+                linkTitle: linkTitle, linkUrl: linkUrl, parentId: parentId, body: body,
+                htmlBody: htmlBody, edited: edited, replies: replies, created: created,
+                createdUtc: createdUtc, liked: liked, upvotes: upvotes, downvotes: downvotes,
+                score: score, scoreHidden: scoreHidden, numberOfTimesGilded: numberOfTimesGilded,
+                moderationProperties: moderationProperties, saved: saved, subreddit: subreddit,
+                subredditId: subredditId)
     }
 }
