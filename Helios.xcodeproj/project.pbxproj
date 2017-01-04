@@ -29,6 +29,8 @@
 		489E81BC1E1703E00091DDCF /* Edited.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E81B81E1703E00091DDCF /* Edited.swift */; };
 		489E81BD1E1703E00091DDCF /* Flair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E81B91E1703E00091DDCF /* Flair.swift */; };
 		489E81BE1E1703E00091DDCF /* ModerationProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E81BA1E1703E00091DDCF /* ModerationProperties.swift */; };
+		48A6E7CB1E1D962500F65149 /* More.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A6E7CA1E1D962500F65149 /* More.swift */; };
+		48A6E7CD1E1D980800F65149 /* MoreParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A6E7CC1E1D980800F65149 /* MoreParser.swift */; };
 		48AC96D61E19CBFB005539D5 /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AC96D51E19CBFB005539D5 /* Thumbnail.swift */; };
 		48D35FDF1E1AE23300E4FDF3 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D35FDE1E1AE23300E4FDF3 /* Link.swift */; };
 		48EBF8621E15CB2600A4281E /* KeyChainAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF85C1E15CB2600A4281E /* KeyChainAdapter.swift */; };
@@ -82,6 +84,8 @@
 		489E81B81E1703E00091DDCF /* Edited.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Edited.swift; path = Sources/Model/Edited.swift; sourceTree = SOURCE_ROOT; };
 		489E81B91E1703E00091DDCF /* Flair.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Flair.swift; path = Sources/Model/Flair.swift; sourceTree = SOURCE_ROOT; };
 		489E81BA1E1703E00091DDCF /* ModerationProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModerationProperties.swift; path = Sources/Model/ModerationProperties.swift; sourceTree = SOURCE_ROOT; };
+		48A6E7CA1E1D962500F65149 /* More.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = More.swift; path = Sources/Model/More.swift; sourceTree = SOURCE_ROOT; };
+		48A6E7CC1E1D980800F65149 /* MoreParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MoreParser.swift; path = Sources/ModelParser/MoreParser.swift; sourceTree = SOURCE_ROOT; };
 		48AC96D51E19CBFB005539D5 /* Thumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Thumbnail.swift; path = Sources/Model/Thumbnail.swift; sourceTree = SOURCE_ROOT; };
 		48D35FDE1E1AE23300E4FDF3 /* Link.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Link.swift; path = Sources/Model/Link.swift; sourceTree = SOURCE_ROOT; };
 		48EBF85C1E15CB2600A4281E /* KeyChainAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyChainAdapter.swift; path = Sources/Authorization/KeyChainAdapter.swift; sourceTree = SOURCE_ROOT; };
@@ -191,6 +195,7 @@
 				4887A97C1E181AC100068756 /* RedditParser.swift */,
 				4887A97E1E181DCB00068756 /* ListingParser.swift */,
 				4887A9801E1827D100068756 /* CommentParser.swift */,
+				48A6E7CC1E1D980800F65149 /* MoreParser.swift */,
 			);
 			name = ModelParser;
 			sourceTree = "<group>";
@@ -224,6 +229,7 @@
 				48AC96D51E19CBFB005539D5 /* Thumbnail.swift */,
 				48D35FEC1E1B0A3000E4FDF3 /* Subreddit */,
 				48885A631E1C543A00265874 /* Account.swift */,
+				48A6E7CA1E1D962500F65149 /* More.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -356,6 +362,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				48885A711E1C55D900265874 /* LinkParser.swift in Sources */,
+				48A6E7CD1E1D980800F65149 /* MoreParser.swift in Sources */,
 				4887A97F1E181DCB00068756 /* ListingParser.swift in Sources */,
 				489E81BC1E1703E00091DDCF /* Edited.swift in Sources */,
 				489E81BD1E1703E00091DDCF /* Flair.swift in Sources */,
@@ -379,6 +386,7 @@
 				48885A6D1E1C55C500265874 /* SubredditType.swift in Sources */,
 				48EBF8641E15CB2600A4281E /* CodeFlowAuthorizer.swift in Sources */,
 				48EBF8801E16EF3E00A4281E /* Comment.swift in Sources */,
+				48A6E7CB1E1D962500F65149 /* More.swift in Sources */,
 				48AC96D61E19CBFB005539D5 /* Thumbnail.swift in Sources */,
 				48EBF86A1E15CB7A00A4281E /* AppCredentials.swift in Sources */,
 				4887A9811E1827D100068756 /* CommentParser.swift in Sources */,
