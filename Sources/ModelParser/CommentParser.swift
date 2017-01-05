@@ -15,7 +15,7 @@ extension Comment {
     ///
     /// - Parameters:
     ///   - json: The json dictionary describing a comment.
-    convenience init?(json: [String: Any]) {
+    init?(json: [String: Any]) {
         guard let id = json["id"] as? String,
             let fullname = json["name"] as? String,
 
@@ -90,7 +90,7 @@ extension Comment {
                                                         numberOfReports: numReports)
         }
 
-        self.init(id: id, fullname: fullname, author: author, authorFlair: authorFlair,
+        self = Comment(id: id, fullname: fullname, author: author, authorFlair: authorFlair,
                 authorLink: authorLink, distinguished: distinguished, linkId: linkId,
                 linkTitle: linkTitle, linkUrl: linkUrl, parentId: parentId, body: body,
                 htmlBody: htmlBody, edited: edited, replies: replies, created: created,

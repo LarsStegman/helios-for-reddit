@@ -9,13 +9,17 @@
 import Foundation
 
 public protocol Votable {
-    var upvotes: Int { get }
-    var downvotes: Int { get }
-    var liked: Vote { get }
+    var upvotes: Int { get set }
+    var downvotes: Int { get set }
+    var liked: Vote { get set }
 
     mutating func upvote()
     mutating func downvote()
     mutating func unvote()
+}
+
+public protocol Scored {
+    var score: Int { get set }
 }
 
 /// A assessment of an item
@@ -37,4 +41,48 @@ public enum Vote {
     }
 }
 
+extension Votable where Self: Scored {
+    public mutating func upvote() {
+        switch liked {
+        case .upvote: return
+        case .downvote:
+            upvotes += 1
+            downvotes -= 1
+            score += 2
+        case .noVote:
+            upvotes += 1
+            score += 1
+        }
+        liked = .upvote
+        // TODO: Call reddit
+    }
 
+    public mutating func downvote() {
+        switch liked {
+        case .upvote:
+            upvotes -= 1
+            downvotes += 1
+            score -= 2
+        case .downvote: return
+        case .noVote:
+            downvotes += 1
+            score -= 1
+        }
+        liked = .downvote
+        // TODO: Call reddit
+    }
+
+    public mutating func unvote() {
+        switch liked {
+        case .upvote:
+            upvotes -= 1
+            score -= 1
+        case .downvote:
+            downvotes -= 1
+            score += 1
+        case .noVote: return
+        }
+        liked = .noVote
+        // TODO: Call reddit
+    }
+}

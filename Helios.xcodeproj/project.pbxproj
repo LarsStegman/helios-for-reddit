@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		480F68EF1E04630600B8E963 /* HeliosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48876D581E045D7D00CD0C5C /* HeliosTests.swift */; };
 		480F68F01E04630600B8E963 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48876D5A1E045D7D00CD0C5C /* Info.plist */; };
 		482590A81E0738D0009E67BA /* Helios.h in Headers */ = {isa = PBXBuildFile; fileRef = 482590A71E0738D0009E67BA /* Helios.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		484D9DFC1E059E8F00FFFBCF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 484D9DFB1E059E8E00FFFBCF /* Security.framework */; };
@@ -47,6 +46,8 @@
 		48EBF87C1E16ED0C00A4281E /* Votable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF87B1E16ED0C00A4281E /* Votable.swift */; };
 		48EBF87E1E16EDAF00A4281E /* Created.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF87D1E16EDAF00A4281E /* Created.swift */; };
 		48EBF8801E16EF3E00A4281E /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF87F1E16EF3E00A4281E /* Comment.swift */; };
+		48F123EB1E1E3A1700DA0CC4 /* HeliosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F123EA1E1E3A1700DA0CC4 /* HeliosTests.swift */; };
+		48F123F01E1E3BF300DA0CC4 /* LinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F123EF1E1E3BF300DA0CC4 /* LinkTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,7 +67,6 @@
 		487639411E0573D300E9F9BD /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		48876D4A1E045D7D00CD0C5C /* Helios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Helios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48876D531E045D7D00CD0C5C /* HeliosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeliosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		48876D581E045D7D00CD0C5C /* HeliosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeliosTests.swift; sourceTree = "<group>"; };
 		48876D5A1E045D7D00CD0C5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48876D641E0461EA00CD0C5C /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		4887A97C1E181AC100068756 /* RedditParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RedditParser.swift; path = Sources/ModelParser/RedditParser.swift; sourceTree = SOURCE_ROOT; };
@@ -102,6 +102,9 @@
 		48EBF87B1E16ED0C00A4281E /* Votable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Votable.swift; path = Sources/Model/Votable.swift; sourceTree = SOURCE_ROOT; };
 		48EBF87D1E16EDAF00A4281E /* Created.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Created.swift; path = Sources/Model/Created.swift; sourceTree = SOURCE_ROOT; };
 		48EBF87F1E16EF3E00A4281E /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Comment.swift; path = Sources/Model/Comment.swift; sourceTree = SOURCE_ROOT; };
+		48F123EA1E1E3A1700DA0CC4 /* HeliosTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeliosTests.swift; path = Tests/HeliosTests.swift; sourceTree = SOURCE_ROOT; };
+		48F123EE1E1E3BF200DA0CC4 /* HeliosTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HeliosTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		48F123EF1E1E3BF300DA0CC4 /* LinkTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LinkTests.swift; path = Tests/ModelTests/LinkTests.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,7 +183,9 @@
 		48876D571E045D7D00CD0C5C /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				48876D581E045D7D00CD0C5C /* HeliosTests.swift */,
+				48F123ED1E1E3B1900DA0CC4 /* ModelTests */,
+				48F123EC1E1E3A4100DA0CC4 /* ModelParserTests */,
+				48F123EA1E1E3A1700DA0CC4 /* HeliosTests.swift */,
 				48876D5A1E045D7D00CD0C5C /* Info.plist */,
 			);
 			name = Tests;
@@ -243,6 +248,22 @@
 				489E81B61E16FBC20091DDCF /* ModelParser */,
 			);
 			name = Sources;
+			sourceTree = "<group>";
+		};
+		48F123EC1E1E3A4100DA0CC4 /* ModelParserTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ModelParserTests;
+			sourceTree = "<group>";
+		};
+		48F123ED1E1E3B1900DA0CC4 /* ModelTests */ = {
+			isa = PBXGroup;
+			children = (
+				48F123EF1E1E3BF300DA0CC4 /* LinkTests.swift */,
+				48F123EE1E1E3BF200DA0CC4 /* HeliosTests-Bridging-Header.h */,
+			);
+			name = ModelTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,6 +335,7 @@
 					48876D521E045D7D00CD0C5C = {
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = 34S7DCU8S9;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -388,6 +410,7 @@
 				48EBF8801E16EF3E00A4281E /* Comment.swift in Sources */,
 				48A6E7CB1E1D962500F65149 /* More.swift in Sources */,
 				48AC96D61E19CBFB005539D5 /* Thumbnail.swift in Sources */,
+				48F123EB1E1E3A1700DA0CC4 /* HeliosTests.swift in Sources */,
 				48EBF86A1E15CB7A00A4281E /* AppCredentials.swift in Sources */,
 				4887A9811E1827D100068756 /* CommentParser.swift in Sources */,
 				48885A6C1E1C55C500265874 /* Subreddit.swift in Sources */,
@@ -401,7 +424,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				480F68EF1E04630600B8E963 /* HeliosTests.swift in Sources */,
+				48F123F01E1E3BF300DA0CC4 /* LinkTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,11 +585,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 34S7DCU8S9;
 				INFOPLIST_FILE = HeliosTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nl.stegman.HeliosTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "HeliosTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -575,11 +601,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 34S7DCU8S9;
 				INFOPLIST_FILE = HeliosTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nl.stegman.HeliosTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "HeliosTests-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
