@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension More {
+extension More: RedditTyped {
     init?(json: [String: Any]) {
         guard let id = json["id"] as? String,
             let fullname = json["name"] as? String,

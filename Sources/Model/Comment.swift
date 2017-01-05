@@ -10,7 +10,7 @@ import Foundation
 
 
 /// A comment
-public struct Comment: Created, Scored, Thing, Votable {
+public struct Comment: Created, Thing, Votable {
     public let id: String
     public let fullname: String
     public static let kind: Kind = .comment

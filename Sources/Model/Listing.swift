@@ -13,6 +13,7 @@ public struct Listing {
     var after: String?
     let modhash: String?
     var children: [Thing]
+    public static let kind = Kind.listing
 
     init(before: String?, after: String?, modhash: String?, children: [Thing]) {
         self.before = before

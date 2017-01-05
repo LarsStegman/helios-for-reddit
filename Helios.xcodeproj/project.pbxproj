@@ -48,6 +48,7 @@
 		48EBF8801E16EF3E00A4281E /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF87F1E16EF3E00A4281E /* Comment.swift */; };
 		48F123EB1E1E3A1700DA0CC4 /* HeliosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F123EA1E1E3A1700DA0CC4 /* HeliosTests.swift */; };
 		48F123F01E1E3BF300DA0CC4 /* LinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F123EF1E1E3BF300DA0CC4 /* LinkTests.swift */; };
+		48F123F41E1EFEF900DA0CC4 /* RedditTyped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F123F31E1EFEF900DA0CC4 /* RedditTyped.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 		48F123EA1E1E3A1700DA0CC4 /* HeliosTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeliosTests.swift; path = Tests/HeliosTests.swift; sourceTree = SOURCE_ROOT; };
 		48F123EE1E1E3BF200DA0CC4 /* HeliosTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HeliosTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		48F123EF1E1E3BF300DA0CC4 /* LinkTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LinkTests.swift; path = Tests/ModelTests/LinkTests.swift; sourceTree = SOURCE_ROOT; };
+		48F123F31E1EFEF900DA0CC4 /* RedditTyped.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RedditTyped.swift; path = Sources/ModelParser/RedditTyped.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +203,7 @@
 				4887A97E1E181DCB00068756 /* ListingParser.swift */,
 				4887A9801E1827D100068756 /* CommentParser.swift */,
 				48A6E7CC1E1D980800F65149 /* MoreParser.swift */,
+				48F123F31E1EFEF900DA0CC4 /* RedditTyped.swift */,
 			);
 			name = ModelParser;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 			files = (
 				48885A711E1C55D900265874 /* LinkParser.swift in Sources */,
 				48A6E7CD1E1D980800F65149 /* MoreParser.swift in Sources */,
+				48F123F41E1EFEF900DA0CC4 /* RedditTyped.swift in Sources */,
 				4887A97F1E181DCB00068756 /* ListingParser.swift in Sources */,
 				489E81BC1E1703E00091DDCF /* Edited.swift in Sources */,
 				489E81BD1E1703E00091DDCF /* Flair.swift in Sources */,

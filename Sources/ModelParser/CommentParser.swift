@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Comment {
+extension Comment: RedditTyped {
 
     /// Initializes a comment from a JSON dictionary. If the dictionary does not contain the 
     /// neccessary keys, this initializer will fail.

@@ -12,14 +12,11 @@ public protocol Votable {
     var upvotes: Int { get set }
     var downvotes: Int { get set }
     var liked: Vote { get set }
+    var score: Int { get set }
 
     mutating func upvote()
     mutating func downvote()
     mutating func unvote()
-}
-
-public protocol Scored {
-    var score: Int { get set }
 }
 
 /// A assessment of an item
@@ -41,7 +38,7 @@ public enum Vote {
     }
 }
 
-extension Votable where Self: Scored {
+extension Votable {
     public mutating func upvote() {
         switch liked {
         case .upvote: return

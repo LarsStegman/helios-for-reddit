@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Link: Created, Scored, Thing, Votable {
+public struct Link: Created, Thing, Votable {
     public let id: String
     public let fullname: String
     public static let kind = Kind.link

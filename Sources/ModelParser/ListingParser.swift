@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Listing {
+extension Listing: RedditTyped {
     init?(json: [String: Any]) {
         guard let before = json["before"] as? String?,
             let after = json["after"] as? String?,
