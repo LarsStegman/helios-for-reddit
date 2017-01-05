@@ -9,7 +9,7 @@
 import Foundation
 
 extension Link {
-    convenience init?(json: [String: Any]) {
+    init?(json: [String: Any]) {
         guard let id = json["id"] as? String,
             let fullname = json["name"] as? String,
 
@@ -80,7 +80,7 @@ extension Link {
             distinguished = Distinguishment(rawValue: text)
         }
 
-        self.init(id: id, fullname: fullname, title: title, url: url, domain: domain, score: score,
+        self = Link(id: id, fullname: fullname, title: title, url: url, domain: domain, score: score,
              upvotes: upvotes, downvotes: downvotes, author: author, authorFlair: authorFlair,
              clicked: clicked, hidden: hidden, isSelf: isSelf, liked: liked,
              linkFlair: linkFlair, locked: locked, media: media, mediaEmbed: mediaEmbed,

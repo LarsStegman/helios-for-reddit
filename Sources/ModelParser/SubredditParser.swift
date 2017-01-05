@@ -9,7 +9,7 @@
 import Foundation
 
 extension Subreddit {
-    convenience init?(json: [String: Any]) {
+    init?(json: [String: Any]) {
         guard let id = json["id"] as? String,
             let fullname = json["name"] as? String,
 
@@ -56,7 +56,7 @@ extension Subreddit {
         let userRelations = UserSubredditRelations(banned: banned, contributing: contributer,
                                                    moderator: moderator, subscriber: subscriber)
 
-        self.init(id: id, fullname: fullname, title: title, displayName: displayName,
+        self = Subreddit(id: id, fullname: fullname, title: title, displayName: displayName,
                   description: description, numberOfSubscribers: numberOfSubscribers,
                   numberOfAccountsActive: numberOfAccountsActive, isOver18: isOver18, url: url,
                   header: header, commentScoreHiddenDuration: hiddenDuration,
