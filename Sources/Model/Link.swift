@@ -25,17 +25,18 @@ public struct Link: Created, Thing, Votable {
 
     public var clicked: Bool
 
-    public var hidden: Bool
+    public var isHidden: Bool
     public let isSelf: Bool
     public var liked: Vote
     public var linkFlair: Flair?
-    public var locked: Bool
+    public var isLocked: Bool
     public let media: [String: Any]?
     public let mediaEmbed: [String: Any]?
     public var numberOfComments: Int
     public let isOver18: Bool
+    public let isSpoiler: Bool
     public let permalink: String
-    public var saved: Bool
+    public var isSaved: Bool
 
     public var selftext: String
     public var htmlSelftext: String
@@ -46,7 +47,7 @@ public struct Link: Created, Thing, Votable {
 
     public var edited: Edited
     public var distinguished: Distinguishment?
-    public var stickied: Bool
+    public var isStickied: Bool
 
     public let created: TimeInterval
     public let createdUtc: TimeInterval

@@ -37,6 +37,7 @@ extension Link: RedditTyped {
             let mediaEmbed = json["media_embed"] as? [String: Any]?,
             let numberOfComments = json["num_comments"] as? Int,
             let isOver18 = json["over_18"] as? Bool,
+            let isSpoiler = json["spoiler"] as? Bool,
             let permalink = json["permalink"] as? String,
             let saved = json["saved"] as? Bool,
 
@@ -82,12 +83,12 @@ extension Link: RedditTyped {
 
         self = Link(id: id, fullname: fullname, title: title, url: url, domain: domain, score: score,
              upvotes: upvotes, downvotes: downvotes, author: author, authorFlair: authorFlair,
-             clicked: clicked, hidden: hidden, isSelf: isSelf, liked: liked,
-             linkFlair: linkFlair, locked: locked, media: media, mediaEmbed: mediaEmbed,
-             numberOfComments: numberOfComments, isOver18: isOver18, permalink: permalink,
-             saved: saved, selftext: selftext, htmlSelftext: htmlSelftext, subreddit: subreddit,
-             subredditId: subredditId, thumbnail: thumbnail, edited: edited,
-             distinguished: distinguished, stickied: stickied, created: created,
+             clicked: clicked, isHidden: hidden, isSelf: isSelf, liked: liked,
+             linkFlair: linkFlair, isLocked: locked, media: media, mediaEmbed: mediaEmbed,
+             numberOfComments: numberOfComments, isOver18: isOver18, isSpoiler: isSpoiler,
+             permalink: permalink, isSaved: saved, selftext: selftext, htmlSelftext: htmlSelftext,
+             subreddit: subreddit, subredditId: subredditId, thumbnail: thumbnail, edited: edited,
+             distinguished: distinguished, isStickied: stickied, created: created,
              createdUtc: createdUtc)
     }
 }

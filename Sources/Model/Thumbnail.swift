@@ -19,12 +19,14 @@ public enum Thumbnail {
     case _self
     case image
     case _default
+    case spoiler
 
     init?(text: String) {
         switch text {
         case "default" : self = ._default
         case "self" : self = ._self
         case "image" : self = .image
+        case "spoiler": self = .spoiler
         case _ where URL(string: text) != nil : self = .link(url: URL(string: text)!)
         default: return nil
         }
