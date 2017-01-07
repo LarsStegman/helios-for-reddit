@@ -10,26 +10,26 @@ import Foundation
 
 public class CodeFlowAuthorizer {
 
-    public var flow: CodeFlowAuthorization
+    public var flow: AuthorizationFlow
     public struct LoginAuthorizerNotifications {
         static let failedAuthorizationName = Notification.Name("failedLoginNotification")
         static let finishedAuthorizationName = Notification.Name("completedLoginNotification")
         static let defaultName = Notification.Name("loginAuthorizerNotification")
     }
     
-    public init(using flow: CodeFlowAuthorization) {
+    public init(using flow: AuthorizationFlow) {
         self.flow = flow
     }
 
     private var newState: String {
-        return "GaiaAuthorization-\(Date().timeIntervalSince1970)"
+        return "GaiaAuthorization-\(flow.appCredentials?.localAppId ?? "")" +
+            "-\(Date().timeIntervalSince1970)"
     }
 
     public func startAuthorization() -> URL? {
         let state = newState
         do {
-            let url = try flow.startAuthorization(state: state)
-            return url
+            return try flow.startAuthorization(state: state)
         } catch AuthorizationError.missingApplicationCredentials {
             NotificationCenter.default
                 .post(name: LoginAuthorizerNotifications.failedAuthorizationName,

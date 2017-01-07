@@ -12,9 +12,8 @@ import Security
 class KeyChainAdapter {
 
     class func saveAuthorization(key: String, authorization: Authorization) -> Bool {
-        guard let data = authorization.data else {
-            return false
-        }
+        let data = authorization.data
+        
         let query = [
             kSecClass as String         : kSecClassGenericPassword,
             kSecAttrAccount as String   : key,
@@ -46,14 +45,14 @@ class KeyChainAdapter {
 }
 
 private extension Authorization {
-    var data: Data? {
+    var data: Data {
         let propertyList =  [encodingKeys.accessToken : accessToken,
                              encodingKeys.refreshToken: refreshToken,
                              encodingKeys.tokenType : tokenType,
                              encodingKeys.scopes : scopes.map( { return $0.rawValue } ),
                              encodingKeys.expiresAt : expiresAt.timeIntervalSince1970] as [String: Any]
 
-        return try? PropertyListSerialization.data(fromPropertyList: propertyList,
+        return try! PropertyListSerialization.data(fromPropertyList: propertyList,
                                                    format: .binary, options: .allZeros)
     }
 

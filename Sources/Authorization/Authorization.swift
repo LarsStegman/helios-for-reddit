@@ -18,12 +18,4 @@ struct Authorization {
     var expired: Bool {
         return expiresAt < Date()
     }
-
-    init(accessToken: String, refreshToken: String, tokenType: String, scopes: [Scope], expiresAt: Date) {
-        self.accessToken = accessToken
-        self.refreshToken = refreshToken
-        self.tokenType = tokenType
-        self.scopes = scopes
-        self.expiresAt = expiresAt
-    }
 }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		482590A81E0738D0009E67BA /* Helios.h in Headers */ = {isa = PBXBuildFile; fileRef = 482590A71E0738D0009E67BA /* Helios.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		484D9DFC1E059E8F00FFFBCF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 484D9DFB1E059E8E00FFFBCF /* Security.framework */; };
+		485FF71A1E2170F700FEB50D /* AuthorizationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485FF7191E2170F700FEB50D /* AuthorizationTest.swift */; };
 		487639421E0573D300E9F9BD /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 487639411E0573D300E9F9BD /* LICENSE */; };
 		48876D541E045D7D00CD0C5C /* Helios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48876D4A1E045D7D00CD0C5C /* Helios.framework */; };
 		48876D651E0461EA00CD0C5C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 48876D641E0461EA00CD0C5C /* .gitignore */; };
@@ -31,6 +32,7 @@
 		48A6E7CD1E1D980800F65149 /* MoreParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A6E7CC1E1D980800F65149 /* MoreParser.swift */; };
 		48AC96D61E19CBFB005539D5 /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AC96D51E19CBFB005539D5 /* Thumbnail.swift */; };
 		48D35FDF1E1AE23300E4FDF3 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D35FDE1E1AE23300E4FDF3 /* Link.swift */; };
+		48D4C4EB1E218CCA00B6EB06 /* CodeFlowAuthorizerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D4C4EA1E218CCA00B6EB06 /* CodeFlowAuthorizerTest.swift */; };
 		48EBF8621E15CB2600A4281E /* KeyChainAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF85C1E15CB2600A4281E /* KeyChainAdapter.swift */; };
 		48EBF8631E15CB2600A4281E /* Scope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF85D1E15CB2600A4281E /* Scope.swift */; };
 		48EBF8641E15CB2600A4281E /* CodeFlowAuthorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF85E1E15CB2600A4281E /* CodeFlowAuthorizer.swift */; };
@@ -63,6 +65,7 @@
 /* Begin PBXFileReference section */
 		482590A71E0738D0009E67BA /* Helios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Helios.h; path = Sources/Helios.h; sourceTree = SOURCE_ROOT; };
 		484D9DFB1E059E8E00FFFBCF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		485FF7191E2170F700FEB50D /* AuthorizationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthorizationTest.swift; path = Tests/AuthorizationTests/AuthorizationTest.swift; sourceTree = SOURCE_ROOT; };
 		48637D671E05EBE900ADEE6A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Sources/Info.plist; sourceTree = SOURCE_ROOT; };
 		487639411E0573D300E9F9BD /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		4886CCDA1E1F91D1003B7934 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Tests/Info.plist; sourceTree = SOURCE_ROOT; };
@@ -88,6 +91,7 @@
 		48A6E7CC1E1D980800F65149 /* MoreParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MoreParser.swift; path = Sources/ModelParser/MoreParser.swift; sourceTree = SOURCE_ROOT; };
 		48AC96D51E19CBFB005539D5 /* Thumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Thumbnail.swift; path = Sources/Model/Thumbnail.swift; sourceTree = SOURCE_ROOT; };
 		48D35FDE1E1AE23300E4FDF3 /* Link.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Link.swift; path = Sources/Model/Link.swift; sourceTree = SOURCE_ROOT; };
+		48D4C4EA1E218CCA00B6EB06 /* CodeFlowAuthorizerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CodeFlowAuthorizerTest.swift; path = Tests/AuthorizationTests/CodeFlowAuthorizerTest.swift; sourceTree = SOURCE_ROOT; };
 		48EBF85C1E15CB2600A4281E /* KeyChainAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyChainAdapter.swift; path = Sources/Authorization/KeyChainAdapter.swift; sourceTree = SOURCE_ROOT; };
 		48EBF85D1E15CB2600A4281E /* Scope.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Scope.swift; path = Sources/Authorization/Scope.swift; sourceTree = SOURCE_ROOT; };
 		48EBF85E1E15CB2600A4281E /* CodeFlowAuthorizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CodeFlowAuthorizer.swift; path = Sources/Authorization/CodeFlowAuthorizer.swift; sourceTree = SOURCE_ROOT; };
@@ -136,7 +140,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		487639391E055D1A00E9F9BD /* RedditAuthorization */ = {
+		485FF7181E2170BB00FEB50D /* AuthorizationTests */ = {
+			isa = PBXGroup;
+			children = (
+				485FF7191E2170F700FEB50D /* AuthorizationTest.swift */,
+				48D4C4EA1E218CCA00B6EB06 /* CodeFlowAuthorizerTest.swift */,
+			);
+			name = AuthorizationTests;
+			sourceTree = "<group>";
+		};
+		487639391E055D1A00E9F9BD /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
 				48EBF86B1E15CBD100A4281E /* Authorization.swift */,
@@ -147,7 +160,7 @@
 				48EBF8601E15CB2600A4281E /* AuthorizationFlow.swift */,
 				48EBF8611E15CB2600A4281E /* AuthorizationDuration.swift */,
 			);
-			name = RedditAuthorization;
+			name = Authorization;
 			sourceTree = "<group>";
 		};
 		48876D401E045D7C00CD0C5C = {
@@ -156,7 +169,6 @@
 				487639411E0573D300E9F9BD /* LICENSE */,
 				48876D641E0461EA00CD0C5C /* .gitignore */,
 				48876D4C1E045D7D00CD0C5C /* Helios */,
-				48876D571E045D7D00CD0C5C /* Tests */,
 				48876D4B1E045D7D00CD0C5C /* Products */,
 				484D9DFA1E059E8E00FFFBCF /* Frameworks */,
 			);
@@ -175,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				48EBF8681E15CB3000A4281E /* Sources */,
+				48876D571E045D7D00CD0C5C /* Tests */,
 				482590A71E0738D0009E67BA /* Helios.h */,
 				48637D671E05EBE900ADEE6A /* Info.plist */,
 			);
@@ -184,6 +197,7 @@
 		48876D571E045D7D00CD0C5C /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				485FF7181E2170BB00FEB50D /* AuthorizationTests */,
 				48F123ED1E1E3B1900DA0CC4 /* ModelTests */,
 				48F123EC1E1E3A4100DA0CC4 /* ModelParserTests */,
 				48F123EA1E1E3A1700DA0CC4 /* HeliosTests.swift */,
@@ -191,7 +205,7 @@
 			);
 			name = Tests;
 			path = HeliosTests;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		489E81B61E16FBC20091DDCF /* ModelParser */ = {
 			isa = PBXGroup;
@@ -245,7 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				48EBF8691E15CB7A00A4281E /* AppCredentials.swift */,
-				487639391E055D1A00E9F9BD /* RedditAuthorization */,
+				487639391E055D1A00E9F9BD /* Authorization */,
 				48EBF8531E15BF6A00A4281E /* Model */,
 				489E81B61E16FBC20091DDCF /* ModelParser */,
 			);
@@ -427,6 +441,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				48F123F01E1E3BF300DA0CC4 /* VotableTests.swift in Sources */,
+				48D4C4EB1E218CCA00B6EB06 /* CodeFlowAuthorizerTest.swift in Sources */,
+				485FF71A1E2170F700FEB50D /* AuthorizationTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
