@@ -48,6 +48,17 @@ class VotableTests: XCTestCase {
         XCTAssert(testObject.liked == .upvote)
     }
 
+    func testUpvoteAfterUpvote() {
+        testObject = DefaultVotableImplementationTestObject(upvotes: 0, downvotes: 0,
+                                                            score: 0, liked: .upvote)
+        
+        testObject.upvote()
+        XCTAssert(testObject.upvotes == 0)
+        XCTAssert(testObject.downvotes == 0)
+        XCTAssert(testObject.score == 0)
+        XCTAssert(testObject.liked == .upvote)
+    }
+
     func testDownvoteAfterNoVote() {
         testObject = DefaultVotableImplementationTestObject(upvotes: 0, downvotes: 0,
                                                             score: 0, liked: .noVote)
@@ -70,6 +81,17 @@ class VotableTests: XCTestCase {
         XCTAssert(testObject.liked == .downvote)
     }
 
+    func testDownvoteAfterDownvote() {
+        testObject = DefaultVotableImplementationTestObject(upvotes: 0, downvotes: 0,
+                                                            score: 0, liked: .downvote)
+
+        testObject.downvote()
+        XCTAssert(testObject.upvotes == 0)
+        XCTAssert(testObject.downvotes == 0)
+        XCTAssert(testObject.score == 0)
+        XCTAssert(testObject.liked == .downvote)
+    }
+
     /// Tests whether
     func testUnvoteAfterUpvoted() {
         testObject = DefaultVotableImplementationTestObject(upvotes: 1, downvotes: 0,
@@ -85,6 +107,17 @@ class VotableTests: XCTestCase {
     func testUnvoteAfterDownvoted() {
         testObject = DefaultVotableImplementationTestObject(upvotes: 0, downvotes: 1,
                                                             score: -1, liked: .downvote)
+
+        testObject.unvote()
+        XCTAssert(testObject.upvotes == 0)
+        XCTAssert(testObject.downvotes == 0)
+        XCTAssert(testObject.score == 0)
+        XCTAssert(testObject.liked == .noVote)
+    }
+
+    func testUnvoteAfterUnvote() {
+        testObject = DefaultVotableImplementationTestObject(upvotes: 0, downvotes: 0,
+                                                            score: 0, liked: .noVote)
 
         testObject.unvote()
         XCTAssert(testObject.upvotes == 0)
