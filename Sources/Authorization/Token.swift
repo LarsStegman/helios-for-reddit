@@ -1,5 +1,5 @@
 //
-//  Authorization.swift
+//  Token.swift
 //  Helios
 //
 //  Created by Lars Stegman on 27-12-16.
@@ -8,13 +8,15 @@
 
 import Foundation
 
-struct Authorization {
-    let accessToken: String
-    let refreshToken: String
-    let tokenType: String
-    let scopes: [Scope]
-    let expiresAt: Date
+protocol Token {
+    var accessToken: String { get }
+    var scopes: [Scope] { get }
+    var expiresAt: Date { get }
 
+    var expired: Bool { get }
+}
+
+extension Token {
     var expired: Bool {
         return expiresAt < Date()
     }

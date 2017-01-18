@@ -29,8 +29,7 @@ public struct Comment: Created, Thing, Votable {
     public let htmlBody: String
     public let edited: Edited
     public var replies: Listing?
-    public let created: TimeInterval
-    public let createdUtc: TimeInterval
+    public let createdUtc: Date
     
     public var liked: Vote
     public var upvotes: Int

@@ -8,21 +8,10 @@
 
 import Foundation
 
-public enum SubredditType {
-    case _public
-    case _private
+public enum SubredditType: String {
+    case `public`
+    case `private`
     case restricted
     case goldRestricted
     case archived
-
-    init?(text: String) {
-        switch text {
-        case "public": self = ._public
-        case "private": self = ._private
-        case "restricted": self = .restricted
-        case "gold_restricted": self = .goldRestricted
-        case "archived": self = .archived
-        default: return nil
-        }
-    }
 }

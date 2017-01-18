@@ -10,13 +10,13 @@ import Foundation
 
 public enum SubmissionType {
     case link
-    case _self
+    case `self`
     case any
 
     init?(text: String) {
         switch text {
         case "any": self = .any
-        case "self": self = ._self
+        case "self": self = .self
         case "link": self = .link
         default: return nil
         }

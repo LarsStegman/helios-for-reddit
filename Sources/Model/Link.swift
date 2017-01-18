@@ -49,6 +49,5 @@ public struct Link: Created, Thing, Votable {
     public var distinguished: Distinguishment?
     public var isStickied: Bool
 
-    public let created: TimeInterval
-    public let createdUtc: TimeInterval
+    public let createdUtc: Date
 }

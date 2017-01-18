@@ -10,9 +10,7 @@ import Foundation
 
 /// An item that has been created at some time
 public protocol Created {
-    /// The local time in epoch seconds
-    var created: TimeInterval { get }
 
     /// The UTC time in epoch seconds
-    var createdUtc: TimeInterval { get }
+    var createdUtc: Date { get }
 }

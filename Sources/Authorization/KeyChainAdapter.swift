@@ -11,12 +11,16 @@ import Security
 
 class KeyChainAdapter {
 
-    class func saveAuthorization(key: String, authorization: Authorization) -> Bool {
+    static var authorizationKey =
+        (Credentials.sharedInstance?.secureStoragePrefix ?? "helios") + "-reddit-authorization"
+
+    class func saveAuthorization(accountName: String,
+                                 authorization: Authorization) -> Bool {
         let data = authorization.data
-        
         let query = [
             kSecClass as String         : kSecClassGenericPassword,
-            kSecAttrAccount as String   : key,
+            kSecAttrLabel as String     : authorizationKey,
+            kSecAttrAccount as String   : accountName,
             kSecValueData as String     : data
         ] as CFDictionary
 
@@ -26,10 +30,11 @@ class KeyChainAdapter {
         return status == noErr
     }
 
-    class func retrieveAuthorization(forKey key: String) -> Authorization? {
+    class func retrieveAuthorization(forAccountName account: String) -> Authorization? {
         let query = [
             kSecClass as String         : kSecClassGenericPassword,
-            kSecAttrAccount as String   : key,
+            kSecAttrLabel as String     : authorizationKey,
+            kSecAttrAccount as String   : account,
             kSecReturnData as String    : kCFBooleanTrue,
             kSecMatchLimit as String    : kSecMatchLimitOne,
         ] as CFDictionary

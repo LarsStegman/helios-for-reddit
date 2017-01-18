@@ -51,7 +51,6 @@ extension Link: RedditTyped {
             let editedString = json["edited"] as? String,
             let distinguishedStr = json["distinguished"] as? String?,
             let stickied = json["stickied"] as? Bool,
-            let created = json["created"] as? TimeInterval,
             let createdUtc = json["created_utc"] as? TimeInterval else {
                 return nil
         }
@@ -68,7 +67,7 @@ extension Link: RedditTyped {
             linkFlair = Flair(text: linkText, cssClass: linkFlairCss)
         }
 
-        let thumbnail = Thumbnail(text: thumbnailStr) ?? ._default
+        let thumbnail = Thumbnail(text: thumbnailStr) ?? Thumbnail.default
         let edited: Edited
         if let editedTime = TimeInterval.init(editedString) {
             edited = .edited(at: editedTime)
@@ -88,7 +87,7 @@ extension Link: RedditTyped {
              numberOfComments: numberOfComments, isOver18: isOver18, isSpoiler: isSpoiler,
              permalink: permalink, isSaved: saved, selftext: selftext, htmlSelftext: htmlSelftext,
              subreddit: subreddit, subredditId: subredditId, thumbnail: thumbnail, edited: edited,
-             distinguished: distinguished, isStickied: stickied, created: created,
-             createdUtc: createdUtc)
+             distinguished: distinguished, isStickied: stickied,
+             createdUtc: Date(timeIntervalSince1970: createdUtc))
     }
 }

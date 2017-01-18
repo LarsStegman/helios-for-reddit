@@ -16,15 +16,15 @@ import Foundation
 /// - _default: No thumbnail available
 public enum Thumbnail {
     case link(url: URL)
-    case _self
+    case `self`
     case image
-    case _default
+    case `default`
     case spoiler
 
     init?(text: String) {
         switch text {
-        case "default" : self = ._default
-        case "self" : self = ._self
+        case "default" : self = .default
+        case "self" : self = .self
         case "image" : self = .image
         case "spoiler": self = .spoiler
         case _ where URL(string: text) != nil : self = .link(url: URL(string: text)!)
