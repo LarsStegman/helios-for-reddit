@@ -54,14 +54,12 @@ class UserCodeFlowProcessAuthorizer: NSObject, URLSessionTaskDelegate, URLSessio
     }
 
     public func handleRedditRedirectCallback(_ url: URL) {
-        guard let credentials = Credentials.sharedInstance else {
+        guard let credentials = Credentials.sharedInstance,
+            let lastState = lastState else {
             NotificationCenter.default
                 .post(name: LoginAuthorizerNotifications.failedAuthorizationName,
                       object: LoginAuthorizerError.internalError)
             return
-        }
-        guard let lastState = lastState else {
-
         }
 
         let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
@@ -80,8 +78,10 @@ class UserCodeFlowProcessAuthorizer: NSObject, URLSessionTaskDelegate, URLSessio
                 .makeAccessTokenURLRequest(credentials: credentials, receivedCode: code)
             retrieveAccessTokenTask = urlSession.dataTask(with: request)
             retrieveAccessTokenTask?.resume()
-        } catch let error {
+        } catch let error as LoginAuthorizerError {
             failed(with: error)
+        } catch let error {
+            fatalError(error.localizedDescription)
         }
     }
 
@@ -103,38 +103,25 @@ class UserCodeFlowProcessAuthorizer: NSObject, URLSessionTaskDelegate, URLSessio
             }
         }
     }
-    // TODO: - Move code to a generic parser. Other authorization flows can use this code as well.
+
     private func parseAccessToken(data: Data, completionHandler: (Token?) -> Void) throws {
         guard let json = (try? JSONSerialization.jsonObject(with: data))
             as? [String: Any] else {
                 throw AuthorizationError.invalidResponse
         }
-
         print(json)
-        
-
-        if let token = UserToken(userName: nil, json: json),
-            let credentials = Credentials.sharedInstance {
-            print(token)
-            let request = URLRequest.makeAuthorizedRedditURLRequest(
-                url: URL(string: "https://oauth.reddit.com/api/v1/me")!, credentials: credentials,
-                token: token)
-
-            urlSession.dataTask(with: request) { [weak self] (data, _, error) in
-                guard error == nil, let data = data, let json =
-                    (try? JSONSerialization.jsonObject(with: data)) as? [String: Any] else {
-                        return
-                }
-                print("\n\nFrom inside the token generator and name retrieval:")
-                print(token)
-                print(json)
-                print("\n\n")
-                self?.finishParsingAccessToken(token: token)
+        TokenFactory.makeUserToken(data: json) { [weak self] (token, error) in
+            guard error == nil, let token = token else {
+                // - TODO: Handle errors
+                print("failed token parsing")
+                return
             }
-        } else {
-            throw AuthorizationError.invalidResponse
+            print("\n\nFrom inside the token generator and name retrieval:")
+            print(token)
+            print(json)
+            print("\n\n")
+            self?.finishParsingAccessToken(token: token)
         }
-
     }
 
     private func finishParsingAccessToken(token: Token) {
