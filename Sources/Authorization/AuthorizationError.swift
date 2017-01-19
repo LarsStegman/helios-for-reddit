@@ -38,6 +38,7 @@ public enum AuthorizationError: Error, Equatable {
     case invalidResponse
     case genericRedditError(code: Int, message: String)
     case unsupportedGrantType
+    case unableToRetrieveUserName
     case noCode
     case invalidGrantValue
     case unknown

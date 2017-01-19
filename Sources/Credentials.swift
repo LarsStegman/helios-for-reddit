@@ -40,9 +40,9 @@ public struct Credentials {
     private init?() {
         guard let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String,
             let bundleId = Bundle.main.bundleIdentifier,
-            let credentialsPath = Bundle.main.path(forResource: "AppCredentials", ofType: "plist"),
             let name = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String,
 
+            let credentialsPath = Bundle.main.path(forResource: "AppCredentials", ofType: "plist"),
             let configDictionary = NSDictionary(contentsOfFile: credentialsPath) as? [String: Any],
 
             let clientId = configDictionary["client_id"] as? String,

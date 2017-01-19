@@ -9,7 +9,7 @@
 import Foundation
 
 /// Handles the Code Flow Authorization process for a user which wants to authorize the application.
-class UserCodeFlowProcessAuthorizer: NSObject, URLSessionTaskDelegate, URLSessionDataDelegate {
+public class UserCodeFlowProcessAuthorizer: NSObject, URLSessionTaskDelegate, URLSessionDataDelegate {
 
     public static let sharedInstance = UserCodeFlowProcessAuthorizer()
     public var compactAuthorizationPage = false {
@@ -63,7 +63,6 @@ class UserCodeFlowProcessAuthorizer: NSObject, URLSessionTaskDelegate, URLSessio
         }
 
         let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
-
         guard components?.host == credentials.redirectUri.host,
             let parameters = components?.queryItems,
             !parameters.isEmpty else {
@@ -113,19 +112,35 @@ class UserCodeFlowProcessAuthorizer: NSObject, URLSessionTaskDelegate, URLSessio
         TokenFactory.makeUserToken(data: json) { [weak self] (token, error) in
             guard error == nil, let token = token else {
                 // - TODO: Handle errors
-                print("failed token parsing")
+                switch error! {
+                case .invalidResponse, .unableToRetrieveUserName: self?.failed(with: .redditError)
+                default: self?.failed(with: .unknownError)
+                }
                 return
             }
-            print("\n\nFrom inside the token generator and name retrieval:")
-            print(token)
-            print(json)
-            print("\n\n")
+
             self?.finishParsingAccessToken(token: token)
         }
     }
 
-    private func finishParsingAccessToken(token: Token) {
+    private func finishParsingAccessToken(token: UserToken) {
+        if let name = token.userName {
+            let success = KeyChainAdapter.saveToken(forKey: name, token: token)
+            if success {
+                succeeded(user: name)
+            } else {
+                failed(with: .internalError)
+            }
+        } else {
+            failed(with: .internalError)
+        }
+    }
 
+    private func succeeded(user: String) {
+        lastState = nil
+        retrieveAccessTokenTask = nil
+        NotificationCenter.default
+            .post(name: LoginAuthorizerNotifications.finishedAuthorizationName, object: user)
     }
 
     private func failed(with error: LoginAuthorizerError) {

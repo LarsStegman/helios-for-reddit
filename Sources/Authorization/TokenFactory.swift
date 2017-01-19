@@ -12,8 +12,13 @@ class TokenFactory {
     private init() { }
     private static var urlSession = URLSession(configuration: .default)
     
+    /// Creates a user token
+    ///
+    /// - Parameters:
+    ///   - data: JSON containing either a user token object, or some error message
+    ///   - completionHandler: This is called when the user token has been generated.
     static func makeUserToken(data: [String: Any],
-                       completionHandler: (UserToken?, AuthorizationError?) -> Void) {
+                       completionHandler: @escaping (UserToken?, AuthorizationError?) -> Void) {
         if let error = verifyTokenData(json: data) {
             completionHandler(nil, error)
             return
@@ -26,30 +31,30 @@ class TokenFactory {
                 url: URL(string: "https://oauth.reddit.com/api/v1/me")!, credentials: credentials,
                 token: token)
 
-
-            urlSession.dataTask(with: request) { (data, _, error) in
+            let task = urlSession.dataTask(with: request) { (data, _, error) in
                 guard error == nil, let data = data, let json =
-                    (try? JSONSerialization.jsonObject(with: data)) as? [String: Any] else {
+                    (try? JSONSerialization.jsonObject(with: data)) as? [String: Any],
+                    let name = json["name"] as? String else {
+                        completionHandler(nil, .unableToRetrieveUserName)
                         return
                 }
-                print("\n\nFrom inside the token generator and name retrieval:")
-                print(token)
-                print(json)
-                print("\n\n")
-                
-            }
-        }
+                let tokenWithUserName = UserToken(userName: name, accessToken: token.accessToken,
+                                                  refreshToken: token.refreshToken,
+                                                  scopes: token.scopes, expiresAt: token.expiresAt)
 
-        completionHandler(nil, AuthorizationError.invalidResponse)
+                completionHandler(tokenWithUserName, nil)
+            }
+            task.resume()
+        } else {
+            completionHandler(nil, .invalidResponse)
+        }
     }
 
+    
     static func makeApplicationToken(data: [String: Any],
-                              completionHandler: (ApplicationToken?, AuthorizationError?) -> Void) {
-        if let error = verifyTokenData(json: data) {
-            completionHandler(nil, error)
-            return
-        }
-
+                              completionHandler: @escaping (ApplicationToken?, AuthorizationError?)
+                                                            -> Void) {
+        // - TODO: Implement
 
     }
 
