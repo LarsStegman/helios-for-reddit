@@ -1,5 +1,5 @@
 //
-//  CFACodeExtractor.swift
+//  CodeFlowAuthorizationProcessComponents.swift
 //  Helios
 //
 //  Created by Lars Stegman on 16-01-17.

@@ -1,5 +1,5 @@
 //
-//  OAuthManager.swift
+//  UserCodeFlowProcessAuthorizer.swift
 //  Helios
 //
 //  Created by Lars Stegman on 16-12-16.

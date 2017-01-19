@@ -1,5 +1,5 @@
 //
-//  CodeFlowAuthorizationPageLoader.swift
+//  AuthorizationPageLoader.swift
 //  Helios
 //
 //  Created by Lars Stegman on 16-01-17.
@@ -57,4 +57,8 @@ class AuthorizationPageLoader {
     }
 }
 
-
+extension Credentials {
+    var scopeList: String {
+        return authorizationScopes.map( { return $0.rawValue }).joined(separator: " ")
+    }
+}
