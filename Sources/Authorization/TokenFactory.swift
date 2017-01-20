@@ -39,7 +39,6 @@ class TokenStore {
 
         if let token = UserToken(userName: nil, json: data),
             let credentials = Credentials.sharedInstance {
-            print(token)
             let request = URLRequest.makeAuthorizedRedditURLRequest(
                 url: URL(string: "https://oauth.reddit.com/api/v1/me")!, credentials: credentials,
                 token: token)

@@ -47,7 +47,14 @@ public enum AuthorizationError: Error, Equatable {
         switch (lhs, rhs) {
         case (let .genericRedditError(code: cL, message: mL),
               let .genericRedditError(code: cR, message: mR)): return cL == cR && mL == mR
-        default: return lhs == rhs
+        case (.accessDenied, .accessDenied), (.unsupportedResponseType, .unsupportedResponseType),
+             (.invalidScope, .invalidScope), (.invalidRequest, .invalidRequest),
+             (.missingApplicationCredentials, .missingApplicationCredentials),
+             (.invalidStateString, .invalidStateString), (.invalidResponse, .invalidResponse),
+             (.unsupportedGrantType, .unsupportedGrantType),
+             (.unableToRetrieveUserName, .unableToRetrieveUserName), (.noCode, .noCode),
+             (.invalidGrantValue, .invalidGrantValue), (.unknown, .unknown): return true
+        default: return false
         }
     }
 }

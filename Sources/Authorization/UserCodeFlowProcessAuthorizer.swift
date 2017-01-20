@@ -85,10 +85,14 @@ public class UserCodeFlowProcessAuthorizer: NSObject, URLSessionTaskDelegate, UR
                 .makeAccessTokenURLRequest(credentials: credentials, receivedCode: code)
             retrieveAccessTokenTask = urlSession.dataTask(with: request)
             retrieveAccessTokenTask?.resume()
-        } catch let error as LoginAuthorizerError {
-            failed(with: error)
+        } catch let error as AuthorizationError
+            where [AuthorizationError.unsupportedResponseType, .invalidScope,
+                   .invalidRequest].contains(error) {
+            failed(with: .internalError)
+        } catch let error as AuthorizationError where error == .accessDenied {
+            failed(with: .accessDenied)
         } catch let error {
-            fatalError(error.localizedDescription)
+            NSLog("Helios - Authorization failed with %s", error.localizedDescription)
         }
     }
 
@@ -119,7 +123,6 @@ public class UserCodeFlowProcessAuthorizer: NSObject, URLSessionTaskDelegate, UR
             as? [String: Any] else {
                 throw AuthorizationError.invalidResponse
         }
-        print(json)
         TokenStore.makeUserToken(data: json) { [weak self] (token, error) in
             guard error == nil, let token = token else {
                 switch error! {
@@ -167,6 +170,7 @@ public class UserCodeFlowProcessAuthorizer: NSObject, URLSessionTaskDelegate, UR
     private func failed(with error: LoginAuthorizerError) {
         lastState = nil
         retrieveAccessTokenTask = nil
+        print("Failed with error: \(error.localizedDescription)")
         NotificationCenter.default
             .post(name: LoginAuthorizerNotifications.failedAuthorizationName, object: error)
     }
@@ -174,13 +178,13 @@ public class UserCodeFlowProcessAuthorizer: NSObject, URLSessionTaskDelegate, UR
     /// The notification names.
     public struct LoginAuthorizerNotifications {
         /// The authorization has failed.
-        static let failedAuthorizationName = Notification.Name("failedLoginNotification")
+        public static let failedAuthorizationName = Notification.Name("failedLoginNotification")
 
         /// The authorization has succeeded.
-        static let finishedAuthorizationName = Notification.Name("completedLoginNotification")
+        public static let finishedAuthorizationName = Notification.Name("completedLoginNotification")
 
         /// Should normally not be sent. Here for future proofing.
-        static let defaultName = Notification.Name("loginAuthorizerNotification")
+        public static let defaultName = Notification.Name("loginAuthorizerNotification")
     }
 }
 
