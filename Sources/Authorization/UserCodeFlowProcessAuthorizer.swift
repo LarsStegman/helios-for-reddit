@@ -18,7 +18,7 @@ public class UserCodeFlowProcessAuthorizer: NSObject, URLSessionTaskDelegate, UR
         }
     }
 
-    // Composed elements.
+    // MARK: - Composed elements.
     private let pageLoader = AuthorizationPageLoader(flowType: .code)
     private lazy var urlSession: URLSession = { [unowned self] in
         return URLSession(configuration: .default, delegate: self, delegateQueue: nil)
@@ -31,6 +31,10 @@ public class UserCodeFlowProcessAuthorizer: NSObject, URLSessionTaskDelegate, UR
     }
     private var lastState: String?
 
+    /// Starts the authorization process by providing a url for the user to visit. On the visited 
+    /// page, the user can authorize or deny authorization.
+    ///
+    /// - Returns: The Reddit page on which the user can grant or deny access.
     public func startAuthorization() -> URL? {
         let state = newState
         lastState = state
@@ -53,6 +57,10 @@ public class UserCodeFlowProcessAuthorizer: NSObject, URLSessionTaskDelegate, UR
         return nil
     }
 
+    /// Call when the user has granted or denied authorization. The url should be the redirect url 
+    /// of your application including the parameters Reddit has filled in.
+    ///
+    /// - Parameter url: The redirect url containing the parameters.
     public func handleRedditRedirectCallback(_ url: URL) {
         guard let credentials = Credentials.sharedInstance,
             let lastState = lastState else {
@@ -88,11 +96,10 @@ public class UserCodeFlowProcessAuthorizer: NSObject, URLSessionTaskDelegate, UR
                            didReceive data: Data) {
         if dataTask == retrieveAccessTokenTask {
             do {
-                try parseAccessToken(data: data) { (_) in print("hello") }
+                try parseAccessToken(data: data)
             } catch AuthorizationError.invalidResponse {
                 failed(with: .redditError)
-            } catch AuthorizationError.genericRedditError(code: _,
-                                                                          message: _) {
+            } catch AuthorizationError.genericRedditError(code: _, message: _) {
                 failed(with: .redditError)
             } catch let error as AuthorizationError
                 where [.unsupportedGrantType, .noCode, .invalidGrantValue].contains(error) {
@@ -103,15 +110,18 @@ public class UserCodeFlowProcessAuthorizer: NSObject, URLSessionTaskDelegate, UR
         }
     }
 
-    private func parseAccessToken(data: Data, completionHandler: (Token?) -> Void) throws {
+    /// Parses access token data Reddit has provided
+    ///
+    /// - Parameter data: A json object containing user token
+    /// - Throws: Make sure the data is a json [String: Any] object.
+    private func parseAccessToken(data: Data) throws {
         guard let json = (try? JSONSerialization.jsonObject(with: data))
             as? [String: Any] else {
                 throw AuthorizationError.invalidResponse
         }
         print(json)
-        TokenFactory.makeUserToken(data: json) { [weak self] (token, error) in
+        TokenStore.makeUserToken(data: json) { [weak self] (token, error) in
             guard error == nil, let token = token else {
-                // - TODO: Handle errors
                 switch error! {
                 case .invalidResponse, .unableToRetrieveUserName: self?.failed(with: .redditError)
                 default: self?.failed(with: .unknownError)
@@ -123,9 +133,13 @@ public class UserCodeFlowProcessAuthorizer: NSObject, URLSessionTaskDelegate, UR
         }
     }
 
+    /// Finalizes the parsing process. Stores the token in secure storage.
+    ///
+    /// - Parameter token: The token to store
     private func finishParsingAccessToken(token: UserToken) {
         if let name = token.userName {
-            let success = KeyChainAdapter.saveToken(forKey: name, token: token)
+            let success = TokenStore.saveToken(forAuthorizationType: .user(name: name),
+                                               token: token)
             if success {
                 succeeded(user: name)
             } else {
@@ -136,20 +150,37 @@ public class UserCodeFlowProcessAuthorizer: NSObject, URLSessionTaskDelegate, UR
         }
     }
 
+    /// Authorization succeeded.
+    ///
+    /// - Parameter user: The username of the authorized user
     private func succeeded(user: String) {
         lastState = nil
         retrieveAccessTokenTask = nil
+        print("Authorized \(user)!")
         NotificationCenter.default
             .post(name: LoginAuthorizerNotifications.finishedAuthorizationName, object: user)
     }
 
+    /// Authorization failed
+    ///
+    /// - Parameter error: The error which caused the failure.
     private func failed(with error: LoginAuthorizerError) {
         lastState = nil
         retrieveAccessTokenTask = nil
         NotificationCenter.default
-            .post(name: LoginAuthorizerNotifications.failedAuthorizationName,
-                  object: error)
+            .post(name: LoginAuthorizerNotifications.failedAuthorizationName, object: error)
+    }
 
+    /// The notification names.
+    public struct LoginAuthorizerNotifications {
+        /// The authorization has failed.
+        static let failedAuthorizationName = Notification.Name("failedLoginNotification")
+
+        /// The authorization has succeeded.
+        static let finishedAuthorizationName = Notification.Name("completedLoginNotification")
+
+        /// Should normally not be sent. Here for future proofing.
+        static let defaultName = Notification.Name("loginAuthorizerNotification")
     }
 }
 
@@ -169,8 +200,4 @@ public enum LoginAuthorizerError: Error {
     case unknownError
 }
 
-public struct LoginAuthorizerNotifications {
-    static let failedAuthorizationName = Notification.Name("failedLoginNotification")
-    static let finishedAuthorizationName = Notification.Name("completedLoginNotification")
-    static let defaultName = Notification.Name("loginAuthorizerNotification")
-}
+
