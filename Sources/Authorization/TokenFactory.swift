@@ -1,5 +1,5 @@
 //
-//  TokenFactory.swift
+//  TokenStore.swift
 //  Helios
 //
 //  Created by Lars Stegman on 18-01-17.
@@ -9,11 +9,11 @@
 import Foundation
 import Security
 
-class TokenStore {
+public class TokenStore {
     private init() { }
     private static var urlSession = URLSession(configuration: .default)
 
-    internal private(set) static var authorizations: [AuthorizationType] {
+    public private(set) static var authorizations: [AuthorizationType] {
         get {
             let stringRepresenations = UserDefaults()
                 .stringArray(forKey: "helios_authorized_users") ?? []
@@ -91,9 +91,10 @@ class TokenStore {
 
     static var label =
         (Credentials.sharedInstance?.secureStoragePrefix ?? "helios") + "-reddit-authorization"
-    private static var appKey: String {
+    private static var appTokenKey: String {
         return label + "-app-authorization"
     }
+
     /// Saves the token in secure storage
     ///
     /// - Parameters:
@@ -105,7 +106,7 @@ class TokenStore {
         let data = token.data
         let key: String
         switch type {
-        case .application: key = appKey
+        case .application: key = appTokenKey
         case .user(name: let name): key = name
         }
         let query = [
@@ -131,7 +132,12 @@ class TokenStore {
     ///
     /// - Parameter key: The key used to store the authorization.
     /// - Returns: Requested data.
-    class func retrieveTokenData(forKey key: String) -> Data? {
+    class func retrieveTokenData(forAuthorizationType type: AuthorizationType) -> Data? {
+        let key: String
+        switch type {
+        case .user(name: let name): key = name
+        case .application: key = appTokenKey
+        }
         let query = [
             kSecClass as String         : kSecClassGenericPassword,
             kSecAttrLabel as String     : label,
@@ -149,11 +155,11 @@ class TokenStore {
         return nil
     }
 
-    enum AuthorizationType: CustomStringConvertible {
+    public enum AuthorizationType: CustomStringConvertible {
         case user(name: String)
         case application
 
-        var description: String {
+        public var description: String {
             switch self {
             case .user(name: let name): return "user(\(name))"
             case .application: return "application"

@@ -22,13 +22,16 @@ public enum Thumbnail {
     case spoiler
 
     init?(text: String) {
-        switch text {
-        case "default" : self = .default
-        case "self" : self = .self
-        case "image" : self = .image
-        case "spoiler": self = .spoiler
-        case _ where URL(string: text) != nil : self = .link(url: URL(string: text)!)
-        default: return nil
+        if let url = URL(string: text) {
+            self = .link(url: url)
+        } else {
+            switch text {
+            case "default" : self = .default
+            case "self" : self = .self
+            case "image" : self = .image
+            case "spoiler": self = .spoiler
+            default: return nil
+            }
         }
     }
 }

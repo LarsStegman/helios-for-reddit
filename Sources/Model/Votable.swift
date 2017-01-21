@@ -29,6 +29,7 @@ public enum Vote {
     case downvote
     case noVote
 
+    /// - Parameter value: true == .upvote, false == .downvote, nil == .noVote
     init(value: Bool?) {
         if let value = value {
             self = value ? .upvote : .downvote
