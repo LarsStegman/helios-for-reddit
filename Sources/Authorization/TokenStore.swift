@@ -37,11 +37,10 @@ public class TokenStore {
             return
         }
 
-        if let token = UserToken(userName: nil, json: data),
-            let credentials = Credentials.sharedInstance {
+        if let token = UserToken(userName: nil, json: data) {
             let request = URLRequest.makeAuthorizedRedditURLRequest(
-                url: URL(string: "https://oauth.reddit.com/api/v1/me")!, credentials: credentials,
-                token: token)
+                url: URL(string: "https://oauth.reddit.com/api/v1/me")!,
+                credentials: Credentials.sharedInstance, token: token)
 
             let task = urlSession.dataTask(with: request) { (data, _, error) in
                 guard error == nil, let data = data, let json =
@@ -90,7 +89,7 @@ public class TokenStore {
     }
 
     static var label =
-        (Credentials.sharedInstance?.secureStoragePrefix ?? "helios") + "-reddit-authorization"
+        "\(Credentials.sharedInstance.secureStoragePrefix)-reddit-authorization"
     private static var appTokenKey: String {
         return label + "-app-authorization"
     }

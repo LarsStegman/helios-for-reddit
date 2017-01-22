@@ -12,6 +12,8 @@
 		484D9DFC1E059E8F00FFFBCF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 484D9DFB1E059E8E00FFFBCF /* Security.framework */; };
 		4858A77C1E2917B70061E009 /* UserToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4858A77B1E2917B70061E009 /* UserToken.swift */; };
 		4858A77E1E2918CA0061E009 /* ApplicationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4858A77D1E2918CA0061E009 /* ApplicationToken.swift */; };
+		485A8F6B1E35475700F3D5F3 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 485A8F6A1E35475700F3D5F3 /* README */; };
+		485A8F6D1E3548E100F3D5F3 /* AppCredentials-Template.plist in Resources */ = {isa = PBXBuildFile; fileRef = 485A8F6C1E3548E100F3D5F3 /* AppCredentials-Template.plist */; };
 		48717CE71E2D4C0B00B7F4CC /* AuthorizationPageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48717CE61E2D4C0B00B7F4CC /* AuthorizationPageLoader.swift */; };
 		48717CE91E2D54D900B7F4CC /* CodeFlowAuthorizationProcessComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48717CE81E2D54D900B7F4CC /* CodeFlowAuthorizationProcessComponents.swift */; };
 		48717CED1E2D600800B7F4CC /* URLRequest+Authorized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48717CEC1E2D600800B7F4CC /* URLRequest+Authorized.swift */; };
@@ -36,7 +38,7 @@
 		48AC96D61E19CBFB005539D5 /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AC96D51E19CBFB005539D5 /* Thumbnail.swift */; };
 		48AE3CB81E2EA5D7009C6A73 /* AuthorizationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AE3CB71E2EA5D7009C6A73 /* AuthorizationError.swift */; };
 		48D35FDF1E1AE23300E4FDF3 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D35FDE1E1AE23300E4FDF3 /* Link.swift */; };
-		48EB894B1E300A9E0025D0C0 /* TokenFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EB894A1E300A9E0025D0C0 /* TokenFactory.swift */; };
+		48EB894B1E300A9E0025D0C0 /* TokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EB894A1E300A9E0025D0C0 /* TokenStore.swift */; };
 		48EBF8631E15CB2600A4281E /* Scope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF85D1E15CB2600A4281E /* Scope.swift */; };
 		48EBF8641E15CB2600A4281E /* UserCodeFlowProcessAuthorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF85E1E15CB2600A4281E /* UserCodeFlowProcessAuthorizer.swift */; };
 		48EBF8671E15CB2600A4281E /* AuthorizationDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF8611E15CB2600A4281E /* AuthorizationDuration.swift */; };
@@ -71,6 +73,8 @@
 		484D9DFB1E059E8E00FFFBCF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		4858A77B1E2917B70061E009 /* UserToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserToken.swift; path = Sources/Authorization/UserToken.swift; sourceTree = SOURCE_ROOT; };
 		4858A77D1E2918CA0061E009 /* ApplicationToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApplicationToken.swift; path = Sources/Authorization/ApplicationToken.swift; sourceTree = SOURCE_ROOT; };
+		485A8F6A1E35475700F3D5F3 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		485A8F6C1E3548E100F3D5F3 /* AppCredentials-Template.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AppCredentials-Template.plist"; sourceTree = "<group>"; };
 		48637D671E05EBE900ADEE6A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Sources/Info.plist; sourceTree = SOURCE_ROOT; };
 		48717CE61E2D4C0B00B7F4CC /* AuthorizationPageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthorizationPageLoader.swift; path = Sources/Authorization/AuthorizationPageLoader.swift; sourceTree = SOURCE_ROOT; };
 		48717CE81E2D54D900B7F4CC /* CodeFlowAuthorizationProcessComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CodeFlowAuthorizationProcessComponents.swift; path = Sources/Authorization/CodeFlowAuthorizationProcessComponents.swift; sourceTree = SOURCE_ROOT; };
@@ -100,7 +104,7 @@
 		48AC96D51E19CBFB005539D5 /* Thumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Thumbnail.swift; path = Sources/Model/Thumbnail.swift; sourceTree = SOURCE_ROOT; };
 		48AE3CB71E2EA5D7009C6A73 /* AuthorizationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthorizationError.swift; path = Sources/Authorization/AuthorizationError.swift; sourceTree = SOURCE_ROOT; };
 		48D35FDE1E1AE23300E4FDF3 /* Link.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Link.swift; path = Sources/Model/Link.swift; sourceTree = SOURCE_ROOT; };
-		48EB894A1E300A9E0025D0C0 /* TokenFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TokenFactory.swift; path = Sources/Authorization/TokenFactory.swift; sourceTree = SOURCE_ROOT; };
+		48EB894A1E300A9E0025D0C0 /* TokenStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TokenStore.swift; path = Sources/Authorization/TokenStore.swift; sourceTree = SOURCE_ROOT; };
 		48EBF85D1E15CB2600A4281E /* Scope.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Scope.swift; path = Sources/Authorization/Scope.swift; sourceTree = SOURCE_ROOT; };
 		48EBF85E1E15CB2600A4281E /* UserCodeFlowProcessAuthorizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserCodeFlowProcessAuthorizer.swift; path = Sources/Authorization/UserCodeFlowProcessAuthorizer.swift; sourceTree = SOURCE_ROOT; };
 		48EBF8611E15CB2600A4281E /* AuthorizationDuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthorizationDuration.swift; path = Sources/Authorization/AuthorizationDuration.swift; sourceTree = SOURCE_ROOT; };
@@ -176,6 +180,8 @@
 		48876D401E045D7C00CD0C5C = {
 			isa = PBXGroup;
 			children = (
+				485A8F6C1E3548E100F3D5F3 /* AppCredentials-Template.plist */,
+				485A8F6A1E35475700F3D5F3 /* README */,
 				487639411E0573D300E9F9BD /* LICENSE */,
 				48876D641E0461EA00CD0C5C /* .gitignore */,
 				48876D4C1E045D7D00CD0C5C /* Helios */,
@@ -250,7 +256,7 @@
 				4858A77D1E2918CA0061E009 /* ApplicationToken.swift */,
 				48EBF85D1E15CB2600A4281E /* Scope.swift */,
 				48EBF8611E15CB2600A4281E /* AuthorizationDuration.swift */,
-				48EB894A1E300A9E0025D0C0 /* TokenFactory.swift */,
+				48EB894A1E300A9E0025D0C0 /* TokenStore.swift */,
 			);
 			name = Token;
 			sourceTree = "<group>";
@@ -402,8 +408,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				485A8F6B1E35475700F3D5F3 /* README in Resources */,
 				48F591461E339608009164ED /* LICENSE in Resources */,
 				48F591471E339608009164ED /* .gitignore in Resources */,
+				485A8F6D1E3548E100F3D5F3 /* AppCredentials-Template.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,7 +429,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48EB894B1E300A9E0025D0C0 /* TokenFactory.swift in Sources */,
+				48EB894B1E300A9E0025D0C0 /* TokenStore.swift in Sources */,
 				48885A711E1C55D900265874 /* LinkParser.swift in Sources */,
 				48717CE91E2D54D900B7F4CC /* CodeFlowAuthorizationProcessComponents.swift in Sources */,
 				48A6E7CD1E1D980800F65149 /* MoreParser.swift in Sources */,

@@ -26,8 +26,8 @@ public class UserCodeFlowProcessAuthorizer: NSObject, URLSessionTaskDelegate, UR
     private var retrieveAccessTokenTask: URLSessionDataTask?
 
     private var newState: String {
-        return "GaiaAuthorization-\(Credentials.sharedInstance?.appName ?? "")" +
-            "-\(Date().timeIntervalSince1970)"
+        return "GaiaAuthorization-\(Credentials.sharedInstance.appName)-" +
+            "\(Date().timeIntervalSince1970)"
     }
     private var lastState: String?
 
@@ -40,10 +40,6 @@ public class UserCodeFlowProcessAuthorizer: NSObject, URLSessionTaskDelegate, UR
         lastState = state
         do {
             return try pageLoader.pageForAuthorization(state: state)
-        } catch AuthorizationError.missingApplicationCredentials {
-            NotificationCenter.default
-                .post(name: LoginAuthorizerNotifications.failedAuthorizationName,
-                      object: LoginAuthorizerError.internalError)
         } catch AuthorizationError.invalidStateString {
             NotificationCenter.default
                 .post(name: LoginAuthorizerNotifications.failedAuthorizationName,
@@ -62,8 +58,7 @@ public class UserCodeFlowProcessAuthorizer: NSObject, URLSessionTaskDelegate, UR
     ///
     /// - Parameter url: The redirect url containing the parameters.
     public func handleRedditRedirectCallback(_ url: URL) {
-        guard let credentials = Credentials.sharedInstance,
-            let lastState = lastState else {
+        guard let lastState = lastState else {
             NotificationCenter.default
                 .post(name: LoginAuthorizerNotifications.failedAuthorizationName,
                       object: LoginAuthorizerError.internalError)
@@ -71,7 +66,7 @@ public class UserCodeFlowProcessAuthorizer: NSObject, URLSessionTaskDelegate, UR
         }
 
         let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
-        guard components?.host == credentials.redirectUri.host,
+        guard components?.host == Credentials.sharedInstance.redirectUri.host,
             let parameters = components?.queryItems,
             !parameters.isEmpty else {
             failed(with: LoginAuthorizerError.redditError)
@@ -82,7 +77,7 @@ public class UserCodeFlowProcessAuthorizer: NSObject, URLSessionTaskDelegate, UR
             let code = try CodeFlowAuthorizationProcessComponents
                 .extractCode(callbackURIParameters: parameters, sentState: lastState)
             let request = CodeFlowAuthorizationProcessComponents
-                .makeAccessTokenURLRequest(credentials: credentials, receivedCode: code)
+                .makeAccessTokenURLRequest(credentials: Credentials.sharedInstance, receivedCode: code)
             retrieveAccessTokenTask = urlSession.dataTask(with: request)
             retrieveAccessTokenTask?.resume()
         } catch let error as AuthorizationError

@@ -31,23 +31,20 @@ class AuthorizationPageLoader {
     }
 
     func pageForAuthorization(state: String) throws -> URL? {
-        guard let credentials = Credentials.sharedInstance else {
-            throw AuthorizationError.missingApplicationCredentials
-        }
         guard let encodedState = state.addingPercentEncoding(
             withAllowedCharacters: .urlQueryAllowed) else {
             throw AuthorizationError.invalidStateString
         }
 
         var url = authorizationURL
-        url.queryItems = [URLQueryItem(name: "client_id", value: credentials.clientId),
+        url.queryItems = [URLQueryItem(name: "client_id", value: Credentials.sharedInstance.clientId),
                           URLQueryItem(name: "response_type", value: responseType),
                           URLQueryItem(name: "state", value: encodedState),
                           URLQueryItem(name: "redirect_uri",
-                                       value: credentials.redirectUri.absoluteString),
+                                       value: Credentials.sharedInstance.redirectUri.absoluteString),
                           URLQueryItem(name: "duration",
-                                       value: credentials.authorizationDuration.rawValue),
-                          URLQueryItem(name: "scope", value: credentials.scopeList)]
+                                       value: Credentials.sharedInstance.authorizationDuration.rawValue),
+                          URLQueryItem(name: "scope", value: Credentials.sharedInstance.scopeList)]
         return url.url!
     }
 

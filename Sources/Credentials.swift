@@ -12,7 +12,7 @@ import Foundation
 /// it's needed to run some internal logic.
 public struct Credentials {
 
-    static let sharedInstance = Credentials()
+    static let sharedInstance: Credentials! = Credentials()
 
     let appVersion: String
     let bundleIdentifier: String

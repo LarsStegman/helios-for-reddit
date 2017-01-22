@@ -16,8 +16,6 @@ import Foundation
 /// - unsupportedResponseType: The provided response type is not valid
 /// - invalidScope: The provided scope string is not valid.
 /// - invalidRequest: The parameters of the authorization page were probably not correct.
-/// - missingApplicationCredentials: The application credentials are not included in the application
-///     main bundle.
 /// - invalidStateString: The generated state string is not valid in a url.
 /// = invalidState: The state Reddit returned was not equal to the state sent during initialization.
 /// - invalidResponse: Reddit responded with an unknown response.
@@ -32,7 +30,6 @@ public enum AuthorizationError: Error, Equatable {
     case unsupportedResponseType
     case invalidScope
     case invalidRequest
-    case missingApplicationCredentials
     case invalidStateString
     case invalidState
     case invalidResponse
@@ -49,7 +46,6 @@ public enum AuthorizationError: Error, Equatable {
               let .genericRedditError(code: cR, message: mR)): return cL == cR && mL == mR
         case (.accessDenied, .accessDenied), (.unsupportedResponseType, .unsupportedResponseType),
              (.invalidScope, .invalidScope), (.invalidRequest, .invalidRequest),
-             (.missingApplicationCredentials, .missingApplicationCredentials),
              (.invalidStateString, .invalidStateString), (.invalidResponse, .invalidResponse),
              (.unsupportedGrantType, .unsupportedGrantType),
              (.unableToRetrieveUserName, .unableToRetrieveUserName), (.noCode, .noCode),
