@@ -12,7 +12,7 @@
 		484D9DFC1E059E8F00FFFBCF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 484D9DFB1E059E8E00FFFBCF /* Security.framework */; };
 		4858A77C1E2917B70061E009 /* UserToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4858A77B1E2917B70061E009 /* UserToken.swift */; };
 		4858A77E1E2918CA0061E009 /* ApplicationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4858A77D1E2918CA0061E009 /* ApplicationToken.swift */; };
-		485A8F6B1E35475700F3D5F3 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 485A8F6A1E35475700F3D5F3 /* README */; };
+		485A8F6B1E35475700F3D5F3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 485A8F6A1E35475700F3D5F3 /* README.md */; };
 		485A8F6D1E3548E100F3D5F3 /* AppCredentials-Template.plist in Resources */ = {isa = PBXBuildFile; fileRef = 485A8F6C1E3548E100F3D5F3 /* AppCredentials-Template.plist */; };
 		48717CE71E2D4C0B00B7F4CC /* AuthorizationPageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48717CE61E2D4C0B00B7F4CC /* AuthorizationPageLoader.swift */; };
 		48717CE91E2D54D900B7F4CC /* CodeFlowAuthorizationProcessComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48717CE81E2D54D900B7F4CC /* CodeFlowAuthorizationProcessComponents.swift */; };
@@ -73,7 +73,7 @@
 		484D9DFB1E059E8E00FFFBCF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		4858A77B1E2917B70061E009 /* UserToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserToken.swift; path = Sources/Authorization/UserToken.swift; sourceTree = SOURCE_ROOT; };
 		4858A77D1E2918CA0061E009 /* ApplicationToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApplicationToken.swift; path = Sources/Authorization/ApplicationToken.swift; sourceTree = SOURCE_ROOT; };
-		485A8F6A1E35475700F3D5F3 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		485A8F6A1E35475700F3D5F3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		485A8F6C1E3548E100F3D5F3 /* AppCredentials-Template.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AppCredentials-Template.plist"; sourceTree = "<group>"; };
 		48637D671E05EBE900ADEE6A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Sources/Info.plist; sourceTree = SOURCE_ROOT; };
 		48717CE61E2D4C0B00B7F4CC /* AuthorizationPageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthorizationPageLoader.swift; path = Sources/Authorization/AuthorizationPageLoader.swift; sourceTree = SOURCE_ROOT; };
@@ -181,7 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				485A8F6C1E3548E100F3D5F3 /* AppCredentials-Template.plist */,
-				485A8F6A1E35475700F3D5F3 /* README */,
+				485A8F6A1E35475700F3D5F3 /* README.md */,
 				487639411E0573D300E9F9BD /* LICENSE */,
 				48876D641E0461EA00CD0C5C /* .gitignore */,
 				48876D4C1E045D7D00CD0C5C /* Helios */,
@@ -408,7 +408,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				485A8F6B1E35475700F3D5F3 /* README in Resources */,
+				485A8F6B1E35475700F3D5F3 /* README.md in Resources */,
 				48F591461E339608009164ED /* LICENSE in Resources */,
 				48F591471E339608009164ED /* .gitignore in Resources */,
 				485A8F6D1E3548E100F3D5F3 /* AppCredentials-Template.plist in Resources */,
