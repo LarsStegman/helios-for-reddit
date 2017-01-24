@@ -12,16 +12,12 @@ public class Session {
     private var token: Token
     private let credentials: Credentials
 
-    init(token: Token) throws {
-        guard let credentials = Credentials.sharedInstance else {
-            throw SessionErrors.missingApplicationCredentials
-        }
-
+    init(token: Token) {
         self.token = token
-        self.credentials = credentials
+        self.credentials = Credentials.sharedInstance
     }
 
-    private func makeRequest(url: URL) -> URLRequest {
+    func makeRequest(url: URL) -> URLRequest {
         var request = URLRequest(url: url)
         request.addValue("bearer \(token.accessToken)", forHTTPHeaderField: "Authorization")
 
@@ -39,10 +35,10 @@ public class Session {
 
         guard let tokenData = TokenStore.retrieveTokenData(forAuthorizationType: authorizationType),
             let token = tokenCreator(tokenData) else {
-                throw SessionErrors.unauthorized
+                throw SessionError.unauthorized
         }
 
-        return try Session(token: token)
+        return Session(token: token)
     }
 
     public static func makeUserSession(userName: String) throws -> Session {
@@ -54,7 +50,6 @@ public class Session {
     }
 }
 
-public enum SessionErrors: Error {
+public enum SessionError: Error {
     case unauthorized
-    case missingApplicationCredentials
 }

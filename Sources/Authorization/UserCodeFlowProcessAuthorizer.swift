@@ -9,7 +9,8 @@
 import Foundation
 
 /// Handles the Code Flow Authorization process for a user which wants to authorize the application.
-public class UserCodeFlowProcessAuthorizer: NSObject, URLSessionTaskDelegate, URLSessionDataDelegate {
+public class UserCodeFlowProcessAuthorizer: NSObject,
+                                            URLSessionTaskDelegate, URLSessionDataDelegate {
 
     public static let sharedInstance = UserCodeFlowProcessAuthorizer()
     public var compactAuthorizationPage = false {
@@ -122,6 +123,7 @@ public class UserCodeFlowProcessAuthorizer: NSObject, URLSessionTaskDelegate, UR
             guard error == nil, let token = token else {
                 switch error! {
                 case .invalidResponse, .unableToRetrieveUserName: self?.failed(with: .redditError)
+                case .accessDenied: self?.failed(with: .accessDenied)
                 default: self?.failed(with: .unknownError)
                 }
                 return
@@ -182,21 +184,3 @@ public class UserCodeFlowProcessAuthorizer: NSObject, URLSessionTaskDelegate, UR
         public static let defaultName = Notification.Name("loginAuthorizerNotification")
     }
 }
-
-
-// MARK: - User facing errors
-
-/// Errors that might be shown to a user
-///
-/// - accessDenied: The user has denied access to their account
-/// - internalError: Something went wrong with configuring the request
-/// - redditError: Something went wrong at Reddit
-/// - unknownError: Something went wrong
-public enum LoginAuthorizerError: Error {
-    case accessDenied
-    case internalError
-    case redditError
-    case unknownError
-}
-
-

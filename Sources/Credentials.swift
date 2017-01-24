@@ -17,6 +17,8 @@ public struct Credentials {
     let appVersion: String
     let bundleIdentifier: String
     let appName: String
+    let appType: ApplicationType
+    let uuid: UUID
 
     let clientId: String
     let developers: String
@@ -45,6 +47,8 @@ public struct Credentials {
             let credentialsPath = Bundle.main.path(forResource: "AppCredentials", ofType: "plist"),
             let configDictionary = NSDictionary(contentsOfFile: credentialsPath) as? [String: Any],
 
+            let appTypeStr = configDictionary["application_type"] as? String,
+            let appType = ApplicationType(rawValue: appTypeStr),
             let clientId = configDictionary["client_id"] as? String,
             let developers = configDictionary["developer_reddit_names"] as? [String],
             let uriStr = configDictionary["redirect_uri"] as? String,
@@ -60,6 +64,7 @@ public struct Credentials {
         self.appVersion = version
         self.bundleIdentifier = bundleId
         self.appName = name
+        self.appType = appType
         
         self.clientId = clientId
         self.developers = developers.map({ return "/u/" + $0 }).joined(separator: ", ")
@@ -68,6 +73,14 @@ public struct Credentials {
         self.authorizationScopes = scopes.flatMap({ return Scope(rawValue: $0) }) + [.identity]
         self.secret = secret
         self.secureStoragePrefix = secureStoragePrefix
+
+        if let uuidStr = UserDefaults().string(forKey: "\(secureStoragePrefix)-uuid"), let uuid = UUID(uuidString: uuidStr) {
+            self.uuid = uuid
+        } else {
+            self.uuid = UUID()
+            UserDefaults().set(self.uuid.uuidString, forKey: "\(secureStoragePrefix)-uuid")
+        }
+
         print(self)
     }
 }

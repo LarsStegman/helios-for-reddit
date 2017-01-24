@@ -13,13 +13,13 @@ public class TokenStore {
     private init() { }
     private static var urlSession = URLSession(configuration: .default)
 
-    public private(set) static var authorizations: [AuthorizationType] {
+    public private(set) static var authorizations: Set<AuthorizationType> {
         get {
             let stringRepresenations = UserDefaults()
                 .stringArray(forKey: "helios_authorized_users") ?? []
-            return stringRepresenations.flatMap( { AuthorizationType(rawValue: $0) })
+            return Set(stringRepresenations.flatMap( { AuthorizationType(rawValue: $0) }))
         }
-        set(newValue) {
+        set {
             let stringRepresentations = newValue.map({ $0.description })
             UserDefaults().set(stringRepresentations, forKey: "helios_authorized_users")
         }
@@ -65,7 +65,17 @@ public class TokenStore {
     static func makeApplicationToken(data: [String: Any],
                               completionHandler: @escaping (ApplicationToken?, AuthorizationError?)
                                                             -> Void) {
-        // - TODO: Implement
+        if let error = verifyTokenData(json: data) {
+            completionHandler(nil, error)
+            return
+        }
+
+        guard let token = ApplicationToken(json: data) else {
+            completionHandler(nil, .invalidResponse)
+            return
+        }
+
+        completionHandler(token, nil)
 
     }
 
@@ -112,14 +122,20 @@ public class TokenStore {
             kSecClass as String         : kSecClassGenericPassword,
             kSecAttrLabel as String     : label,
             kSecAttrAccount as String   : key,
-            kSecValueData as String     : data
         ] as CFDictionary
-
         SecItemDelete(query)
-        let status = SecItemAdd(query, nil)
+        
+        let addQuery = [
+            kSecClass as String         : kSecClassGenericPassword,
+            kSecAttrLabel as String     : label,
+            kSecValueData as String     : data,
+            kSecAttrAccount as String   : key,
+            ] as CFDictionary
+
+        let status = SecItemAdd(addQuery, nil)
 
         if status == noErr {
-            authorizations += [type]
+            authorizations.insert(type)
             return true
         } else {
             return false
@@ -154,7 +170,7 @@ public class TokenStore {
         return nil
     }
 
-    public enum AuthorizationType: CustomStringConvertible {
+    public enum AuthorizationType: CustomStringConvertible, Hashable {
         case user(name: String)
         case application
 
@@ -165,7 +181,22 @@ public class TokenStore {
             }
         }
 
-        init?(rawValue: String) {
+        public var hashValue: Int {
+            switch self {
+            case .user(name: let name): return name.hashValue
+            case .application: return 0
+            }
+        }
+
+        public static func ==(lhs: AuthorizationType, rhs: AuthorizationType) -> Bool {
+            switch (lhs, rhs) {
+            case (.user(let nameL), .user(let nameR)): return nameL == nameR
+            case (.application, .application): return true
+            default: return false
+            }
+        }
+
+        public init?(rawValue: String) {
             switch rawValue {
             case "application": self = .application
             case let str:
