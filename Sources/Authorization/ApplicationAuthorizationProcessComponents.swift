@@ -14,9 +14,9 @@ class ApplicationAuthorizationProcessComponents: AuthorizationProcessComponents 
         var request = super.makeAccessTokenURLRequest(credentials: credentials)
         let body: String
         switch credentials.appType {
-        case .installed: body = "grant_type=\(GrantType.installedClient)" +
+        case .installed: body = "grant_type=\(GrantType.installedClient.rawValue)" +
         "&device_id=\(credentials.uuid.uuidString)"
-        case .webapp, .script: body = "grant_type=\(GrantType.clientCredentials)"
+        case .webapp, .script: body = "grant_type=\(GrantType.clientCredentials.rawValue)"
         }
         request.httpBody = body.data(using: .utf8)
         return request

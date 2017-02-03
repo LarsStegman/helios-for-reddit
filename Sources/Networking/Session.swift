@@ -9,20 +9,25 @@
 import Foundation
 
 public class Session {
-    private var token: Token
-    private let credentials: Credentials
 
-    init(token: Token) {
+    /// The completion handler called when the request has been fullfilled or failed.
+    typealias ResultHandler<T> = (T?, SessionError?) -> Void
+
+    private var token: Token {
+        didSet {
+            urlSession.configuration.httpAdditionalHeaders = httpHeaders
+            resumeQueuedTasks()
+        }
+    }
+    private let credentials: Credentials
+    let apiHost: URLComponents = URLComponents(string: "https://oauth.reddit.com")!
+
+    private init(token: Token) {
         self.token = token
         self.credentials = Credentials.sharedInstance
     }
 
-    func makeRequest(url: URL) -> URLRequest {
-        var request = URLRequest(url: url)
-        request.addValue("bearer \(token.accessToken)", forHTTPHeaderField: "Authorization")
-
-        return request
-    }
+    // MARK: - Session factory methods
 
     private static func makeSession(userName: String?, tokenCreator: (Data) -> Token?)
             throws -> Session {
@@ -48,8 +53,56 @@ public class Session {
     public static func makeApplicationSession() throws -> Session {
         return try makeSession(userName: nil, tokenCreator: { return ApplicationToken(from: $0) })
     }
+
+    // MARK: - Session management
+    
+    /// The headers for the http requests.
+    private var httpHeaders: [AnyHashable : Any]? {
+        return ["Authorization" : "bearer \(token.accessToken)",
+                "User-Agent" : self.credentials.userAgentString]
+    }
+
+    /// The urlSession through which all the http requests for this session are routed.
+    private(set) lazy var urlSession: URLSession = {
+        var configuration = URLSessionConfiguration.default
+        configuration.httpAdditionalHeaders = self.httpHeaders
+        return URLSession(configuration: configuration)
+    }()
+
+    private var queuedTasks: [URLSessionTask] = []
+
+    /// Tasks added to the queue will be executed as soon as possible. Before the task is resumed
+    /// the token is checked for validity. If the token has expired, it is refreshed and the added
+    /// task is entered into a queue. Once the token is refreshed, the task will be executed.
+    ///
+    /// - Parameter task: The task to perform.
+    func queueTask(task: URLSessionTask) {
+        guard !token.expired else {
+            queuedTasks.append(task)
+            return
+        }
+
+        task.resume()
+    }
+
+    /// Execute all queued tasks. If the token has expired, it will not execute the queued tasks.
+    private func resumeQueuedTasks() {
+        guard !token.expired else {
+            return
+        }
+
+        while !queuedTasks.isEmpty {
+            queuedTasks.removeFirst().resume()
+        }
+    }
+
+    func authorized(for scope: Scope) -> Bool {
+        return token.scopes.contains(scope)
+    }
 }
 
 public enum SessionError: Error {
     case unauthorized
+    case missingScopeAuthorization(Scope)
+    case invalidResponse
 }

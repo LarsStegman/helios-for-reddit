@@ -9,9 +9,9 @@
 import Foundation
 
 public enum Kind: String {
-    case listing
-    case more
-    case liveUpdate
+    case listing        = "Listing"
+    case more           = "more"
+    case liveUpdate     = "LiveUpdate"
     case comment        = "t1"
     case account        = "t2"
     case link           = "t3"

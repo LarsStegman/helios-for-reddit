@@ -136,6 +136,8 @@ public class TokenStore {
 
         if status == noErr {
             authorizations.insert(type)
+            print("Stored")
+            print(token)
             return true
         } else {
             return false

@@ -12,7 +12,7 @@ import Foundation
 public class RedditParser {
     class func parse(object json: [String: Any]) -> RedditTyped? {
         guard let kindStr = json["kind"] as? String,
-            let kind = Kind(rawValue: kindStr.lowercased()),
+            let kind = Kind(rawValue: kindStr),
             let data = json["data"] as? [String: Any] else {
                 return nil
         }
@@ -25,12 +25,11 @@ public class RedditParser {
         case .more: return More(json: data)
         default: return nil
         }
-
     }
 
     class func parseThing(object json: [String: Any]) -> Thing? {
         guard let kindStr = json["kind"] as? String,
-            let kind = Kind(rawValue: kindStr.lowercased()),
+            let kind = Kind(rawValue: kindStr),
             let data = json["data"] as? [String: Any] else {
                 return nil
         }

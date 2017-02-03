@@ -77,7 +77,7 @@ extension Comment: RedditTyped {
         if let rawReplies = json["replies"] as? [String: Any],
             let data = rawReplies["data"] as? [String: Any],
             let kind = rawReplies["kind"] as? String,
-            Kind(rawValue: kind.lowercased()) == .listing {
+            Kind(rawValue: kind) == .listing {
             replies = Listing(json: data)
         }
 

@@ -42,9 +42,10 @@ class CodeFlowAuthorizationProcessComponents: AuthorizationProcessComponents {
     class func makeAccessTokenURLRequest(credentials: Credentials,
                                                    receivedCode: String) -> URLRequest {
         var request = super.makeAccessTokenURLRequest(credentials: credentials)
-        request.httpBody = ("grant_type=\(GrantType.authorizationCode)&code=" +
-            "\(receivedCode)&redirect_uri=\(credentials.redirectUri.absoluteString)")
-                .data(using: .utf8)
+        let postData = "grant_type=\(GrantType.authorizationCode.rawValue)&code=" +
+            "\(receivedCode)&redirect_uri=\(credentials.redirectUri.absoluteString)"
+
+        request.httpBody = postData.data(using: .utf8)
         return request
     }
 
