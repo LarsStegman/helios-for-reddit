@@ -9,10 +9,11 @@
 import Foundation
 
 public struct Listing {
-    var before: String?
-    var after: String?
+    let before: String?
+    let after: String?
     let modhash: String?
-    var children: [Thing]
+    var source: URL?
+    public let children: [Thing]
     public static let kind = Kind.listing
 
     init(before: String?, after: String?, modhash: String?, children: [Thing]) {

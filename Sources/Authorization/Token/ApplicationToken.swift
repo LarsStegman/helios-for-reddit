@@ -12,6 +12,9 @@ struct ApplicationToken: Token {
     let accessToken: String
     let scopes: [Scope]
     let expiresAt: Date
+    var authorizationType: TokenStore.AuthorizationType {
+        return .application
+    }
 
     init(accessToken: String, scopes: [Scope], expiresAt: Date) {
         self.accessToken = accessToken
@@ -22,10 +25,11 @@ struct ApplicationToken: Token {
     init?(json: [String: Any]) {
         guard let accessToken = json["access_token"] as? String,
             let scope = json["scope"] as? String,
+            scope == "*",
             let expiresIn = json["expires_in"] as? TimeInterval else {
                 return nil
         }
-        let scopes = scope.components(separatedBy: " ").map({ return Scope(rawValue: $0)! })
+        let scopes = [Scope.read]
         self = ApplicationToken(accessToken: accessToken, scopes: scopes,
                                 expiresAt: Date(timeIntervalSinceNow: expiresIn))
 

@@ -19,8 +19,11 @@ public class Session {
             resumeQueuedTasks()
         }
     }
+    public var authorizationType: TokenStore.AuthorizationType {
+        return token.authorizationType
+    }
     private let credentials: Credentials
-    let apiHost: URLComponents = URLComponents(string: "https://oauth.reddit.com")!
+    let apiHost = URL(string: "https://oauth.reddit.com")!
 
     private init(token: Token) {
         self.token = token
@@ -76,7 +79,7 @@ public class Session {
     /// task is entered into a queue. Once the token is refreshed, the task will be executed.
     ///
     /// - Parameter task: The task to perform.
-    func queueTask(task: URLSessionTask) {
+    func queue(task: URLSessionTask) {
         guard !token.expired else {
             queuedTasks.append(task)
             return
@@ -105,4 +108,6 @@ public enum SessionError: Error {
     case unauthorized
     case missingScopeAuthorization(Scope)
     case invalidResponse
+    case noResult
+    case invalidSource
 }

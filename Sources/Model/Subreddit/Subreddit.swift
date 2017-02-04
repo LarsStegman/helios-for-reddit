@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Subreddit: Thing {
+public struct Subreddit: Thing, Equatable, Hashable {
     public let id: String
     public let fullname: String
     public static let kind = Kind.subreddit
@@ -38,4 +38,18 @@ public struct Subreddit: Thing {
     public let type: SubredditType
 
     public let currentUserSubredditRelations: UserSubredditRelations
+
+    /// Equality is determined by comparing the ids only.
+    ///
+    /// - Parameters:
+    ///   - lhs: Left operand
+    ///   - rhs: Right operand
+    /// - Returns: Equality
+    public static func ==(lhs: Subreddit, rhs: Subreddit) -> Bool {
+        return lhs.id == rhs.id
+    }
+
+    public var hashValue: Int {
+        return id.hashValue
+    }
 }

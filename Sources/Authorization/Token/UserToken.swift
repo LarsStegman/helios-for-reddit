@@ -14,6 +14,13 @@ struct UserToken: Token {
     let refreshToken: String?
     let scopes: [Scope]
     let expiresAt: Date
+    var authorizationType: TokenStore.AuthorizationType {
+        if let name = userName {
+            return .user(name: name)
+        } else {
+            return .application
+        }
+    }
 
     init(userName: String?, accessToken: String, refreshToken: String?, scopes: [Scope],
          expiresAt: Date) {

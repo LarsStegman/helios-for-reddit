@@ -80,7 +80,5 @@ public struct Credentials {
             self.uuid = UUID()
             UserDefaults().set(self.uuid.uuidString, forKey: "\(secureStoragePrefix)-uuid")
         }
-
-        print(self)
     }
 }
