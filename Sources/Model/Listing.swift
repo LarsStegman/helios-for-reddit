@@ -22,4 +22,14 @@ public struct Listing {
         self.modhash = modhash
         self.children = children
     }
+
+    /// Whether there are pages before this one.
+    public var hasPrevious: Bool {
+        return before != nil
+    }
+
+    /// Whether there are more pages.
+    public var hasNext: Bool {
+        return after != nil
+    }
 }

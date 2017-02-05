@@ -9,7 +9,7 @@
 import Foundation
 
 extension Session {
-    
+
     /// Loads the next data slice.
     /// If there is no `after` in the listing, the completionHandler will be called with an 
     /// `SessionError.noResult` error.
@@ -22,13 +22,13 @@ extension Session {
                      completionHandler: @escaping ResultHandler<Listing>) {
         guard let after = listing.after,
             let source = listing.source else {
-            completionHandler(nil, .noResult)
+            completionHandler(nil, .noResult, true)
             return
         }
 
         var queries = [URLQueryItem(name: "after", value: "\(after)")]
-
-        if let num = numberOfAlreadyLoadedComponents {
+        if let num = numberOfAlreadyLoadedComponents,
+            num > 0 {
             queries += [URLQueryItem(name: "count", value: "\(num)")]
         }
 
@@ -47,12 +47,11 @@ extension Session {
                          completionHandler: @escaping ResultHandler<Listing>) {
         guard let before = listing.before,
             let source = listing.source else {
-            completionHandler(nil, .noResult)
+            completionHandler(nil, .noResult, true)
             return
         }
 
         var queries = [URLQueryItem(name: "before", value: "\(before)")]
-
         if let num = numberOfAlreadyLoadedComponents {
             queries += [URLQueryItem(name: "count", value: "\(num)")]
         }
@@ -60,33 +59,36 @@ extension Session {
         loadListing(from: source, query: queries, completionHandler: completionHandler)
     }
 
-    /// Loads a listing from the provided url. If the url does not contain a listing, the 
-    /// completionHandler will be called with an `SessionError.invalidReponse` error.
+    /// Loads a listing from the provided url.
     ///
     /// - Parameters:
     ///   - url: The url to retrieve the listing from
     ///   - query: Query parameters for the listing, e.g. `before`
-    ///   - completionHandler: Called with the result or an error.
+    ///   - completionHandler: Called with the result or an error. 
+    ///       - Called with `.invalidResponse` error, if `url` does not return a listing.
+    ///       - Called with `.invalidSource` if `url` contains invalid url components.
     func loadListing(from url: URL, query: [URLQueryItem]? = nil,
                      completionHandler: @escaping ResultHandler<Listing>) {
-        var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
-        if let queries = query {
-            components.queryItems = queries
+        guard var components = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
+            completionHandler(nil, .invalidSource, true)
+            return
         }
 
+        components.queryItems = query
         let request = URLRequest(url: components.url!)
         let task = urlSession.dataTask(with: request) { (data, response, error) in
             guard let data = data,
                 let json = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any],
                 let kindStr = json["kind"] as? String, Kind(rawValue: kindStr) == .listing,
                 let listingData = json["data"] as? [String: Any],
-                let result = Listing(json: listingData) else {
+                var result = Listing(json: listingData) else {
 
-                completionHandler(nil, .invalidResponse)
+                completionHandler(nil, .invalidResponse, true)
                 return
             }
 
-            completionHandler(result, nil)
+            result.source = url
+            completionHandler(result, nil, true)
         }
         queue(task: task)
     }

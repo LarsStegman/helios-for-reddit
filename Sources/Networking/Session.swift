@@ -11,7 +11,11 @@ import Foundation
 public class Session {
 
     /// The completion handler called when the request has been fullfilled or failed.
-    typealias ResultHandler<T> = (T?, SessionError?) -> Void
+    /// The boolean value indicates whether the loading has finished.
+    /// - T: The (partial) result.
+    /// - SessionError: A resulting error
+    /// - Bool: Indicates whether the loading has finished.
+    public typealias ResultHandler<T> = (T?, SessionError?, Bool) -> Void
 
     private var token: Token {
         didSet {
@@ -19,29 +23,32 @@ public class Session {
             resumeQueuedTasks()
         }
     }
+
+    /// The authorization type which this session uses.
     public var authorizationType: TokenStore.AuthorizationType {
         return token.authorizationType
     }
-    private let credentials: Credentials
+
+    /// The Reddit base url to which requests are made.
     let apiHost = URL(string: "https://oauth.reddit.com")!
 
     private init(token: Token) {
         self.token = token
-        self.credentials = Credentials.sharedInstance
     }
 
     // MARK: - Session factory methods
 
-    private static func makeSession(userName: String?, tokenCreator: (Data) -> Token?)
+    /// Creates a session
+    ///
+    /// - Parameters:
+    ///   - userName: <#userName description#>
+    ///   - tokenCreator: <#tokenCreator description#>
+    /// - Returns: <#return value description#>
+    /// - Throws: <#throws value description#>
+    private static func makeSession(authorization: TokenStore.AuthorizationType,
+                                    tokenCreator: (Data) -> Token?)
             throws -> Session {
-        let authorizationType: TokenStore.AuthorizationType
-        if let name = userName {
-            authorizationType = .user(name: name)
-        } else {
-            authorizationType = .application
-        }
-
-        guard let tokenData = TokenStore.retrieveTokenData(forAuthorizationType: authorizationType),
+        guard let tokenData = TokenStore.retrieveTokenData(forAuthorizationType: authorization),
             let token = tokenCreator(tokenData) else {
                 throw SessionError.unauthorized
         }
@@ -49,12 +56,23 @@ public class Session {
         return Session(token: token)
     }
 
+    /// Creates a session for the specified user name.
+    ///
+    /// - Parameter userName: The user name of the user
+    /// - Returns: The session
+    /// - Throws: Throws a `SessionError.unauthorized` error if the user is not authorized.
     public static func makeUserSession(userName: String) throws -> Session {
-        return try makeSession(userName: userName, tokenCreator: { return UserToken(from: $0) })
+        return try makeSession(authorization: .user(name: userName),
+                               tokenCreator: { return UserToken(from: $0) })
     }
 
+    /// Creates a session for the application.
+    ///
+    /// - Returns: The session
+    /// - Throws: Throws a `SessionError.unauthorized` error if the application is not authorized.
     public static func makeApplicationSession() throws -> Session {
-        return try makeSession(userName: nil, tokenCreator: { return ApplicationToken(from: $0) })
+        return try makeSession(authorization: .application,
+                               tokenCreator: { return ApplicationToken(from: $0) })
     }
 
     // MARK: - Session management
@@ -62,7 +80,7 @@ public class Session {
     /// The headers for the http requests.
     private var httpHeaders: [AnyHashable : Any]? {
         return ["Authorization" : "bearer \(token.accessToken)",
-                "User-Agent" : self.credentials.userAgentString]
+                "User-Agent" : Credentials.sharedInstance.userAgentString]
     }
 
     /// The urlSession through which all the http requests for this session are routed.
@@ -72,6 +90,7 @@ public class Session {
         return URLSession(configuration: configuration)
     }()
 
+    /// The queued tasks.
     private var queuedTasks: [URLSessionTask] = []
 
     /// Tasks added to the queue will be executed as soon as possible. Before the task is resumed
@@ -99,6 +118,10 @@ public class Session {
         }
     }
 
+    /// Check whether the token gives authorization for the provided scope
+    ///
+    /// - Parameter scope: The scope to check.
+    /// - Returns: Whether the token gives authorization for the scope.
     func authorized(for scope: Scope) -> Bool {
         return token.scopes.contains(scope)
     }
