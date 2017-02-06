@@ -13,11 +13,11 @@ public class TokenStore {
     private init() { }
     private static var urlSession = URLSession(configuration: .default)
 
-    public private(set) static var authorizations: Set<AuthorizationType> {
+    public private(set) static var authorizations: Set<Authorization> {
         get {
             let stringRepresenations = UserDefaults()
                 .stringArray(forKey: "helios_authorized_users") ?? []
-            return Set(stringRepresenations.flatMap( { AuthorizationType(rawValue: $0) }))
+            return Set(stringRepresenations.flatMap( { Authorization(rawValue: $0) }))
         }
         set {
             let stringRepresentations = newValue.map({ $0.description })
@@ -110,7 +110,7 @@ public class TokenStore {
     ///   - key: The key used to identify the token
     ///   - token: The token to be stored
     /// - Returns: Whether the storing succeeded.
-    class func saveToken(forAuthorizationType type: AuthorizationType,
+    class func saveToken(forAuthorizationType type: Authorization,
                          token: Token) -> Bool {
         let data = token.data
         let key: String
@@ -149,7 +149,7 @@ public class TokenStore {
     ///
     /// - Parameter key: The key used to store the authorization.
     /// - Returns: Requested data.
-    class func retrieveTokenData(forAuthorizationType type: AuthorizationType) -> Data? {
+    class func retrieveTokenData(forAuthorizationType type: Authorization) -> Data? {
         let key: String
         switch type {
         case .user(name: let name): key = name
@@ -170,49 +170,5 @@ public class TokenStore {
         }
         
         return nil
-    }
-
-    public enum AuthorizationType: CustomStringConvertible, Hashable {
-        case user(name: String)
-        case application
-
-        public var description: String {
-            switch self {
-            case .user(name: let name): return "user(\(name))"
-            case .application: return "application"
-            }
-        }
-
-        public var hashValue: Int {
-            switch self {
-            case .user(name: let name): return name.hashValue
-            case .application: return 0
-            }
-        }
-
-        public static func ==(lhs: AuthorizationType, rhs: AuthorizationType) -> Bool {
-            switch (lhs, rhs) {
-            case (.user(let nameL), .user(let nameR)): return nameL == nameR
-            case (.application, .application): return true
-            default: return false
-            }
-        }
-
-        public init?(rawValue: String) {
-            switch rawValue {
-            case "application": self = .application
-            case let str:
-                let regex = try! NSRegularExpression(pattern: "user\\(([^\\)]+)\\)",
-                                                     options: .caseInsensitive)
-                let matches = regex.matches(in: str, range: NSRange(0..<(str as NSString).length))
-                if matches.count > 0,
-                    let range = matches[0].rangeAt(1).toRange() {
-                    let name = str[range]
-                    self = .user(name: name)
-                } else {
-                    return nil
-                }
-            }
-        }
     }
 }

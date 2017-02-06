@@ -23,7 +23,7 @@ protocol Token {
     /// A data representation of the token.
     var data: Data { get }
 
-    var authorizationType: TokenStore.AuthorizationType { get }
+    var authorizationType: Authorization { get }
 
     /// Initialize the token from a data object.
     init?(from data: Data)

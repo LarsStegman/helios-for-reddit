@@ -56,22 +56,20 @@ public class ApplicationOnlyAuthorizationProcessAuthorizer: NSObject,
     }
 
     private func succeeded() {
-        NotificationCenter.default
-            .post(name: ApplicationAuthorizationNotifications.finishedAuthorizationName, object: nil)
+        NotificationCenter.default.post(name: Notifications.finishedName, object: nil)
     }
 
     private func failed(with error: LoginAuthorizerError) {
-        NotificationCenter.default
-            .post(name: ApplicationAuthorizationNotifications.failedAuthorizationName, object: error)
+        NotificationCenter.default.post(name: Notifications.failedName, object: error)
     }
 
     /// The notification names.
-    public struct ApplicationAuthorizationNotifications {
+    public struct Notifications {
         /// The authorization has failed.
-        public static let failedAuthorizationName = Notification.Name("failedApplicationAuthorizationNotification")
+        public static let failedName = Notification.Name("failedApplicationAuthorizationNotification")
 
         /// The authorization has succeeded.
-        public static let finishedAuthorizationName = Notification.Name("completedApplicationAuthorizationNotification")
+        public static let finishedName = Notification.Name("completedApplicationAuthorizationNotification")
 
         /// Should normally not be sent. Here for future proofing.
         public static let defaultName = Notification.Name("applicationAuthorizationNotification")

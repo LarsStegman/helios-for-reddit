@@ -25,54 +25,15 @@ public class Session {
     }
 
     /// The authorization type which this session uses.
-    public var authorizationType: TokenStore.AuthorizationType {
+    public var authorizationType: Authorization {
         return token.authorizationType
     }
 
     /// The Reddit base url to which requests are made.
     let apiHost = URL(string: "https://oauth.reddit.com")!
 
-    private init(token: Token) {
+    init(token: Token) {
         self.token = token
-    }
-
-    // MARK: - Session factory methods
-
-    /// Creates a session
-    ///
-    /// - Parameters:
-    ///   - userName: <#userName description#>
-    ///   - tokenCreator: <#tokenCreator description#>
-    /// - Returns: <#return value description#>
-    /// - Throws: <#throws value description#>
-    private static func makeSession(authorization: TokenStore.AuthorizationType,
-                                    tokenCreator: (Data) -> Token?)
-            throws -> Session {
-        guard let tokenData = TokenStore.retrieveTokenData(forAuthorizationType: authorization),
-            let token = tokenCreator(tokenData) else {
-                throw SessionError.unauthorized
-        }
-
-        return Session(token: token)
-    }
-
-    /// Creates a session for the specified user name.
-    ///
-    /// - Parameter userName: The user name of the user
-    /// - Returns: The session
-    /// - Throws: Throws a `SessionError.unauthorized` error if the user is not authorized.
-    public static func makeUserSession(userName: String) throws -> Session {
-        return try makeSession(authorization: .user(name: userName),
-                               tokenCreator: { return UserToken(from: $0) })
-    }
-
-    /// Creates a session for the application.
-    ///
-    /// - Returns: The session
-    /// - Throws: Throws a `SessionError.unauthorized` error if the application is not authorized.
-    public static func makeApplicationSession() throws -> Session {
-        return try makeSession(authorization: .application,
-                               tokenCreator: { return ApplicationToken(from: $0) })
     }
 
     // MARK: - Session management
@@ -125,12 +86,4 @@ public class Session {
     func authorized(for scope: Scope) -> Bool {
         return token.scopes.contains(scope)
     }
-}
-
-public enum SessionError: Error {
-    case unauthorized
-    case missingScopeAuthorization(Scope)
-    case invalidResponse
-    case noResult
-    case invalidSource
 }

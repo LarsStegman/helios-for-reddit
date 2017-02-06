@@ -12,7 +12,7 @@ struct ApplicationToken: Token {
     let accessToken: String
     let scopes: [Scope]
     let expiresAt: Date
-    var authorizationType: TokenStore.AuthorizationType {
+    var authorizationType: Authorization {
         return .application
     }
 

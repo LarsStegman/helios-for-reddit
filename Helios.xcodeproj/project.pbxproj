@@ -45,6 +45,9 @@
 		48AC96D61E19CBFB005539D5 /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AC96D51E19CBFB005539D5 /* Thumbnail.swift */; };
 		48AE3CB81E2EA5D7009C6A73 /* AuthorizationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AE3CB71E2EA5D7009C6A73 /* AuthorizationError.swift */; };
 		48B7F0C91E4795580090A89C /* URLRequest+Authorized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B7F0C81E4795580090A89C /* URLRequest+Authorized.swift */; };
+		48B7F0CB1E47D1F70090A89C /* Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B7F0CA1E47D1F70090A89C /* Authorization.swift */; };
+		48B7F0CD1E47E3B30090A89C /* SessionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B7F0CC1E47E3B30090A89C /* SessionFactory.swift */; };
+		48B7F0CF1E47EA690090A89C /* SessionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B7F0CE1E47EA690090A89C /* SessionError.swift */; };
 		48D35FDF1E1AE23300E4FDF3 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D35FDE1E1AE23300E4FDF3 /* Link.swift */; };
 		48EB894B1E300A9E0025D0C0 /* TokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EB894A1E300A9E0025D0C0 /* TokenStore.swift */; };
 		48EBF8631E15CB2600A4281E /* Scope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF85D1E15CB2600A4281E /* Scope.swift */; };
@@ -119,6 +122,9 @@
 		48AC96D51E19CBFB005539D5 /* Thumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Thumbnail.swift; path = Sources/Model/Thumbnail.swift; sourceTree = SOURCE_ROOT; };
 		48AE3CB71E2EA5D7009C6A73 /* AuthorizationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthorizationError.swift; path = Sources/Authorization/AuthorizationError.swift; sourceTree = SOURCE_ROOT; };
 		48B7F0C81E4795580090A89C /* URLRequest+Authorized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "URLRequest+Authorized.swift"; path = "Sources/Networking/URLRequest+Authorized.swift"; sourceTree = SOURCE_ROOT; };
+		48B7F0CA1E47D1F70090A89C /* Authorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Authorization.swift; path = Sources/Authorization/Token/Authorization.swift; sourceTree = SOURCE_ROOT; };
+		48B7F0CC1E47E3B30090A89C /* SessionFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionFactory.swift; path = Sources/Networking/SessionFactory.swift; sourceTree = SOURCE_ROOT; };
+		48B7F0CE1E47EA690090A89C /* SessionError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionError.swift; path = Sources/Networking/SessionError.swift; sourceTree = SOURCE_ROOT; };
 		48D35FDE1E1AE23300E4FDF3 /* Link.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Link.swift; path = Sources/Model/Link.swift; sourceTree = SOURCE_ROOT; };
 		48EB894A1E300A9E0025D0C0 /* TokenStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TokenStore.swift; path = Sources/Authorization/Token/TokenStore.swift; sourceTree = SOURCE_ROOT; };
 		48EBF85D1E15CB2600A4281E /* Scope.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Scope.swift; path = Sources/Authorization/Token/Scope.swift; sourceTree = SOURCE_ROOT; };
@@ -162,6 +168,8 @@
 			children = (
 				48B7F0C81E4795580090A89C /* URLRequest+Authorized.swift */,
 				48F591421E32D8CB009164ED /* Session.swift */,
+				48B7F0CE1E47EA690090A89C /* SessionError.swift */,
+				48B7F0CC1E47E3B30090A89C /* SessionFactory.swift */,
 				48A902961E4656C2003FE741 /* Session-Listing.swift */,
 				48A8CE511E3945E10009AF45 /* Session+MineSubreddits.swift */,
 			);
@@ -281,6 +289,7 @@
 				48EBF85D1E15CB2600A4281E /* Scope.swift */,
 				48EBF8611E15CB2600A4281E /* AuthorizationDuration.swift */,
 				48EB894A1E300A9E0025D0C0 /* TokenStore.swift */,
+				48B7F0CA1E47D1F70090A89C /* Authorization.swift */,
 			);
 			name = Token;
 			sourceTree = "<group>";
@@ -472,6 +481,7 @@
 				48D35FDF1E1AE23300E4FDF3 /* Link.swift in Sources */,
 				48EBF8671E15CB2600A4281E /* AuthorizationDuration.swift in Sources */,
 				48EBF8701E15CC1100A4281E /* Kind.swift in Sources */,
+				48B7F0CB1E47D1F70090A89C /* Authorization.swift in Sources */,
 				4858A77C1E2917B70061E009 /* UserToken.swift in Sources */,
 				48EBF87E1E16EDAF00A4281E /* Created.swift in Sources */,
 				48885A6B1E1C55C500265874 /* SubmissionType.swift in Sources */,
@@ -491,7 +501,9 @@
 				48EBF8801E16EF3E00A4281E /* Comment.swift in Sources */,
 				48A6E7CB1E1D962500F65149 /* More.swift in Sources */,
 				4884AC9F1E374EBB00A8085D /* ApplicationType.swift in Sources */,
+				48B7F0CD1E47E3B30090A89C /* SessionFactory.swift in Sources */,
 				48AC96D61E19CBFB005539D5 /* Thumbnail.swift in Sources */,
+				48B7F0CF1E47EA690090A89C /* SessionError.swift in Sources */,
 				48EBF86A1E15CB7A00A4281E /* Credentials.swift in Sources */,
 				48A3A2111E37F07900787C8D /* LoginAuthorizerError.swift in Sources */,
 				4887A9811E1827D100068756 /* CommentParser.swift in Sources */,

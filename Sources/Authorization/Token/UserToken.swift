@@ -14,7 +14,7 @@ struct UserToken: Token {
     let refreshToken: String?
     let scopes: [Scope]
     let expiresAt: Date
-    var authorizationType: TokenStore.AuthorizationType {
+    var authorizationType: Authorization {
         if let name = userName {
             return .user(name: name)
         } else {

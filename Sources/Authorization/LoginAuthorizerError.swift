@@ -8,9 +8,6 @@
 
 import Foundation
 
-
-// MARK: - User facing errors
-
 /// Errors that might be shown to a user
 ///
 /// - accessDenied: The user has denied access to their account
