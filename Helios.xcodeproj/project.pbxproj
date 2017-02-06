@@ -41,7 +41,7 @@
 		48A6E7CB1E1D962500F65149 /* More.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A6E7CA1E1D962500F65149 /* More.swift */; };
 		48A6E7CD1E1D980800F65149 /* MoreParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A6E7CC1E1D980800F65149 /* MoreParser.swift */; };
 		48A8CE521E3945E10009AF45 /* Session+MineSubreddits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A8CE511E3945E10009AF45 /* Session+MineSubreddits.swift */; };
-		48A902971E4656C2003FE741 /* Session-Listing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A902961E4656C2003FE741 /* Session-Listing.swift */; };
+		48A902971E4656C2003FE741 /* Session+Listing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A902961E4656C2003FE741 /* Session+Listing.swift */; };
 		48AC96D61E19CBFB005539D5 /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AC96D51E19CBFB005539D5 /* Thumbnail.swift */; };
 		48AE3CB81E2EA5D7009C6A73 /* AuthorizationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AE3CB71E2EA5D7009C6A73 /* AuthorizationError.swift */; };
 		48B7F0C91E4795580090A89C /* URLRequest+Authorized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B7F0C81E4795580090A89C /* URLRequest+Authorized.swift */; };
@@ -118,7 +118,7 @@
 		48A6E7CA1E1D962500F65149 /* More.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = More.swift; path = Sources/Model/More.swift; sourceTree = SOURCE_ROOT; };
 		48A6E7CC1E1D980800F65149 /* MoreParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MoreParser.swift; path = Sources/ModelParser/MoreParser.swift; sourceTree = SOURCE_ROOT; };
 		48A8CE511E3945E10009AF45 /* Session+MineSubreddits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Session+MineSubreddits.swift"; path = "Sources/Networking/Session+MineSubreddits.swift"; sourceTree = SOURCE_ROOT; };
-		48A902961E4656C2003FE741 /* Session-Listing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Session-Listing.swift"; path = "Sources/Networking/Session-Listing.swift"; sourceTree = SOURCE_ROOT; };
+		48A902961E4656C2003FE741 /* Session+Listing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Session+Listing.swift"; path = "Sources/Networking/Session+Listing.swift"; sourceTree = SOURCE_ROOT; };
 		48AC96D51E19CBFB005539D5 /* Thumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Thumbnail.swift; path = Sources/Model/Thumbnail.swift; sourceTree = SOURCE_ROOT; };
 		48AE3CB71E2EA5D7009C6A73 /* AuthorizationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthorizationError.swift; path = Sources/Authorization/AuthorizationError.swift; sourceTree = SOURCE_ROOT; };
 		48B7F0C81E4795580090A89C /* URLRequest+Authorized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "URLRequest+Authorized.swift"; path = "Sources/Networking/URLRequest+Authorized.swift"; sourceTree = SOURCE_ROOT; };
@@ -170,7 +170,7 @@
 				48F591421E32D8CB009164ED /* Session.swift */,
 				48B7F0CE1E47EA690090A89C /* SessionError.swift */,
 				48B7F0CC1E47E3B30090A89C /* SessionFactory.swift */,
-				48A902961E4656C2003FE741 /* Session-Listing.swift */,
+				48A902961E4656C2003FE741 /* Session+Listing.swift */,
 				48A8CE511E3945E10009AF45 /* Session+MineSubreddits.swift */,
 			);
 			name = Network;
@@ -473,7 +473,7 @@
 				48AE3CB81E2EA5D7009C6A73 /* AuthorizationError.swift in Sources */,
 				4884AC991E3749C800A8085D /* ApplicationAuthorizationProcessComponents.swift in Sources */,
 				489E81BD1E1703E00091DDCF /* Flair.swift in Sources */,
-				48A902971E4656C2003FE741 /* Session-Listing.swift in Sources */,
+				48A902971E4656C2003FE741 /* Session+Listing.swift in Sources */,
 				48B7F0C91E4795580090A89C /* URLRequest+Authorized.swift in Sources */,
 				48EBF8631E15CB2600A4281E /* Scope.swift in Sources */,
 				481EF1221E317B19007C6085 /* String+subscript.swift in Sources */,

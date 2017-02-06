@@ -1,5 +1,5 @@
 //
-//  Session-Listing.swift
+//  Session+Listing.swift
 //  Helios
 //
 //  Created by Lars Stegman on 04-02-17.
