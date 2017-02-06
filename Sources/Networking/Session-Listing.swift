@@ -92,4 +92,43 @@ extension Session {
         }
         queue(task: task)
     }
+
+    /// Keeps loading the next page until
+    ///
+    /// - Parameters:
+    ///   - first: The first loaded listing page.
+    ///   - numberOfPages: The maximum number of pages to retrieve. If nil, pages will be
+    ///                     loaded indefinitely until none are left.
+    ///   - numberOfAlreadyLoadedItems: The number of already loaded items
+    ///   - intermediateResultHandler: The closure that is called with intermediate results.
+    ///
+    /// - Warning: If you want to load all pages, but there are infinitely many pages, infinite recursion will occur.
+    public func loadMore(first: Listing, numberOfAlreadyLoadedItems: Int = 0,
+                         numberOfPages: Int?, intermediateResultHandler: @escaping ResultHandler<Listing>) {
+        next(listing: first) { [weak self] (result, nextPageError, _) in
+            guard let nextPage = result, nextPageError == nil else {
+                intermediateResultHandler(nil, nextPageError, true)
+                return
+            }
+
+            let loadNextPage: Bool
+            var nextNumberOfPages: Int? = nil
+            if let numberOfPages = numberOfPages {
+                loadNextPage = nextPage.hasNext && numberOfPages > 1
+                nextNumberOfPages = numberOfPages - 1
+            } else {
+                loadNextPage = nextPage.hasNext
+            }
+
+            intermediateResultHandler(nextPage, nil, !loadNextPage)
+            if loadNextPage {
+                self?.loadMore(first: nextPage,
+                               numberOfAlreadyLoadedItems:
+                    numberOfAlreadyLoadedItems + nextPage.children.count,
+                               numberOfPages: nextNumberOfPages,
+                               intermediateResultHandler: intermediateResultHandler)
+            }
+        }
+    }
+
 }
