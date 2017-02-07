@@ -10,12 +10,12 @@ import Foundation
 
 class ApplicationAuthorizationProcessComponents: AuthorizationProcessComponents {
 
-    override class func makeAccessTokenURLRequest(credentials: Credentials) -> URLRequest {
-        var request = super.makeAccessTokenURLRequest(credentials: credentials)
+    class func makeAccessTokenURLRequest() -> URLRequest {
+        var request = super.makeAccessTokenURLRequest()
         let body: String
-        switch credentials.appType {
+        switch Credentials.sharedInstance.appType {
         case .installed: body = "grant_type=\(GrantType.installedClient.rawValue)" +
-        "&device_id=\(credentials.uuid.uuidString)"
+        "&device_id=\(Credentials.sharedInstance.uuid.uuidString)"
         case .webapp, .script: body = "grant_type=\(GrantType.clientCredentials.rawValue)"
         }
         request.httpBody = body.data(using: .utf8)

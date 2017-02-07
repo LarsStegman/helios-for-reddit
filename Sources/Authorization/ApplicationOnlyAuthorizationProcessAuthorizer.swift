@@ -18,8 +18,7 @@ public class ApplicationOnlyAuthorizationProcessAuthorizer: NSObject,
     private var retrieveAccessTokenTask: URLSessionDataTask?
 
     public func startAuthorization() {
-        let request = ApplicationAuthorizationProcessComponents
-            .makeAccessTokenURLRequest(credentials: Credentials.sharedInstance)
+        let request = ApplicationAuthorizationProcessComponents.makeAccessTokenURLRequest()
         retrieveAccessTokenTask = urlSession.dataTask(with: request)
         retrieveAccessTokenTask?.resume()
     }
