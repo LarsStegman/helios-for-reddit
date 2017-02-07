@@ -162,7 +162,7 @@ public class TokenStore {
             kSecAttrAccount as String   : key,
             ] as CFDictionary
         let deleteStatus = SecItemDelete(query)
-        if deleteStatus == noErr {
+        if deleteStatus == noErr || deleteStatus == errSecItemNotFound {
             authorizations.remove(type)
             return true
         } else {
