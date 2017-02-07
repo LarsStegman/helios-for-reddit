@@ -18,14 +18,14 @@ class AuthorizationProcessComponents {
     ///   - credentials: The credentials to use for the request
     ///   - receivedCode: The code received after the user has granted access.
     /// - Returns: The URLRequest which contains the request for an access token.
-    class func makeAccessTokenURLRequest(credentials: Credentials) -> URLRequest {
-        var request = URLRequest(url: accessTokenURL)
+    class func makeAccessTokenURLRequest(url: URL = accessTokenURL) -> URLRequest {
+        var request = URLRequest(url: url)
 
         request.httpMethod = "POST"
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.addValue(credentials.userAgentString, forHTTPHeaderField: "User-Agent")
+        request.addValue(Credentials.sharedInstance.userAgentString, forHTTPHeaderField: "User-Agent")
         let authorization = "Basic " +
-            "\(credentials.clientId):".data(using: .utf8)!.base64EncodedString()
+            "\(Credentials.sharedInstance.clientId):".data(using: .utf8)!.base64EncodedString()
         request.addValue(authorization, forHTTPHeaderField: "Authorization")
 
         return request

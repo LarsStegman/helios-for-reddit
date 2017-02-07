@@ -31,7 +31,7 @@ public class TokenStore {
     ///   - data: JSON containing either a user token object, or some error message
     ///   - completionHandler: This is called when the user token has been generated.
     static func makeUserToken(data: [String: Any],
-                       completionHandler: @escaping (UserToken?, AuthorizationError?) -> Void) {
+                              completionHandler: @escaping (UserToken?, AuthorizationError?) -> Void) {
         if let error = verifyTokenData(json: data) {
             completionHandler(nil, error)
             return
@@ -61,10 +61,8 @@ public class TokenStore {
         }
     }
 
-    
     static func makeApplicationToken(data: [String: Any],
-                              completionHandler: @escaping (ApplicationToken?, AuthorizationError?)
-                                                            -> Void) {
+                              completionHandler: @escaping (ApplicationToken?, AuthorizationError?) -> Void) {
         if let error = verifyTokenData(json: data) {
             completionHandler(nil, error)
             return
@@ -76,7 +74,51 @@ public class TokenStore {
         }
 
         completionHandler(token, nil)
+    }
 
+    /// Locally stored tokens are always revoked, remote tokens are revoked on best effort basis.
+    ///
+    /// - Parameter authorization: The authorization to revoke the token for.
+    static func revokeToken(for authorization: Authorization) {
+        guard authorizations.contains(authorization),
+            let tokenData = retrieveTokenData(forAuthorizationType: authorization),
+            deleteToken(forAuthorizationType: authorization) else {
+            return
+        }
+
+        authorizations.remove(authorization)
+
+        switch authorization {
+        case .user(name: _):
+            if let token = UserToken(from: tokenData) {
+                revokeRemoteToken(type: .accessToken, token: token.accessToken)
+                if let refresh = token.refreshToken {
+                    revokeRemoteToken(type: .refreshToken, token: refresh)
+                }
+            }
+        case .application:
+            if let token = ApplicationToken(from: tokenData) {
+                revokeRemoteToken(type: .accessToken, token: token.accessToken)
+            }
+        }
+    }
+
+    private enum TokenType: String {
+        case accessToken = "access_token"
+        case refreshToken = "refresh_token"
+    }
+
+    private static func revokeRemoteToken(type: TokenType, token: String) {
+        var revokeRequest = AuthorizationProcessComponents
+            .makeAccessTokenURLRequest(url: URL(string: "https://www.reddit.com/api/v1/revoke_token")!)
+        revokeRequest.httpBody = "token=\(token)&token_type_hint=\(type.rawValue)".data(using: .utf8)
+        let revokeTask = urlSession.dataTask(with: revokeRequest) {
+            (_, response, _) in
+            if let response = response as? HTTPURLResponse {
+                print("Revoked token with response code: \(response.statusCode)")
+            }
+        }
+        revokeTask.resume()
     }
 
     private static func verifyTokenData(json: [String: Any]) -> AuthorizationError? {
@@ -98,21 +140,17 @@ public class TokenStore {
         return nil
     }
 
-    static var label =
-        "\(Credentials.sharedInstance.secureStoragePrefix)-reddit-authorization"
+    static var label = "\(Credentials.sharedInstance.secureStoragePrefix)-reddit-authorization"
     private static var appTokenKey: String {
         return label + "-app-authorization"
     }
 
-    /// Saves the token in secure storage
+    // MARK: - Keychain management
+
+    /// Removes the token from secure storage.
     ///
-    /// - Parameters:
-    ///   - key: The key used to identify the token
-    ///   - token: The token to be stored
-    /// - Returns: Whether the storing succeeded.
-    class func saveToken(forAuthorizationType type: Authorization,
-                         token: Token) -> Bool {
-        let data = token.data
+    /// - Parameter type: The authorization of the token to remove.
+    class func deleteToken(forAuthorizationType type: Authorization) -> Bool {
         let key: String
         switch type {
         case .application: key = appTokenKey
@@ -122,8 +160,34 @@ public class TokenStore {
             kSecClass as String         : kSecClassGenericPassword,
             kSecAttrLabel as String     : label,
             kSecAttrAccount as String   : key,
-        ] as CFDictionary
-        SecItemDelete(query)
+            ] as CFDictionary
+        let deleteStatus = SecItemDelete(query)
+        if deleteStatus == noErr {
+            authorizations.remove(type)
+            return true
+        } else {
+            return false
+        }
+    }
+
+    /// Saves the token in secure storage
+    ///
+    /// - Parameters:
+    ///   - key: The key used to identify the token
+    ///   - token: The token to be stored
+    /// - Returns: Whether the storing succeeded.
+    class func saveToken(forAuthorizationType type: Authorization, token: Token) -> Bool {
+        let deleteSuccess = TokenStore.deleteToken(forAuthorizationType: type)
+        if !deleteSuccess {
+            return false
+        }
+
+        let data = token.data
+        let key: String
+        switch type {
+        case .application: key = appTokenKey
+        case .user(name: let name): key = name
+        }
         
         let addQuery = [
             kSecClass as String         : kSecClassGenericPassword,
@@ -136,8 +200,6 @@ public class TokenStore {
 
         if status == noErr {
             authorizations.insert(type)
-            print("Stored")
-            print(token)
             return true
         } else {
             return false

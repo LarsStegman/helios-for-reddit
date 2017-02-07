@@ -43,11 +43,11 @@ public class UserCodeFlowProcessAuthorizer: NSObject,
             return try pageLoader.pageForAuthorization(state: state)
         } catch AuthorizationError.invalidStateString {
             NotificationCenter.default
-                .post(name: LoginAuthorizerNotifications.failedAuthorizationName,
+                .post(name: Notifications.failedAuthorizationName,
                       object: LoginAuthorizerError.internalError)
         } catch {
             NotificationCenter.default
-                .post(name: LoginAuthorizerNotifications.failedAuthorizationName,
+                .post(name: Notifications.failedAuthorizationName,
                       object: LoginAuthorizerError.unknownError)
         }
         lastState = nil
@@ -61,7 +61,7 @@ public class UserCodeFlowProcessAuthorizer: NSObject,
     public func handleRedditRedirectCallback(_ url: URL) {
         guard let lastState = lastState else {
             NotificationCenter.default
-                .post(name: LoginAuthorizerNotifications.failedAuthorizationName,
+                .post(name: Notifications.failedAuthorizationName,
                       object: LoginAuthorizerError.internalError)
             return
         }
@@ -158,7 +158,7 @@ public class UserCodeFlowProcessAuthorizer: NSObject,
         retrieveAccessTokenTask = nil
         print("Authorized \(user)!")
         NotificationCenter.default
-            .post(name: LoginAuthorizerNotifications.finishedAuthorizationName, object: user)
+            .post(name: Notifications.finishedAuthorizationName, object: Authorization.user(name: user))
     }
 
     /// Authorization failed
@@ -169,11 +169,11 @@ public class UserCodeFlowProcessAuthorizer: NSObject,
         retrieveAccessTokenTask = nil
         print("Failed with error: \(error.localizedDescription)")
         NotificationCenter.default
-            .post(name: LoginAuthorizerNotifications.failedAuthorizationName, object: error)
+            .post(name: Notifications.failedAuthorizationName, object: error)
     }
 
     /// The notification names.
-    public struct LoginAuthorizerNotifications {
+    public struct Notifications {
         /// The authorization has failed.
         public static let failedAuthorizationName = Notification.Name("failedLoginNotification")
 

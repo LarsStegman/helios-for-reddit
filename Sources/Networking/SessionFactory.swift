@@ -76,6 +76,9 @@ public class SessionFactory {
             }
             appAuthorizer.startAuthorization()
         }
+    }
 
+    public static func signout(authorization: Authorization) {
+        TokenStore.revokeToken(for: authorization)
     }
 }
