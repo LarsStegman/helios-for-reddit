@@ -21,9 +21,6 @@ extension Subreddit: RedditTyped {
             let isOver18 = json["over18"] as? Bool,
             let urlText = json["url"] as? String,
             let url = URL(string: urlText),
-            let headerImgText = json["header_img"] as? String?,
-            let headerSize = json["header_size"] as? [Double]?,
-            let headerTitle = json["header_title"] as? String?,
 
             let commentScoreHiddenDuration = json["comment_score_hide_mins"] as? Double,
             let sidebarText = json["description"] as? String,
@@ -42,6 +39,11 @@ extension Subreddit: RedditTyped {
             let subscriber = json["user_is_subscriber"] as? Bool else {
                 return nil
         }
+
+        // Optionally available
+        let headerImgText = json["header_img"] as? String
+        let headerSize = json["header_size"] as? [Double]
+        let headerTitle = json["header_title"] as? String
 
         var header: Header? = nil
         if let headerImgText = headerImgText, let url = URL(string: headerImgText),

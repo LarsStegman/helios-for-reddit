@@ -21,20 +21,12 @@ extension Link: RedditTyped {
             let upvotes = json["ups"] as? Int,
             let downvotes = json["downs"] as? Int,
 
-            let author = json["author"] as? String?,
-            let authorFlairCss = json["author_flair_css_class"] as? String?,
-            let authorFlairText = json["author_flair_text"] as? String?,
-
             let clicked = json["clicked"] as? Bool,
 
             let hidden = json["hidden"] as? Bool,
             let isSelf = json["is_self"] as? Bool,
-            let likedVal = json["likes"] as? Bool?,
-            let linkFlairCss = json["link_flair_csss_class"] as? String?,
-            let linkFlairText = json["link_flair_text"] as? String?,
+
             let locked = json["locked"] as? Bool,
-            let media = json["media"] as? [String: Any]?,
-            let mediaEmbed = json["media_embed"] as? [String: Any]?,
             let numberOfComments = json["num_comments"] as? Int,
             let isOver18 = json["over_18"] as? Bool,
             let isSpoiler = json["spoiler"] as? Bool,
@@ -49,24 +41,43 @@ extension Link: RedditTyped {
 
 
             let editedString = json["edited"] as? String,
-            let distinguishedStr = json["distinguished"] as? String?,
             let stickied = json["stickied"] as? Bool,
             let createdUtc = json["created_utc"] as? TimeInterval else {
                 return nil
         }
+
+        // Optionally available
+        let author = json["author"] as? String
+        let authorFlairCss = json["author_flair_css_class"] as? String
+        let authorFlairText = json["author_flair_text"] as? String
 
         var authorFlair: Flair? = nil
         if let authorText = authorFlairText {
             authorFlair = Flair(text: authorText, cssClass: authorFlairCss)
         }
 
-        let liked = Vote(value: likedVal)
+        let linkFlairCss = json["link_flair_csss_class"] as? String
+        let linkFlairText = json["link_flair_text"] as? String
 
         var linkFlair: Flair? = nil
         if let linkText = linkFlairText {
             linkFlair = Flair(text: linkText, cssClass: linkFlairCss)
         }
 
+        let media = json["media"] as? [String: Any]
+        let mediaEmbed = json["media_embed"] as? [String: Any]
+
+        let likedVal = json["likes"] as? Bool
+        let liked = Vote(value: likedVal)
+
+
+        let distinguishedStr = json["distinguished"] as? String
+        var distinguished: Distinguishment? = nil
+        if let text = distinguishedStr {
+            distinguished = Distinguishment(rawValue: text)
+        }
+
+        // Object generation
         let thumbnail = Thumbnail(text: thumbnailStr) ?? Thumbnail.default
         let edited: Edited
         if let editedTime = TimeInterval.init(editedString) {
@@ -75,10 +86,6 @@ extension Link: RedditTyped {
             edited = .notEdited
         }
 
-        var distinguished: Distinguishment? = nil
-        if let text = distinguishedStr {
-            distinguished = Distinguishment(rawValue: text)
-        }
 
         self = Link(id: id, fullname: fullname, title: title, url: url, domain: domain, score: score,
              upvotes: upvotes, downvotes: downvotes, author: author, authorFlair: authorFlair,
