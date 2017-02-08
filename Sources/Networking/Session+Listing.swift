@@ -133,7 +133,6 @@ extension Session {
     ///   - numberOfPages: The maximum number of pages to retrieve. If nil, pages will be
     ///                     loaded indefinitely until none are left.
     ///   - numberOfAlreadyLoadedItems: The number of already loaded items
-    ///   - numberOfItemsPerPage: 
     ///   - intermediateResultHandler: The closure that is called with intermediate results.
     ///
     /// - Warning: If you want to load all pages, but there are infinitely many pages, infinite recursion will occur.
@@ -165,5 +164,4 @@ extension Session {
             }
         }
     }
-
 }

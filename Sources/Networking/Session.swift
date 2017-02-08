@@ -27,6 +27,9 @@ public class Session {
     ///     - error: A resulting error
     public typealias ResultHandler<T> = (T?, SessionError?) -> Void
 
+
+    // MARK: - Authorization handling
+
     private var token: Token {
         didSet {
             urlSession.configuration.httpAdditionalHeaders = httpHeaders
@@ -45,14 +48,14 @@ public class Session {
     init(token: Token) {
         self.token = token
     }
-
-    // MARK: - Session management
     
     /// The headers for the http requests.
     private var httpHeaders: [AnyHashable : Any]? {
         return ["Authorization" : "bearer \(token.accessToken)",
                 "User-Agent" : Credentials.sharedInstance.userAgentString]
     }
+
+    // MARK: - Task management
 
     /// The urlSession through which all the http requests for this session are routed.
     private(set) lazy var urlSession: URLSession = {
@@ -72,6 +75,7 @@ public class Session {
     func queue(task: URLSessionTask) {
         guard !token.expired else {
             queuedTasks.append(task)
+            // Refresh
             return
         }
 
@@ -81,6 +85,7 @@ public class Session {
     /// Execute all queued tasks. If the token has expired, it will not execute the queued tasks.
     private func resumeQueuedTasks() {
         guard !token.expired else {
+            // Refresh
             return
         }
 
@@ -88,6 +93,8 @@ public class Session {
             queuedTasks.removeFirst().resume()
         }
     }
+
+    // MARK: - Scope validation
 
     /// Check whether the token gives authorization for the provided scope
     ///
