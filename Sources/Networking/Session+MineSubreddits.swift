@@ -20,7 +20,7 @@ extension Session {
     ///                       the boolean value is false and the completion handler will be called
     ///                       again until there is nothing left.
     /// - Warning: If you want to load all pages, but there are infinitely many pages, infinite recursion will occur.
-    public func subscriptions(numberOfPages: Int? = 1, numberOfItemsPerPage: Int = 25,
+    public func subscriptions(numberOfPages: Int? = 1,
                               resultHandler: @escaping IntermediateResultHandler<Listing>) {
         mine(where: "subscriber", numberOfPages: numberOfPages, resultHandler: resultHandler)
     }
@@ -32,7 +32,7 @@ extension Session {
     ///                         If nil, all pages will be loaded until there are none left.
     ///     - resultHandler: Called with the result, or an error.
     /// - Warning: If you want to load all pages, but there are infinitely many pages, infinite recursion will occur.
-    public func contributor(numberOfPages: Int? = 1, numberOfItemsPerPage: Int = 25,
+    public func contributor(numberOfPages: Int? = 1,
                             resultHandler: @escaping IntermediateResultHandler<Listing>) {
         mine(where: "contributor", numberOfPages: numberOfPages, resultHandler: resultHandler)
     }
@@ -64,6 +64,6 @@ extension Session {
         }
 
         let url = URL(string: "subreddits/mine/\(`where`)", relativeTo: apiHost)!
-        loadListings(from: url, resultHandler: resultHandler)
+        loadListings(from: url, numberOfPages: numberOfPages, resultHandler: resultHandler)
     }
 }
