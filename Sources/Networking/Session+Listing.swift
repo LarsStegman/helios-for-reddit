@@ -66,7 +66,7 @@ extension Session {
     ///       - Called with `.invalidResponse` error, if `url` does not return a listing.
     ///       - Called with `.invalidSource` if `url` contains invalid url components.
     func loadListing(from url: URL, query: [URLQueryItem]? = nil, completionHandler: @escaping ResultHandler<Listing>) {
-        guard var components = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
+        guard var components = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
             completionHandler(nil, .invalidSource)
             return
         }

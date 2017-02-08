@@ -63,7 +63,7 @@ extension Session {
             return
         }
 
-        let url = URL(string: "subscriber/mine/\(`where`)", relativeTo: apiHost)!
+        let url = URL(string: "subreddits/mine/\(`where`)", relativeTo: apiHost)!
         loadListings(from: url, resultHandler: resultHandler)
     }
 }
