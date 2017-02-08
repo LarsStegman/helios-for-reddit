@@ -11,11 +11,21 @@ import Foundation
 public class Session {
 
     /// The completion handler called when the request has been fullfilled or failed.
-    /// The boolean value indicates whether the loading has finished.
-    /// - T: The (partial) result.
-    /// - SessionError: A resulting error
-    /// - Bool: Indicates whether the loading has finished.
-    public typealias ResultHandler<T> = (T?, SessionError?, Bool) -> Void
+    /// The boolean value indicates whether the loading has finished. If false, more items may be loaded and the
+    /// completionHandler will be called again.
+    ///
+    /// - Parameters:
+    ///     - result: The (partial) result.
+    ///     - error: A resulting error
+    ///     - finished: Indicates whether the loading has finished.
+    public typealias IntermediateResultHandler<T> = (T?, SessionError?, Bool) -> Void
+
+    /// The completion handler called when the request has been fullfilled or failed.
+    ///
+    /// - Parameters:
+    ///     - result: The (partial) result.
+    ///     - error: A resulting error
+    public typealias ResultHandler<T> = (T?, SessionError?) -> Void
 
     private var token: Token {
         didSet {

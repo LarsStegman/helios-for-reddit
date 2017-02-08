@@ -13,6 +13,7 @@ public struct Listing {
     let after: String?
     let modhash: String?
     var source: URL?
+
     public let children: [Thing]
     public static let kind = Kind.listing
 
