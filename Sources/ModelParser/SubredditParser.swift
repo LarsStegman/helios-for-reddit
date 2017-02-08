@@ -22,13 +22,10 @@ extension Subreddit: RedditTyped {
 
             let commentScoreHiddenDuration = json["comment_score_hide_mins"] as? Double,
             let sidebarText = json["description"] as? String,
-            let htmlSidebarText = json["description_html"] as? String,
 
             let trafficIsPublicallyAccessible = json["public_traffic"] as? Bool,
 
             let allowedSubmissionTypesStr = json["submission_type"] as? String,
-            let submitLinkLabel = json["submit_link_label"] as? String,
-            let submitTextLabel = json["submit_text_label"] as? String,
             let typeStr = json["subreddit_type"] as? String,
 
             let banned = json["user_is_banned"] as? Bool,
@@ -50,6 +47,9 @@ extension Subreddit: RedditTyped {
             header = Header(imageUrl: url, size: size, title: title)
         }
 
+        let submitLinkLabel = json["submit_link_label"] as? String
+        let submitTextLabel = json["submit_text_label"] as? String
+        let submitText = json["submit_text"] as? String
         let numberOfSubscribers = json["subscribers"] as? Int
         let numberOfAccountsActive = json["accounts_active"] as? Int
 
@@ -65,10 +65,11 @@ extension Subreddit: RedditTyped {
                   description: description, numberOfSubscribers: numberOfSubscribers,
                   numberOfAccountsActive: numberOfAccountsActive, isOver18: isOver18, url: url,
                   header: header, commentScoreHiddenDuration: hiddenDuration,
-                  sidebarText: sidebarText, htmlSidebarText: htmlSidebarText,
+                  sidebarText: sidebarText,
                   trafficIsPublicallyAccessible: trafficIsPublicallyAccessible,
-                  allowedSubmissionTypes: allowedSubmissionTypes, submitLinkLabel: submitLinkLabel,
-                  submitTextLabel: submitTextLabel, type: subredditType,
+                  allowedSubmissionTypes: allowedSubmissionTypes,
+                  submitLinkLabel: submitLinkLabel, submitTextLabel: submitTextLabel,
+                  submitText: submitText, type: subredditType,
                   currentUserSubredditRelations: userRelations)
     }
 }

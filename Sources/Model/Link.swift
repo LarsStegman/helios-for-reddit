@@ -39,7 +39,6 @@ public struct Link: Created, Thing, Votable {
     public var isSaved: Bool
 
     public var selftext: String
-    public var htmlSelftext: String
     public let subreddit: String
     public let subredditId: String
     public let thumbnail: Thumbnail

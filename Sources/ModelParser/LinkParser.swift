@@ -34,7 +34,6 @@ extension Link: RedditTyped {
             let saved = json["saved"] as? Bool,
 
             let selftext = json["selftext"] as? String,
-            let htmlSelftext = json["selftext_html"] as? String,
             let subreddit = json["subreddit"] as? String,
             let subredditId = json["subreddit_id"] as? String,
             let thumbnailStr = json["thumbnail"] as? String,
@@ -92,7 +91,7 @@ extension Link: RedditTyped {
              clicked: clicked, isHidden: hidden, isSelf: isSelf, liked: liked,
              linkFlair: linkFlair, isLocked: locked, media: media, mediaEmbed: mediaEmbed,
              numberOfComments: numberOfComments, isOver18: isOver18, isSpoiler: isSpoiler,
-             permalink: permalink, isSaved: saved, selftext: selftext, htmlSelftext: htmlSelftext,
+             permalink: permalink, isSaved: saved, selftext: selftext,
              subreddit: subreddit, subredditId: subredditId, thumbnail: thumbnail, edited: edited,
              distinguished: distinguished, isStickied: stickied,
              createdUtc: Date(timeIntervalSince1970: createdUtc))

@@ -31,7 +31,6 @@ extension Comment: RedditTyped {
             let parentId = json["parent_id"] as? String,
 
             let body = json["body"] as? String,
-            let htmlBody = json["body_html"] as? String,
             let editedText = json["edited"] as? String,
             let createdUtc = json["created_utc"] as? TimeInterval,
 
@@ -91,8 +90,7 @@ extension Comment: RedditTyped {
 
         self = Comment(id: id, fullname: fullname, author: author, authorFlair: authorFlair,
                 authorLink: authorLink, distinguished: distinguished, linkId: linkId,
-                linkTitle: linkTitle, linkUrl: linkUrl, parentId: parentId, body: body,
-                htmlBody: htmlBody, edited: edited, replies: replies,
+                linkTitle: linkTitle, linkUrl: linkUrl, parentId: parentId, body: body, edited: edited, replies: replies,
                 createdUtc: Date(timeIntervalSince1970: createdUtc), liked: liked, upvotes: upvotes,
                 downvotes: downvotes, score: score, scoreHidden: scoreHidden,
                 numberOfTimesGilded: numberOfTimesGilded,

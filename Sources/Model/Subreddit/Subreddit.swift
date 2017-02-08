@@ -27,14 +27,13 @@ public struct Subreddit: Thing, Equatable, Hashable {
     public let commentScoreHiddenDuration: TimeInterval
     /// json key: "description"
     public let sidebarText: String
-    /// json key: "description_html"
-    public let htmlSidebarText: String
 
     public let trafficIsPublicallyAccessible: Bool
 
     public let allowedSubmissionTypes: SubmissionType
     public let submitLinkLabel: String?
     public let submitTextLabel: String?
+    public let submitText: String?
     public let type: SubredditType
 
     public let currentUserSubredditRelations: UserSubredditRelations

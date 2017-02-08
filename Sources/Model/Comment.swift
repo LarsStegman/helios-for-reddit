@@ -26,7 +26,6 @@ public struct Comment: Created, Thing, Votable {
     public let parentId: String
 
     public let body: String
-    public let htmlBody: String
     public let edited: Edited
     public var replies: Listing?
     public let createdUtc: Date
