@@ -16,8 +16,6 @@ extension Subreddit: RedditTyped {
             let title = json["title"] as? String,
             let displayName = json["display_name"] as? String,
             let description = json["public_description"] as? String,
-            let numberOfSubscribers = json["subscribers"] as? Int,
-            let numberOfAccountsActive = json["accounts_active"] as? Int,
             let isOver18 = json["over18"] as? Bool,
             let urlText = json["url"] as? String,
             let url = URL(string: urlText),
@@ -51,6 +49,11 @@ extension Subreddit: RedditTyped {
             let size = CGSize(width: size[0], height: size[1])
             header = Header(imageUrl: url, size: size, title: title)
         }
+
+        let numberOfSubscribers = json["subscribers"] as? Int
+        let numberOfAccountsActive = json["accounts_active"] as? Int
+
+        // Object creation
 
         let hiddenDuration = 60 * commentScoreHiddenDuration
         let allowedSubmissionTypes = SubmissionType(text: allowedSubmissionTypesStr) ?? .any

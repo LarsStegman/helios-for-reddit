@@ -16,8 +16,8 @@ public struct Subreddit: Thing, Equatable, Hashable {
     public let title: String
     public let displayName: String
     public let description: String
-    public let numberOfSubscribers: Int
-    public var numberOfAccountsActive: Int
+    public let numberOfSubscribers: Int?
+    public var numberOfAccountsActive: Int?
     public let isOver18: Bool
     public let url: URL
     public let header: Header?
