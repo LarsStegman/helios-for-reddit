@@ -74,6 +74,7 @@ public class Session {
     /// - Parameter task: The task to perform.
     func queue(task: URLSessionTask) {
         guard !token.expired else {
+            print("Task suspended, token is expired")
             queuedTasks.append(task)
             // Refresh
             return
@@ -100,7 +101,7 @@ public class Session {
     ///
     /// - Parameter scope: The scope to check.
     /// - Returns: Whether the token gives authorization for the scope.
-    func authorized(for scope: Scope) -> Bool {
+    public func authorized(for scope: Scope) -> Bool {
         return token.scopes.contains(scope)
     }
 }
