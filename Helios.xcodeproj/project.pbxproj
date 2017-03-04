@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		48001E591E6247860092E868 /* Helios.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 48001E581E6247860092E868 /* Helios.podspec */; };
 		481EF1221E317B19007C6085 /* String+subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481EF1211E317B19007C6085 /* String+subscript.swift */; };
 		482590A81E0738D0009E67BA /* Helios.h in Headers */ = {isa = PBXBuildFile; fileRef = 482590A71E0738D0009E67BA /* Helios.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		484D9DFC1E059E8F00FFFBCF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 484D9DFB1E059E8E00FFFBCF /* Security.framework */; };
@@ -33,6 +34,7 @@
 		48885A6E1E1C55C500265874 /* UserSubredditRelations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48885A691E1C55C500265874 /* UserSubredditRelations.swift */; };
 		48885A711E1C55D900265874 /* LinkParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48885A6F1E1C55D900265874 /* LinkParser.swift */; };
 		48885A721E1C55D900265874 /* SubredditParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48885A701E1C55D900265874 /* SubredditParser.swift */; };
+		488F8FAD1E6A1000002FAD10 /* SubredditSerializationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488F8FAA1E69E631002FAD10 /* SubredditSerializationTests.swift */; };
 		489E81BB1E1703E00091DDCF /* Distinguishment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E81B71E1703E00091DDCF /* Distinguishment.swift */; };
 		489E81BC1E1703E00091DDCF /* Edited.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E81B81E1703E00091DDCF /* Edited.swift */; };
 		489E81BD1E1703E00091DDCF /* Flair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E81B91E1703E00091DDCF /* Flair.swift */; };
@@ -48,6 +50,8 @@
 		48B7F0CB1E47D1F70090A89C /* Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B7F0CA1E47D1F70090A89C /* Authorization.swift */; };
 		48B7F0CD1E47E3B30090A89C /* SessionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B7F0CC1E47E3B30090A89C /* SessionFactory.swift */; };
 		48B7F0CF1E47EA690090A89C /* SessionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B7F0CE1E47EA690090A89C /* SessionError.swift */; };
+		48BD3B951E68CD01002F9D91 /* SubredditSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BD3B941E68CD01002F9D91 /* SubredditSerializer.swift */; };
+		48BD3B971E68CD59002F9D91 /* Serialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BD3B961E68CD59002F9D91 /* Serialization.swift */; };
 		48D35FDF1E1AE23300E4FDF3 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D35FDE1E1AE23300E4FDF3 /* Link.swift */; };
 		48EB894B1E300A9E0025D0C0 /* TokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EB894A1E300A9E0025D0C0 /* TokenStore.swift */; };
 		48EBF8631E15CB2600A4281E /* Scope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF85D1E15CB2600A4281E /* Scope.swift */; };
@@ -66,6 +70,8 @@
 		48F591431E32D8CB009164ED /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F591421E32D8CB009164ED /* Session.swift */; };
 		48F591461E339608009164ED /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 487639411E0573D300E9F9BD /* LICENSE */; };
 		48F591471E339608009164ED /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 48876D641E0461EA00CD0C5C /* .gitignore */; };
+		C4BE3051A5132CC862C0859B /* Pods_HeliosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15DD38AC7DBBB24C6D39A22E /* Pods_HeliosTests.framework */; };
+		EFF856BAC20828BA3596F365 /* Pods_Helios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60950F26B7A8905B0F9EF41D /* Pods_Helios.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +85,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0BDE65D77D19403397F3D65C /* Pods-Helios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Helios.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Helios/Pods-Helios.release.xcconfig"; sourceTree = "<group>"; };
+		15DD38AC7DBBB24C6D39A22E /* Pods_HeliosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HeliosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		18E953304ABA3416C71F6CF0 /* Pods-HeliosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeliosTests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-HeliosTests/Pods-HeliosTests.release.xcconfig"; sourceTree = "<group>"; };
+		1D0A408655E25949E4FFAC4F /* Pods-Helios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Helios.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Helios/Pods-Helios.debug.xcconfig"; sourceTree = "<group>"; };
+		48001E581E6247860092E868 /* Helios.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Helios.podspec; sourceTree = "<group>"; };
 		481EF1211E317B19007C6085 /* String+subscript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+subscript.swift"; path = "Sources/String+subscript.swift"; sourceTree = SOURCE_ROOT; };
 		482590A71E0738D0009E67BA /* Helios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Helios.h; path = Sources/Helios.h; sourceTree = SOURCE_ROOT; };
 		484D9DFB1E059E8E00FFFBCF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -110,6 +121,7 @@
 		48885A691E1C55C500265874 /* UserSubredditRelations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserSubredditRelations.swift; path = Sources/Model/Subreddit/UserSubredditRelations.swift; sourceTree = SOURCE_ROOT; };
 		48885A6F1E1C55D900265874 /* LinkParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LinkParser.swift; path = Sources/ModelParser/LinkParser.swift; sourceTree = SOURCE_ROOT; };
 		48885A701E1C55D900265874 /* SubredditParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubredditParser.swift; path = Sources/ModelParser/SubredditParser.swift; sourceTree = SOURCE_ROOT; };
+		488F8FAA1E69E631002FAD10 /* SubredditSerializationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubredditSerializationTests.swift; path = Tests/ModelSerializationTests/SubredditSerializationTests.swift; sourceTree = SOURCE_ROOT; };
 		489E81B71E1703E00091DDCF /* Distinguishment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Distinguishment.swift; path = Sources/Model/Distinguishment.swift; sourceTree = SOURCE_ROOT; };
 		489E81B81E1703E00091DDCF /* Edited.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Edited.swift; path = Sources/Model/Edited.swift; sourceTree = SOURCE_ROOT; };
 		489E81B91E1703E00091DDCF /* Flair.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Flair.swift; path = Sources/Model/Flair.swift; sourceTree = SOURCE_ROOT; };
@@ -125,6 +137,8 @@
 		48B7F0CA1E47D1F70090A89C /* Authorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Authorization.swift; path = Sources/Authorization/Token/Authorization.swift; sourceTree = SOURCE_ROOT; };
 		48B7F0CC1E47E3B30090A89C /* SessionFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionFactory.swift; path = Sources/Networking/SessionFactory.swift; sourceTree = SOURCE_ROOT; };
 		48B7F0CE1E47EA690090A89C /* SessionError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionError.swift; path = Sources/Networking/SessionError.swift; sourceTree = SOURCE_ROOT; };
+		48BD3B941E68CD01002F9D91 /* SubredditSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubredditSerializer.swift; path = Sources/ModelSerialization/SubredditSerializer.swift; sourceTree = SOURCE_ROOT; };
+		48BD3B961E68CD59002F9D91 /* Serialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Serialization.swift; path = Sources/ModelSerialization/Serialization.swift; sourceTree = SOURCE_ROOT; };
 		48D35FDE1E1AE23300E4FDF3 /* Link.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Link.swift; path = Sources/Model/Link.swift; sourceTree = SOURCE_ROOT; };
 		48EB894A1E300A9E0025D0C0 /* TokenStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TokenStore.swift; path = Sources/Authorization/Token/TokenStore.swift; sourceTree = SOURCE_ROOT; };
 		48EBF85D1E15CB2600A4281E /* Scope.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Scope.swift; path = Sources/Authorization/Token/Scope.swift; sourceTree = SOURCE_ROOT; };
@@ -141,6 +155,8 @@
 		48F123EF1E1E3BF300DA0CC4 /* VotableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VotableTests.swift; path = Tests/ModelTests/VotableTests.swift; sourceTree = SOURCE_ROOT; };
 		48F123F31E1EFEF900DA0CC4 /* RedditTyped.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RedditTyped.swift; path = Sources/ModelParser/RedditTyped.swift; sourceTree = SOURCE_ROOT; };
 		48F591421E32D8CB009164ED /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Session.swift; path = Sources/Networking/Session.swift; sourceTree = SOURCE_ROOT; };
+		60950F26B7A8905B0F9EF41D /* Pods_Helios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Helios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F8475F5712D65E75451B6AC /* Pods-HeliosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeliosTests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-HeliosTests/Pods-HeliosTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +165,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				484D9DFC1E059E8F00FFFBCF /* Security.framework in Frameworks */,
+				EFF856BAC20828BA3596F365 /* Pods_Helios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,12 +174,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				48876D541E045D7D00CD0C5C /* Helios.framework in Frameworks */,
+				C4BE3051A5132CC862C0859B /* Pods_HeliosTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4500E9626319D6941AD9D6B9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1D0A408655E25949E4FFAC4F /* Pods-Helios.debug.xcconfig */,
+				0BDE65D77D19403397F3D65C /* Pods-Helios.release.xcconfig */,
+				7F8475F5712D65E75451B6AC /* Pods-HeliosTests.debug.xcconfig */,
+				18E953304ABA3416C71F6CF0 /* Pods-HeliosTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		480440681E259381009ED70A /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +209,8 @@
 			isa = PBXGroup;
 			children = (
 				484D9DFB1E059E8E00FFFBCF /* Security.framework */,
+				60950F26B7A8905B0F9EF41D /* Pods_Helios.framework */,
+				15DD38AC7DBBB24C6D39A22E /* Pods_HeliosTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -212,6 +243,7 @@
 		48876D401E045D7C00CD0C5C = {
 			isa = PBXGroup;
 			children = (
+				48001E581E6247860092E868 /* Helios.podspec */,
 				485A8F6C1E3548E100F3D5F3 /* AppCredentials-Template.plist */,
 				485A8F6A1E35475700F3D5F3 /* README.md */,
 				487639411E0573D300E9F9BD /* LICENSE */,
@@ -219,6 +251,7 @@
 				48876D4C1E045D7D00CD0C5C /* Helios */,
 				48876D4B1E045D7D00CD0C5C /* Products */,
 				484D9DFA1E059E8E00FFFBCF /* Frameworks */,
+				4500E9626319D6941AD9D6B9 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -245,6 +278,7 @@
 		48876D571E045D7D00CD0C5C /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				488F8FA91E69E60C002FAD10 /* ModelSerializationTests */,
 				485FF7181E2170BB00FEB50D /* AuthorizationTests */,
 				48F123ED1E1E3B1900DA0CC4 /* ModelTests */,
 				48F123EC1E1E3A4100DA0CC4 /* ModelParserTests */,
@@ -253,6 +287,14 @@
 			name = Tests;
 			path = HeliosTests;
 			sourceTree = SOURCE_ROOT;
+		};
+		488F8FA91E69E60C002FAD10 /* ModelSerializationTests */ = {
+			isa = PBXGroup;
+			children = (
+				488F8FAA1E69E631002FAD10 /* SubredditSerializationTests.swift */,
+			);
+			name = ModelSerializationTests;
+			sourceTree = "<group>";
 		};
 		489E81B61E16FBC20091DDCF /* ModelParser */ = {
 			isa = PBXGroup;
@@ -266,6 +308,15 @@
 				48F123F31E1EFEF900DA0CC4 /* RedditTyped.swift */,
 			);
 			name = ModelParser;
+			sourceTree = "<group>";
+		};
+		48BD3B931E68CC99002F9D91 /* ModelSerialization */ = {
+			isa = PBXGroup;
+			children = (
+				48BD3B961E68CD59002F9D91 /* Serialization.swift */,
+				48BD3B941E68CD01002F9D91 /* SubredditSerializer.swift */,
+			);
+			name = ModelSerialization;
 			sourceTree = "<group>";
 		};
 		48D35FEC1E1B0A3000E4FDF3 /* Subreddit */ = {
@@ -322,6 +373,7 @@
 				48EBF8691E15CB7A00A4281E /* Credentials.swift */,
 				487639391E055D1A00E9F9BD /* Authorization */,
 				48EBF8531E15BF6A00A4281E /* Model */,
+				48BD3B931E68CC99002F9D91 /* ModelSerialization */,
 				489E81B61E16FBC20091DDCF /* ModelParser */,
 				480440681E259381009ED70A /* Network */,
 				481EF1211E317B19007C6085 /* String+subscript.swift */,
@@ -362,10 +414,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 48876D5E1E045D7D00CD0C5C /* Build configuration list for PBXNativeTarget "Helios" */;
 			buildPhases = (
+				F081E95BBDAC60469B75F9E2 /* [CP] Check Pods Manifest.lock */,
 				48876D451E045D7D00CD0C5C /* Sources */,
 				48876D461E045D7D00CD0C5C /* Frameworks */,
 				48876D471E045D7D00CD0C5C /* Headers */,
 				48876D481E045D7D00CD0C5C /* Resources */,
+				C89908AF4A21CC23E3668B62 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -380,9 +434,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 48876D611E045D7D00CD0C5C /* Build configuration list for PBXNativeTarget "HeliosTests" */;
 			buildPhases = (
+				178309C7465E20EED7FA0032 /* [CP] Check Pods Manifest.lock */,
 				48876D4F1E045D7D00CD0C5C /* Sources */,
 				48876D501E045D7D00CD0C5C /* Frameworks */,
 				48876D511E045D7D00CD0C5C /* Resources */,
+				0CEAB4DE97B668B86B97C9FE /* [CP] Embed Pods Frameworks */,
+				8308AB7359A9BEBB77BC1706 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -445,6 +502,7 @@
 				48F591461E339608009164ED /* LICENSE in Resources */,
 				48F591471E339608009164ED /* .gitignore in Resources */,
 				485A8F6D1E3548E100F3D5F3 /* AppCredentials-Template.plist in Resources */,
+				48001E591E6247860092E868 /* Helios.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,6 +514,84 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0CEAB4DE97B668B86B97C9FE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-HeliosTests/Pods-HeliosTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		178309C7465E20EED7FA0032 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8308AB7359A9BEBB77BC1706 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-HeliosTests/Pods-HeliosTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C89908AF4A21CC23E3668B62 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Helios/Pods-Helios-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F081E95BBDAC60469B75F9E2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		48876D451E045D7D00CD0C5C /* Sources */ = {
@@ -482,6 +618,8 @@
 				48EBF8671E15CB2600A4281E /* AuthorizationDuration.swift in Sources */,
 				48EBF8701E15CC1100A4281E /* Kind.swift in Sources */,
 				48B7F0CB1E47D1F70090A89C /* Authorization.swift in Sources */,
+				48BD3B971E68CD59002F9D91 /* Serialization.swift in Sources */,
+				48BD3B951E68CD01002F9D91 /* SubredditSerializer.swift in Sources */,
 				4858A77C1E2917B70061E009 /* UserToken.swift in Sources */,
 				48EBF87E1E16EDAF00A4281E /* Created.swift in Sources */,
 				48885A6B1E1C55C500265874 /* SubmissionType.swift in Sources */,
@@ -521,6 +659,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				48F123F01E1E3BF300DA0CC4 /* VotableTests.swift in Sources */,
+				488F8FAD1E6A1000002FAD10 /* SubredditSerializationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,6 +775,7 @@
 		};
 		48876D5F1E045D7D00CD0C5C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1D0A408655E25949E4FFAC4F /* Pods-Helios.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -658,6 +798,7 @@
 		};
 		48876D601E045D7D00CD0C5C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0BDE65D77D19403397F3D65C /* Pods-Helios.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -679,6 +820,7 @@
 		};
 		48876D621E045D7D00CD0C5C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F8475F5712D65E75451B6AC /* Pods-HeliosTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
@@ -687,7 +829,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nl.stegman.HeliosTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "HeliosTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -695,6 +836,7 @@
 		};
 		48876D631E045D7D00CD0C5C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 18E953304ABA3416C71F6CF0 /* Pods-HeliosTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
@@ -703,7 +845,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nl.stegman.HeliosTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "HeliosTests-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

@@ -8,17 +8,8 @@
 
 import Foundation
 
-public enum SubmissionType {
+public enum SubmissionType: String {
     case link
     case `self`
     case any
-
-    init?(text: String) {
-        switch text {
-        case "any": self = .any
-        case "self": self = .self
-        case "link": self = .link
-        default: return nil
-        }
-    }
 }

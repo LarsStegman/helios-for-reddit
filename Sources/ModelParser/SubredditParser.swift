@@ -56,7 +56,7 @@ extension Subreddit: RedditTyped {
         // Object creation
 
         let hiddenDuration = 60 * commentScoreHiddenDuration
-        let allowedSubmissionTypes = SubmissionType(text: allowedSubmissionTypesStr) ?? .any
+        let allowedSubmissionTypes = SubmissionType(rawValue: allowedSubmissionTypesStr) ?? .any
         let subredditType = SubredditType(rawValue: typeStr) ?? .public
         let userRelations = UserSubredditRelations(banned: banned, contributing: contributer,
                                                    moderator: moderator, subscriber: subscriber)
