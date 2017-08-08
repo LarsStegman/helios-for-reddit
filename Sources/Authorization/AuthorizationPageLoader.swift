@@ -8,21 +8,35 @@
 
 import Foundation
 
-/// Generates the url for the page the user has to visit to authorize the application using the code
-/// flow.
-class AuthorizationPageLoader {
+protocol AuthorizationLocationCreator {
+    func urlForAuthorization(using parameters: AuthorizationParameters) throws -> URL
+}
+
+protocol AuthorizationParameters {
+    var clientId: String { get }
+    var redirectUri: URL { get }
+    var scopes: [Scope] { get }
+    var preferredDuration: AuthorizationDuration { get }
+    var sentState: String { get }
+    var responseType: AuthorizationFlowType { get }
+}
+
+extension AuthorizationParameters {
+    var scopeList: String {
+        return scopes.map( { return $0.rawValue }).joined(separator: " ")
+    }
+}
+
+extension AuthorizationContext: AuthorizationParameters {}
+
+/// Creates the URL at which users can authorize an application 
+struct AuthorizationPageLoader: AuthorizationLocationCreator {
     var compact: Bool = false
-    let flowType: AuthorizationFlowType
-    var responseType: String {
-        return flowType.rawValue
-    }
-
-    init(compact: Bool = false, flowType: AuthorizationFlowType) {
+    init(compact: Bool = false) {
         self.compact = compact
-        self.flowType = flowType
     }
 
-    var authorizationURL: URLComponents {
+    private var authorizationURL: URLComponents {
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
         urlComponents.host = "www.reddit.com"
@@ -30,32 +44,23 @@ class AuthorizationPageLoader {
         return urlComponents
     }
 
-    func pageForAuthorization(state: String) throws -> URL? {
-        guard let encodedState = state.addingPercentEncoding(
-            withAllowedCharacters: .urlQueryAllowed) else {
+    /// Generates the url where the user can authorize the application
+    ///
+    /// - Parameter parameters: <#parameters description#>
+    /// - Returns: <#return value description#>
+    /// - Throws: <#throws value description#>
+    func urlForAuthorization(using parameters: AuthorizationParameters) throws -> URL {
+        guard let encodedState = parameters.sentState.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             throw AuthorizationError.invalidStateString
         }
 
         var url = authorizationURL
-        url.queryItems = [URLQueryItem(name: "client_id", value: Credentials.sharedInstance.clientId),
-                          URLQueryItem(name: "response_type", value: responseType),
+        url.queryItems = [URLQueryItem(name: "client_id", value: parameters.clientId),
+                          URLQueryItem(name: "response_type", value: parameters.responseType.rawValue),
                           URLQueryItem(name: "state", value: encodedState),
-                          URLQueryItem(name: "redirect_uri",
-                                       value: Credentials.sharedInstance.redirectUri.absoluteString),
-                          URLQueryItem(name: "duration",
-                                       value: Credentials.sharedInstance.authorizationDuration.rawValue),
-                          URLQueryItem(name: "scope", value: Credentials.sharedInstance.scopeList)]
+                          URLQueryItem(name: "redirect_uri", value: parameters .redirectUri.absoluteString),
+                          URLQueryItem(name: "duration", value: parameters.preferredDuration.rawValue),
+                          URLQueryItem(name: "scope", value: parameters.scopeList)]
         return url.url!
-    }
-
-    enum AuthorizationFlowType: String {
-        case code
-        case implicit = "token"
-    }
-}
-
-extension Credentials {
-    var scopeList: String {
-        return authorizationScopes.map( { return $0.rawValue }).joined(separator: " ")
     }
 }

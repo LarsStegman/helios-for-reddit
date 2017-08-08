@@ -9,77 +9,71 @@
 import Foundation
 
 struct UserToken: Token {
-    let userName: String?
+    let username: String?
     let accessToken: String
     let refreshToken: String?
     let scopes: [Scope]
     let expiresAt: Date
+
     var authorizationType: Authorization {
-        if let name = userName {
+        if let name = username {
             return .user(name: name)
         } else {
             return .application
         }
     }
+    var refreshable: Bool {
+        return refreshToken != nil
+    }
 
-    init(userName: String?, accessToken: String, refreshToken: String?, scopes: [Scope],
+    init(username: String?, accessToken: String, refreshToken: String?, scopes: [Scope],
          expiresAt: Date) {
-        self.userName = userName
+        self.username = username
         self.accessToken = accessToken
         self.refreshToken = refreshToken
         self.scopes = scopes
         self.expiresAt = expiresAt
     }
 
-    init?(userName: String?, json: [String: Any]) {
-        guard let token = json["access_token"] as? String,
-            let refreshToken = json["refresh_token"] as? String?,
-            let scope = json["scope"] as? String,
-            let expiresIn = json["expires_in"] as? TimeInterval else {
-                return nil
+    init(username: String?, token: UserToken) {
+        self.init(username: username, accessToken: token.accessToken, refreshToken: token.refreshToken,
+                         scopes: token.scopes, expiresAt: token.expiresAt)
+    }
+
+    private enum CodingKeys: String, CodingKey {
+        case username
+        case accessToken = "access_token"
+        case refreshToken = "refresh_token"
+        case scopes = "scope"
+        case expiresAt
+        case expiresIn = "expires_in"
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(username, forKey: .username)
+        try container.encode(accessToken, forKey: .accessToken)
+        try container.encode(refreshToken, forKey: .refreshToken)
+        try container.encode(scopes, forKey: .scopes)
+        try container.encode(expiresAt, forKey: .expiresAt)
+    }
+
+    init(from: Decoder) throws {
+        let container = try from.container(keyedBy: CodingKeys.self)
+        username = try container.decodeIfPresent(String.self, forKey: .username)
+        accessToken = try container.decode(String.self, forKey: .accessToken)
+        refreshToken = try container.decodeIfPresent(String.self, forKey: .refreshToken)
+        if let scopesFromList = try? container.decode([Scope].self, forKey: .scopes) {
+            scopes = scopesFromList
+        } else {
+            scopes = Scope.scopes(from: try container.decode(String.self, forKey: .scopes))
         }
 
-        let scopes = scope.components(separatedBy: " ").map({ return Scope(rawValue: $0)! })
-        self = UserToken(userName: userName, accessToken: token, refreshToken: refreshToken,
-                         scopes: scopes, expiresAt: Date(timeIntervalSinceNow: expiresIn))
-    }
-
-    var data: Data {
-        let propertyList =  [encodingKeys.accessToken : accessToken,
-                             encodingKeys.refreshToken: refreshToken as Any,
-                             encodingKeys.userName : userName as Any,
-                             encodingKeys.scopes : scopes.map( { return $0.rawValue } ),
-                             encodingKeys.expiresAt : expiresAt.timeIntervalSince1970] as [String: Any]
-
-        return try! PropertyListSerialization.data(fromPropertyList: propertyList,
-                                                   format: .binary, options: .allZeros)
-    }
-
-    init?(from data: Data) {
-        guard let dict =
-            (try? PropertyListSerialization.propertyList(from: data,
-                                                         options: .mutableContainersAndLeaves,
-                                                         format: nil)) as? [String: Any],
-            let accessTokenVal = dict[encodingKeys.accessToken] as? String,
-            let refreshTokenVal = dict[encodingKeys.refreshToken] as? String,
-            let userNameVal = dict[encodingKeys.userName] as? String?,
-            let scopesVal = dict[encodingKeys.scopes] as? [String],
-            let expiresAtVal = dict[encodingKeys.expiresAt] as? TimeInterval else {
-                return nil
+        if let expirationDate = try? container.decode(Date.self, forKey: .expiresAt) {
+            expiresAt = expirationDate
+        } else {
+            expiresAt = Date(timeIntervalSinceNow: try container.decode(TimeInterval.self, forKey: .expiresIn))
         }
-
-        let scopes = scopesVal.map({ return Scope(rawValue: $0)! })
-        let date = Date(timeIntervalSince1970: expiresAtVal)
-
-        self = UserToken(userName: userNameVal, accessToken: accessTokenVal, refreshToken: refreshTokenVal, scopes: scopes, expiresAt: date)
-    }
-
-    private struct encodingKeys {
-        static let accessToken = "accessToken"
-        static let refreshToken = "refreshToken"
-        static let userName = "userName"
-        static let scopes = "scopes"
-        static let expiresAt = "expiresAt"
     }
 }
 

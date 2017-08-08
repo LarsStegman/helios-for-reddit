@@ -10,7 +10,7 @@ import Foundation
 
 /// The scope of the request authorization
 /// See https://www.reddit.com/api/v1/scopes for a complete list of scopes.
-public enum Scope: String {
+public enum Scope: String, Codable {
     /// Spend my reddit gold creddits on giving gold to other users
     case creddits
 
@@ -88,4 +88,15 @@ public enum Scope: String {
     
     /// Select my subreddit flair. Change link flair on my submissions
     case flair
+
+
+    /// Generates a list of scopes from a scope string. If a string is invalid, it is ignored.
+    ///
+    /// - Parameters:
+    ///   - string: A string containing scopes
+    ///   - separator: The separator with which the scopes are separated
+    /// - Returns: An array of scopes.
+    static func scopes(from string: String, separator: String = " ") -> [Scope] {
+        return string.components(separatedBy: separator).flatMap({ return Scope(rawValue: $0) })
+    }
 }

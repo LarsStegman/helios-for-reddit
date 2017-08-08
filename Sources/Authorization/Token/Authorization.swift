@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum Authorization: CustomStringConvertible, Hashable {
+public enum Authorization: CustomStringConvertible, Hashable, Codable {
     case user(name: String)
     case application
 
@@ -34,20 +34,28 @@ public enum Authorization: CustomStringConvertible, Hashable {
         }
     }
 
-    public init?(rawValue: String) {
-        switch rawValue {
-        case "application": self = .application
-        case let str:
-            let regex = try! NSRegularExpression(pattern: "user\\(([^\\)]+)\\)",
-                                                 options: .caseInsensitive)
-            let matches = regex.matches(in: str, range: NSRange(0..<(str as NSString).length))
-            if matches.count > 0,
-                let range = matches[0].rangeAt(1).toRange() {
-                let name = str[range]
-                self = .user(name: name)
-            } else {
-                return nil
-            }
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: AuthorizationCodingKeys.self)
+        let type = try container.decode(String.self, forKey: .type)
+        if type == "application" {
+            self = .application
+        } else {
+            self = .user(name: try container.decode(String.self, forKey: .value))
         }
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: AuthorizationCodingKeys.self)
+        if case .user(let name) = self {
+            try container.encode("user", forKey: .type)
+            try container.encode(name, forKey: .value)
+        } else if self == .application {
+            try container.encode("application", forKey: .type)
+        }
+    }
+
+    private enum AuthorizationCodingKeys: String, CodingKey {
+        case type
+        case value
     }
 }

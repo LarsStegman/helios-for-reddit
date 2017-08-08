@@ -9,158 +9,140 @@
 import Foundation
 import Security
 
-public class TokenStore {
-    private init() { }
-    private static var urlSession = URLSession(configuration: .default)
+public extension Notification.Name {
+    
+    /// Notifies that refreshing the token failed. The authorization for the token is included in the notification.
+    public static let HELTokenStoreTokenRefreshingFailed
+        = Notification.Name("HeliosTokenStoreTokenRefreshingFailedNotification")
+    
+    /// Notifies that a token has been refreshed. The authorization for the refreshed token is included in the
+    /// notification.
+    public static let HELTokenStoreTokenRefreshed = Notification.Name("HeliosTokenStoreTokenRefreshedNotification")
+}
 
+
+public final class TokenStore {
+    private init() { }
+    private struct pList {
+        static let decoder = PropertyListDecoder()
+        static let encoder = PropertyListEncoder()
+    }
+    private static let requestFactory: AuthorizerRequestFactory = RedditTokenRequestFactory()
+
+    private static var defaults: UserDefaults = UserDefaults()
+
+    /// The currently authorized users/application.
     public private(set) static var authorizations: Set<Authorization> {
         get {
-            let stringRepresenations = UserDefaults()
-                .stringArray(forKey: "helios_authorized_users") ?? []
-            return Set(stringRepresenations.flatMap( { Authorization(rawValue: $0) }))
+            guard let data = defaults.data(forKey: "helios_authorized_users"),
+                let authorizations = try? pList.decoder.decode(Set<Authorization>.self, from: data) else {
+                return Set()
+            }
+            return authorizations
         }
         set {
-            let stringRepresentations = newValue.map({ $0.description })
-            UserDefaults().set(stringRepresentations, forKey: "helios_authorized_users")
+            if let data = try? pList.encoder.encode(newValue) {
+                defaults.set(data, forKey: "helios_authorized_users")
+                defaults.synchronize()
+            }
         }
     }
 
-    /// Creates a user token
+    /// Retrieves the a token from storage.
+    ///
+    /// - Parameter authorization: The 
+    /// - Returns:
+    static func retrieveToken(for authorization: Authorization) -> Token? {
+        guard let data = retrieveSecureTokenData(forAuthorizationType: authorization) else {
+            return nil
+        }
+
+        switch authorization {
+        case .user(_): return try? pList.decoder.decode(UserToken.self, from: data)
+        case .application: return try? pList.decoder.decode(ApplicationToken.self, from: data)
+        }
+    }
+
+
+    /// Refreshes the token for the authorization. A notification will be posted when the token is refreshed, or
+    /// refreshing failed.
+    /// It is encouraged to delete/revoke the authorization if it cannot be refreshed.
     ///
     /// - Parameters:
-    ///   - data: JSON containing either a user token object, or some error message
-    ///   - completionHandler: This is called when the user token has been generated.
-    static func makeUserToken(data: [String: Any],
-                              completionHandler: @escaping (UserToken?, AuthorizationError?) -> Void) {
-        if let error = verifyTokenData(json: data) {
-            completionHandler(nil, error)
-            return
-        }
-
-        if let token = UserToken(userName: nil, json: data) {
-            let request = URLRequest.makeAuthorizedRedditURLRequest(
-                url: URL(string: "https://oauth.reddit.com/api/v1/me")!,
-                credentials: Credentials.sharedInstance, token: token)
-
-            let task = urlSession.dataTask(with: request) { (data, _, error) in
-                guard error == nil, let data = data, let json =
-                    (try? JSONSerialization.jsonObject(with: data)) as? [String: Any],
-                    let name = json["name"] as? String else {
-                        completionHandler(nil, .unableToRetrieveUserName)
-                        return
-                }
-                let tokenWithUserName = UserToken(userName: name, accessToken: token.accessToken,
-                                                  refreshToken: token.refreshToken,
-                                                  scopes: token.scopes, expiresAt: token.expiresAt)
-
-                completionHandler(tokenWithUserName, nil)
-            }
-            task.resume()
-        } else {
-            completionHandler(nil, .invalidResponse)
-        }
+    ///   - authorization: The authorization to refresh
+    ///   - completionHandler: Called with the new token.
+    static func refreshToken(for authorization: Authorization) {
+        fatalError("Refreshing not implemented!")
     }
 
-    static func makeApplicationToken(data: [String: Any],
-                              completionHandler: @escaping (ApplicationToken?, AuthorizationError?) -> Void) {
-        if let error = verifyTokenData(json: data) {
-            completionHandler(nil, error)
-            return
-        }
-
-        guard let token = ApplicationToken(json: data) else {
-            completionHandler(nil, .invalidResponse)
-            return
-        }
-
-        completionHandler(token, nil)
-    }
-
-    /// Locally stored tokens are always revoked, remote tokens are revoked on best effort basis.
+    /// Revokes a token for a certain authorization. Locally stored tokens are always revoked, however the tokens are
+    /// invalided on a best effort basis.
     ///
     /// - Parameter authorization: The authorization to revoke the token for.
     static func revokeToken(for authorization: Authorization) {
         guard authorizations.contains(authorization),
-            let tokenData = retrieveTokenData(forAuthorizationType: authorization),
-            deleteToken(forAuthorizationType: authorization) else {
+            let tokenData = retrieveSecureTokenData(forAuthorizationType: authorization),
+            deleteSecurelyStoredToken(forAuthorization: authorization) else {
             return
         }
 
         authorizations.remove(authorization)
-
-        switch authorization {
-        case .user(name: _):
-            if let token = UserToken(from: tokenData) {
-                revokeRemoteToken(type: .accessToken, token: token.accessToken)
-                if let refresh = token.refreshToken {
-                    revokeRemoteToken(type: .refreshToken, token: refresh)
-                }
-            }
-        case .application:
-            if let token = ApplicationToken(from: tokenData) {
-                revokeRemoteToken(type: .accessToken, token: token.accessToken)
+        if let token = try? pList.decoder.decode(UserToken.self, from: tokenData) {
+            revokeRemote(.accessToken, token: token.accessToken)
+            if let refresh = token.refreshToken {
+                revokeRemote(.refreshToken, token: refresh)
             }
         }
     }
 
-    private enum TokenType: String {
-        case accessToken = "access_token"
-        case refreshToken = "refresh_token"
-    }
+    /// Revokes a token from Reddit
+    ///
+    /// - Parameters:
+    ///   - type: The type of the token to remove
+    ///   - token: The token to remove
+    private static func revokeRemote(_ tokenType: TokenType, token: String) {
+        guard let revokeRequest = requestFactory.createTokenRevokingRequest(token: token, type: tokenType) else {
+            return
+        }
 
-    private static func revokeRemoteToken(type: TokenType, token: String) {
-        var revokeRequest = AuthorizationProcessComponents
-            .makeAccessTokenURLRequest(url: URL(string: "https://www.reddit.com/api/v1/revoke_token")!)
-        revokeRequest.httpBody = "token=\(token)&token_type_hint=\(type.rawValue)".data(using: .utf8)
-        let revokeTask = urlSession.dataTask(with: revokeRequest) {
+        let revokeTask = URLSession.shared.dataTask(with: revokeRequest) {
             (_, response, _) in
             if let response = response as? HTTPURLResponse {
-                print("Revoked token with response code: \(response.statusCode)")
+                let logString: String
+                if response.statusCode == 204 {
+                    logString = "Revoked \(token): \(token) token with response code: \(response.statusCode)"
+                } else {
+                    logString = "Failed to revoke token with response code: \(response.statusCode)"
+                }
+                NSLog(logString)
             }
         }
         revokeTask.resume()
     }
 
-    private static func verifyTokenData(json: [String: Any]) -> AuthorizationError? {
-        if let error = json["error"] {
-            let message = json["message"] as? String ?? "Failed to authorize"
-            if let errorCode = error as? Int {
-                return AuthorizationError.genericRedditError(code: errorCode, message: message)
-            } else if let errorString = error as? String {
-                switch errorString {
-                case "access_denied": return AuthorizationError.accessDenied
-                case "unsupported_grant_type": return AuthorizationError.unsupportedGrantType
-                case "NO_TEXT": return AuthorizationError.noCode
-                case "invalid_grant": return AuthorizationError.invalidGrantValue
-                default: return AuthorizationError.unknown
-                }
-            }
-            return AuthorizationError.unknown
-        }
-        return nil
-    }
+    // MARK: - Keychain token storage management.
 
     static var label = "\(Credentials.sharedInstance.secureStoragePrefix)-reddit-authorization"
     private static var appTokenKey: String {
-        return label + "-app-authorization"
+        return "\(label)-app-authorization"
     }
-
-    // MARK: - Keychain management
 
     /// Removes the token from secure storage.
     ///
     /// - Parameter type: The authorization of the token to remove.
-    class func deleteToken(forAuthorizationType type: Authorization) -> Bool {
+    private static func deleteSecurelyStoredToken(forAuthorization type: Authorization) -> Bool {
         let key: String
         switch type {
         case .application: key = appTokenKey
         case .user(name: let name): key = name
         }
+
         let query = [
             kSecClass as String         : kSecClassGenericPassword,
             kSecAttrLabel as String     : label,
             kSecAttrAccount as String   : key,
             ] as CFDictionary
+
         let deleteStatus = SecItemDelete(query)
         if deleteStatus == noErr || deleteStatus == errSecItemNotFound {
             authorizations.remove(type)
@@ -176,15 +158,18 @@ public class TokenStore {
     ///   - key: The key used to identify the token
     ///   - token: The token to be stored
     /// - Returns: Whether the storing succeeded.
-    class func saveToken(forAuthorizationType type: Authorization, token: Token) -> Bool {
-        let deleteSuccess = TokenStore.deleteToken(forAuthorizationType: type)
-        if !deleteSuccess {
+    static func saveTokenSecurely<T: Token>(token: T, forAuthorization authorization: Authorization) -> Bool {
+        let deleteOldTokenSuccess = TokenStore.deleteSecurelyStoredToken(forAuthorization: authorization)
+        if !deleteOldTokenSuccess {
             return false
         }
 
-        let data = token.data
+        guard let data = try? pList.encoder.encode(token) else {
+            return false
+        }
+
         let key: String
-        switch type {
+        switch authorization {
         case .application: key = appTokenKey
         case .user(name: let name): key = name
         }
@@ -197,23 +182,21 @@ public class TokenStore {
             ] as CFDictionary
 
         let status = SecItemAdd(addQuery, nil)
-
         if status == noErr {
-            authorizations.insert(type)
+            authorizations.insert(authorization)
             return true
         } else {
             return false
         }
-
     }
 
     /// Retrieves data from secure storage.
     ///
     /// - Parameter key: The key used to store the authorization.
     /// - Returns: Requested data.
-    class func retrieveTokenData(forAuthorizationType type: Authorization) -> Data? {
+    private static func retrieveSecureTokenData(forAuthorizationType authorization: Authorization) -> Data? {
         let key: String
-        switch type {
+        switch authorization {
         case .user(name: let name): key = name
         case .application: key = appTokenKey
         }

@@ -7,21 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		48001E591E6247860092E868 /* Helios.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 48001E581E6247860092E868 /* Helios.podspec */; };
 		481EF1221E317B19007C6085 /* String+subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481EF1211E317B19007C6085 /* String+subscript.swift */; };
 		482590A81E0738D0009E67BA /* Helios.h in Headers */ = {isa = PBXBuildFile; fileRef = 482590A71E0738D0009E67BA /* Helios.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4827802F1F2CFC5C00B4DE61 /* TokenRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4827802E1F2CFC5C00B4DE61 /* TokenRequestFactory.swift */; };
+		482F17C01F2D26AA009CDFF8 /* AuthorizationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482F17BF1F2D26AA009CDFF8 /* AuthorizationError.swift */; };
+		482F17C21F2D3435009CDFF8 /* Session+Identity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482F17C11F2D3435009CDFF8 /* Session+Identity.swift */; };
+		483922421F2A159B00F10023 /* AuthorizationFlowType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483922411F2A159B00F10023 /* AuthorizationFlowType.swift */; };
+		483922481F2A606000F10023 /* Authorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483922471F2A606000F10023 /* Authorizer.swift */; };
 		484D9DFC1E059E8F00FFFBCF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 484D9DFB1E059E8E00FFFBCF /* Security.framework */; };
 		4858A77C1E2917B70061E009 /* UserToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4858A77B1E2917B70061E009 /* UserToken.swift */; };
 		4858A77E1E2918CA0061E009 /* ApplicationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4858A77D1E2918CA0061E009 /* ApplicationToken.swift */; };
 		485A8F6B1E35475700F3D5F3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 485A8F6A1E35475700F3D5F3 /* README.md */; };
 		485A8F6D1E3548E100F3D5F3 /* AppCredentials-Template.plist in Resources */ = {isa = PBXBuildFile; fileRef = 485A8F6C1E3548E100F3D5F3 /* AppCredentials-Template.plist */; };
 		48717CE71E2D4C0B00B7F4CC /* AuthorizationPageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48717CE61E2D4C0B00B7F4CC /* AuthorizationPageLoader.swift */; };
-		48717CE91E2D54D900B7F4CC /* CodeFlowAuthorizationProcessComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48717CE81E2D54D900B7F4CC /* CodeFlowAuthorizationProcessComponents.swift */; };
-		4884AC991E3749C800A8085D /* ApplicationAuthorizationProcessComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4884AC981E3749C800A8085D /* ApplicationAuthorizationProcessComponents.swift */; };
 		4884AC9B1E374B5A00A8085D /* AuthorizationProcessComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4884AC9A1E374B5A00A8085D /* AuthorizationProcessComponents.swift */; };
 		4884AC9D1E374CA100A8085D /* Grant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4884AC9C1E374CA000A8085D /* Grant.swift */; };
 		4884AC9F1E374EBB00A8085D /* ApplicationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4884AC9E1E374EBB00A8085D /* ApplicationType.swift */; };
-		4884ACA11E3768CB00A8085D /* ApplicationOnlyAuthorizationProcessAuthorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4884ACA01E3768CB00A8085D /* ApplicationOnlyAuthorizationProcessAuthorizer.swift */; };
 		48876D541E045D7D00CD0C5C /* Helios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48876D4A1E045D7D00CD0C5C /* Helios.framework */; };
 		4887A97D1E181AC100068756 /* RedditParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4887A97C1E181AC100068756 /* RedditParser.swift */; };
 		4887A97F1E181DCB00068756 /* ListingParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4887A97E1E181DCB00068756 /* ListingParser.swift */; };
@@ -31,31 +32,31 @@
 		48885A6B1E1C55C500265874 /* SubmissionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48885A661E1C55C500265874 /* SubmissionType.swift */; };
 		48885A6C1E1C55C500265874 /* Subreddit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48885A671E1C55C500265874 /* Subreddit.swift */; };
 		48885A6D1E1C55C500265874 /* SubredditType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48885A681E1C55C500265874 /* SubredditType.swift */; };
-		48885A6E1E1C55C500265874 /* UserSubredditRelations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48885A691E1C55C500265874 /* UserSubredditRelations.swift */; };
-		48885A711E1C55D900265874 /* LinkParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48885A6F1E1C55D900265874 /* LinkParser.swift */; };
 		48885A721E1C55D900265874 /* SubredditParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48885A701E1C55D900265874 /* SubredditParser.swift */; };
 		488F8FAD1E6A1000002FAD10 /* SubredditSerializationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488F8FAA1E69E631002FAD10 /* SubredditSerializationTests.swift */; };
 		489E81BB1E1703E00091DDCF /* Distinguishment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E81B71E1703E00091DDCF /* Distinguishment.swift */; };
 		489E81BC1E1703E00091DDCF /* Edited.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E81B81E1703E00091DDCF /* Edited.swift */; };
 		489E81BD1E1703E00091DDCF /* Flair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E81B91E1703E00091DDCF /* Flair.swift */; };
 		489E81BE1E1703E00091DDCF /* ModerationProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E81BA1E1703E00091DDCF /* ModerationProperties.swift */; };
-		48A3A2111E37F07900787C8D /* LoginAuthorizerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A3A2101E37F07900787C8D /* LoginAuthorizerError.swift */; };
 		48A6E7CB1E1D962500F65149 /* More.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A6E7CA1E1D962500F65149 /* More.swift */; };
 		48A6E7CD1E1D980800F65149 /* MoreParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A6E7CC1E1D980800F65149 /* MoreParser.swift */; };
 		48A8CE521E3945E10009AF45 /* Session+MineSubreddits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A8CE511E3945E10009AF45 /* Session+MineSubreddits.swift */; };
 		48A902971E4656C2003FE741 /* Session+Listing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A902961E4656C2003FE741 /* Session+Listing.swift */; };
-		48AC96D61E19CBFB005539D5 /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AC96D51E19CBFB005539D5 /* Thumbnail.swift */; };
-		48AE3CB81E2EA5D7009C6A73 /* AuthorizationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AE3CB71E2EA5D7009C6A73 /* AuthorizationError.swift */; };
-		48B7F0C91E4795580090A89C /* URLRequest+Authorized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B7F0C81E4795580090A89C /* URLRequest+Authorized.swift */; };
+		48B306D81F31050100B3F745 /* ApplicationAuthorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B306D71F31050100B3F745 /* ApplicationAuthorizer.swift */; };
 		48B7F0CB1E47D1F70090A89C /* Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B7F0CA1E47D1F70090A89C /* Authorization.swift */; };
 		48B7F0CD1E47E3B30090A89C /* SessionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B7F0CC1E47E3B30090A89C /* SessionFactory.swift */; };
 		48B7F0CF1E47EA690090A89C /* SessionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B7F0CE1E47EA690090A89C /* SessionError.swift */; };
+		48BB0B571F38A4C3007B73EF /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BB0B561F38A4C3007B73EF /* Preview.swift */; };
 		48BD3B951E68CD01002F9D91 /* SubredditSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BD3B941E68CD01002F9D91 /* SubredditSerializer.swift */; };
 		48BD3B971E68CD59002F9D91 /* Serialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BD3B961E68CD59002F9D91 /* Serialization.swift */; };
+		48C31AC81F29E59F0006C532 /* AuthorizationRequestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C31AC71F29E59F0006C532 /* AuthorizationRequestResponse.swift */; };
+		48C31ACA1F29EE690006C532 /* AuthorizationRequestCallbackValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C31AC91F29EE690006C532 /* AuthorizationRequestCallbackValidation.swift */; };
+		48C31ACC1F2A06870006C532 /* AuthorizationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C31ACB1F2A06870006C532 /* AuthorizationContext.swift */; };
 		48D35FDF1E1AE23300E4FDF3 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D35FDE1E1AE23300E4FDF3 /* Link.swift */; };
+		48D599D01F30A0D600F18907 /* TokenRetrievalResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D599CF1F30A0D600F18907 /* TokenRetrievalResponse.swift */; };
 		48EB894B1E300A9E0025D0C0 /* TokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EB894A1E300A9E0025D0C0 /* TokenStore.swift */; };
 		48EBF8631E15CB2600A4281E /* Scope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF85D1E15CB2600A4281E /* Scope.swift */; };
-		48EBF8641E15CB2600A4281E /* UserCodeFlowProcessAuthorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF85E1E15CB2600A4281E /* UserCodeFlowProcessAuthorizer.swift */; };
+		48EBF8641E15CB2600A4281E /* UserCodeFlowAuthorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF85E1E15CB2600A4281E /* UserCodeFlowAuthorizer.swift */; };
 		48EBF8671E15CB2600A4281E /* AuthorizationDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF8611E15CB2600A4281E /* AuthorizationDuration.swift */; };
 		48EBF86A1E15CB7A00A4281E /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF8691E15CB7A00A4281E /* Credentials.swift */; };
 		48EBF86C1E15CBD100A4281E /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF86B1E15CBD100A4281E /* Token.swift */; };
@@ -70,8 +71,7 @@
 		48F591431E32D8CB009164ED /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F591421E32D8CB009164ED /* Session.swift */; };
 		48F591461E339608009164ED /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 487639411E0573D300E9F9BD /* LICENSE */; };
 		48F591471E339608009164ED /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 48876D641E0461EA00CD0C5C /* .gitignore */; };
-		C4BE3051A5132CC862C0859B /* Pods_HeliosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15DD38AC7DBBB24C6D39A22E /* Pods_HeliosTests.framework */; };
-		EFF856BAC20828BA3596F365 /* Pods_Helios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60950F26B7A8905B0F9EF41D /* Pods_Helios.framework */; };
+		48F883041F39D60C000D5493 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F883031F39D60C000D5493 /* Score.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,13 +85,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0BDE65D77D19403397F3D65C /* Pods-Helios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Helios.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Helios/Pods-Helios.release.xcconfig"; sourceTree = "<group>"; };
-		15DD38AC7DBBB24C6D39A22E /* Pods_HeliosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HeliosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		18E953304ABA3416C71F6CF0 /* Pods-HeliosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeliosTests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-HeliosTests/Pods-HeliosTests.release.xcconfig"; sourceTree = "<group>"; };
-		1D0A408655E25949E4FFAC4F /* Pods-Helios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Helios.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Helios/Pods-Helios.debug.xcconfig"; sourceTree = "<group>"; };
-		48001E581E6247860092E868 /* Helios.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Helios.podspec; sourceTree = "<group>"; };
 		481EF1211E317B19007C6085 /* String+subscript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+subscript.swift"; path = "Sources/String+subscript.swift"; sourceTree = SOURCE_ROOT; };
 		482590A71E0738D0009E67BA /* Helios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Helios.h; path = Sources/Helios.h; sourceTree = SOURCE_ROOT; };
+		4827802E1F2CFC5C00B4DE61 /* TokenRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRequestFactory.swift; sourceTree = SOURCE_ROOT; };
+		482F17BF1F2D26AA009CDFF8 /* AuthorizationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthorizationError.swift; path = Sources/Authorization/AuthorizationError.swift; sourceTree = SOURCE_ROOT; };
+		482F17C11F2D3435009CDFF8 /* Session+Identity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Session+Identity.swift"; sourceTree = SOURCE_ROOT; };
+		483922411F2A159B00F10023 /* AuthorizationFlowType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthorizationFlowType.swift; path = Sources/Authorization/Authorizer/Context/AuthorizationFlowType.swift; sourceTree = SOURCE_ROOT; };
+		483922471F2A606000F10023 /* Authorizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Authorizer.swift; path = Sources/Authorization/Authorizer/Authorizer.swift; sourceTree = SOURCE_ROOT; };
 		484D9DFB1E059E8E00FFFBCF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		4858A77B1E2917B70061E009 /* UserToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserToken.swift; path = Sources/Authorization/Token/UserToken.swift; sourceTree = SOURCE_ROOT; };
 		4858A77D1E2918CA0061E009 /* ApplicationToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApplicationToken.swift; path = Sources/Authorization/Token/ApplicationToken.swift; sourceTree = SOURCE_ROOT; };
@@ -99,13 +99,10 @@
 		485A8F6C1E3548E100F3D5F3 /* AppCredentials-Template.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AppCredentials-Template.plist"; sourceTree = "<group>"; };
 		48637D671E05EBE900ADEE6A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Sources/Info.plist; sourceTree = SOURCE_ROOT; };
 		48717CE61E2D4C0B00B7F4CC /* AuthorizationPageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthorizationPageLoader.swift; path = Sources/Authorization/AuthorizationPageLoader.swift; sourceTree = SOURCE_ROOT; };
-		48717CE81E2D54D900B7F4CC /* CodeFlowAuthorizationProcessComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CodeFlowAuthorizationProcessComponents.swift; path = Sources/Authorization/CodeFlowAuthorizationProcessComponents.swift; sourceTree = SOURCE_ROOT; };
 		487639411E0573D300E9F9BD /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		4884AC981E3749C800A8085D /* ApplicationAuthorizationProcessComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApplicationAuthorizationProcessComponents.swift; path = Sources/Authorization/ApplicationAuthorizationProcessComponents.swift; sourceTree = SOURCE_ROOT; };
 		4884AC9A1E374B5A00A8085D /* AuthorizationProcessComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthorizationProcessComponents.swift; path = Sources/Authorization/AuthorizationProcessComponents.swift; sourceTree = SOURCE_ROOT; };
-		4884AC9C1E374CA000A8085D /* Grant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Grant.swift; path = Sources/Authorization/Grant.swift; sourceTree = SOURCE_ROOT; };
-		4884AC9E1E374EBB00A8085D /* ApplicationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApplicationType.swift; path = Sources/Authorization/ApplicationType.swift; sourceTree = SOURCE_ROOT; };
-		4884ACA01E3768CB00A8085D /* ApplicationOnlyAuthorizationProcessAuthorizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApplicationOnlyAuthorizationProcessAuthorizer.swift; path = Sources/Authorization/ApplicationOnlyAuthorizationProcessAuthorizer.swift; sourceTree = SOURCE_ROOT; };
+		4884AC9C1E374CA000A8085D /* Grant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Grant.swift; path = Sources/Authorization/Authorizer/Context/Grant.swift; sourceTree = SOURCE_ROOT; };
+		4884AC9E1E374EBB00A8085D /* ApplicationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApplicationType.swift; path = Sources/Authorization/Authorizer/Context/ApplicationType.swift; sourceTree = SOURCE_ROOT; };
 		4886CCDA1E1F91D1003B7934 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Tests/Info.plist; sourceTree = SOURCE_ROOT; };
 		48876D4A1E045D7D00CD0C5C /* Helios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Helios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48876D531E045D7D00CD0C5C /* HeliosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeliosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,31 +115,31 @@
 		48885A661E1C55C500265874 /* SubmissionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubmissionType.swift; path = Sources/Model/Subreddit/SubmissionType.swift; sourceTree = SOURCE_ROOT; };
 		48885A671E1C55C500265874 /* Subreddit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Subreddit.swift; path = Sources/Model/Subreddit/Subreddit.swift; sourceTree = SOURCE_ROOT; };
 		48885A681E1C55C500265874 /* SubredditType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubredditType.swift; path = Sources/Model/Subreddit/SubredditType.swift; sourceTree = SOURCE_ROOT; };
-		48885A691E1C55C500265874 /* UserSubredditRelations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserSubredditRelations.swift; path = Sources/Model/Subreddit/UserSubredditRelations.swift; sourceTree = SOURCE_ROOT; };
-		48885A6F1E1C55D900265874 /* LinkParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LinkParser.swift; path = Sources/ModelParser/LinkParser.swift; sourceTree = SOURCE_ROOT; };
 		48885A701E1C55D900265874 /* SubredditParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubredditParser.swift; path = Sources/ModelParser/SubredditParser.swift; sourceTree = SOURCE_ROOT; };
 		488F8FAA1E69E631002FAD10 /* SubredditSerializationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubredditSerializationTests.swift; path = Tests/ModelSerializationTests/SubredditSerializationTests.swift; sourceTree = SOURCE_ROOT; };
 		489E81B71E1703E00091DDCF /* Distinguishment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Distinguishment.swift; path = Sources/Model/Distinguishment.swift; sourceTree = SOURCE_ROOT; };
 		489E81B81E1703E00091DDCF /* Edited.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Edited.swift; path = Sources/Model/Edited.swift; sourceTree = SOURCE_ROOT; };
 		489E81B91E1703E00091DDCF /* Flair.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Flair.swift; path = Sources/Model/Flair.swift; sourceTree = SOURCE_ROOT; };
 		489E81BA1E1703E00091DDCF /* ModerationProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModerationProperties.swift; path = Sources/Model/ModerationProperties.swift; sourceTree = SOURCE_ROOT; };
-		48A3A2101E37F07900787C8D /* LoginAuthorizerError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginAuthorizerError.swift; path = Sources/Authorization/LoginAuthorizerError.swift; sourceTree = SOURCE_ROOT; };
 		48A6E7CA1E1D962500F65149 /* More.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = More.swift; path = Sources/Model/More.swift; sourceTree = SOURCE_ROOT; };
 		48A6E7CC1E1D980800F65149 /* MoreParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MoreParser.swift; path = Sources/ModelParser/MoreParser.swift; sourceTree = SOURCE_ROOT; };
-		48A8CE511E3945E10009AF45 /* Session+MineSubreddits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Session+MineSubreddits.swift"; path = "Sources/Networking/Session+MineSubreddits.swift"; sourceTree = SOURCE_ROOT; };
-		48A902961E4656C2003FE741 /* Session+Listing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Session+Listing.swift"; path = "Sources/Networking/Session+Listing.swift"; sourceTree = SOURCE_ROOT; };
-		48AC96D51E19CBFB005539D5 /* Thumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Thumbnail.swift; path = Sources/Model/Thumbnail.swift; sourceTree = SOURCE_ROOT; };
-		48AE3CB71E2EA5D7009C6A73 /* AuthorizationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthorizationError.swift; path = Sources/Authorization/AuthorizationError.swift; sourceTree = SOURCE_ROOT; };
-		48B7F0C81E4795580090A89C /* URLRequest+Authorized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "URLRequest+Authorized.swift"; path = "Sources/Networking/URLRequest+Authorized.swift"; sourceTree = SOURCE_ROOT; };
+		48A8CE511E3945E10009AF45 /* Session+MineSubreddits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Session+MineSubreddits.swift"; path = "Sources/Session/Session+MineSubreddits.swift"; sourceTree = SOURCE_ROOT; };
+		48A902961E4656C2003FE741 /* Session+Listing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Session+Listing.swift"; path = "Sources/Session/Session+Listing.swift"; sourceTree = SOURCE_ROOT; };
+		48B306D71F31050100B3F745 /* ApplicationAuthorizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationAuthorizer.swift; path = Sources/Authorization/Authorizer/ApplicationAuthorizer.swift; sourceTree = SOURCE_ROOT; };
 		48B7F0CA1E47D1F70090A89C /* Authorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Authorization.swift; path = Sources/Authorization/Token/Authorization.swift; sourceTree = SOURCE_ROOT; };
-		48B7F0CC1E47E3B30090A89C /* SessionFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionFactory.swift; path = Sources/Networking/SessionFactory.swift; sourceTree = SOURCE_ROOT; };
-		48B7F0CE1E47EA690090A89C /* SessionError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionError.swift; path = Sources/Networking/SessionError.swift; sourceTree = SOURCE_ROOT; };
+		48B7F0CC1E47E3B30090A89C /* SessionFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionFactory.swift; path = Sources/Session/SessionFactory.swift; sourceTree = SOURCE_ROOT; };
+		48B7F0CE1E47EA690090A89C /* SessionError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionError.swift; path = Sources/Session/SessionError.swift; sourceTree = SOURCE_ROOT; };
+		48BB0B561F38A4C3007B73EF /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = SOURCE_ROOT; };
 		48BD3B941E68CD01002F9D91 /* SubredditSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubredditSerializer.swift; path = Sources/ModelSerialization/SubredditSerializer.swift; sourceTree = SOURCE_ROOT; };
 		48BD3B961E68CD59002F9D91 /* Serialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Serialization.swift; path = Sources/ModelSerialization/Serialization.swift; sourceTree = SOURCE_ROOT; };
+		48C31AC71F29E59F0006C532 /* AuthorizationRequestResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRequestResponse.swift; sourceTree = SOURCE_ROOT; };
+		48C31AC91F29EE690006C532 /* AuthorizationRequestCallbackValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRequestCallbackValidation.swift; sourceTree = SOURCE_ROOT; };
+		48C31ACB1F2A06870006C532 /* AuthorizationContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthorizationContext.swift; path = Sources/Authorization/Authorizer/Context/AuthorizationContext.swift; sourceTree = SOURCE_ROOT; };
 		48D35FDE1E1AE23300E4FDF3 /* Link.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Link.swift; path = Sources/Model/Link.swift; sourceTree = SOURCE_ROOT; };
+		48D599CF1F30A0D600F18907 /* TokenRetrievalResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TokenRetrievalResponse.swift; path = Sources/Authorization/Authorizer/TokenRetrievalResponse.swift; sourceTree = SOURCE_ROOT; };
 		48EB894A1E300A9E0025D0C0 /* TokenStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TokenStore.swift; path = Sources/Authorization/Token/TokenStore.swift; sourceTree = SOURCE_ROOT; };
 		48EBF85D1E15CB2600A4281E /* Scope.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Scope.swift; path = Sources/Authorization/Token/Scope.swift; sourceTree = SOURCE_ROOT; };
-		48EBF85E1E15CB2600A4281E /* UserCodeFlowProcessAuthorizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserCodeFlowProcessAuthorizer.swift; path = Sources/Authorization/UserCodeFlowProcessAuthorizer.swift; sourceTree = SOURCE_ROOT; };
+		48EBF85E1E15CB2600A4281E /* UserCodeFlowAuthorizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserCodeFlowAuthorizer.swift; path = Sources/Authorization/Authorizer/UserCodeFlowAuthorizer.swift; sourceTree = SOURCE_ROOT; };
 		48EBF8611E15CB2600A4281E /* AuthorizationDuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthorizationDuration.swift; path = Sources/Authorization/Token/AuthorizationDuration.swift; sourceTree = SOURCE_ROOT; };
 		48EBF8691E15CB7A00A4281E /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Credentials.swift; path = Sources/Credentials.swift; sourceTree = SOURCE_ROOT; };
 		48EBF86B1E15CBD100A4281E /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Token.swift; path = Sources/Authorization/Token/Token.swift; sourceTree = SOURCE_ROOT; };
@@ -154,9 +151,8 @@
 		48EBF87F1E16EF3E00A4281E /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Comment.swift; path = Sources/Model/Comment.swift; sourceTree = SOURCE_ROOT; };
 		48F123EF1E1E3BF300DA0CC4 /* VotableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VotableTests.swift; path = Tests/ModelTests/VotableTests.swift; sourceTree = SOURCE_ROOT; };
 		48F123F31E1EFEF900DA0CC4 /* RedditTyped.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RedditTyped.swift; path = Sources/ModelParser/RedditTyped.swift; sourceTree = SOURCE_ROOT; };
-		48F591421E32D8CB009164ED /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Session.swift; path = Sources/Networking/Session.swift; sourceTree = SOURCE_ROOT; };
-		60950F26B7A8905B0F9EF41D /* Pods_Helios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Helios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7F8475F5712D65E75451B6AC /* Pods-HeliosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeliosTests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-HeliosTests/Pods-HeliosTests.debug.xcconfig"; sourceTree = "<group>"; };
+		48F591421E32D8CB009164ED /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Session.swift; path = Sources/Session/Session.swift; sourceTree = SOURCE_ROOT; };
+		48F883031F39D60C000D5493 /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Score.swift; path = Sources/Model/Score.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,7 +161,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				484D9DFC1E059E8F00FFFBCF /* Security.framework in Frameworks */,
-				EFF856BAC20828BA3596F365 /* Pods_Helios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,43 +169,53 @@
 			buildActionMask = 2147483647;
 			files = (
 				48876D541E045D7D00CD0C5C /* Helios.framework in Frameworks */,
-				C4BE3051A5132CC862C0859B /* Pods_HeliosTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4500E9626319D6941AD9D6B9 /* Pods */ = {
+		480440681E259381009ED70A /* Session */ = {
 			isa = PBXGroup;
 			children = (
-				1D0A408655E25949E4FFAC4F /* Pods-Helios.debug.xcconfig */,
-				0BDE65D77D19403397F3D65C /* Pods-Helios.release.xcconfig */,
-				7F8475F5712D65E75451B6AC /* Pods-HeliosTests.debug.xcconfig */,
-				18E953304ABA3416C71F6CF0 /* Pods-HeliosTests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		480440681E259381009ED70A /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				48B7F0C81E4795580090A89C /* URLRequest+Authorized.swift */,
 				48F591421E32D8CB009164ED /* Session.swift */,
 				48B7F0CE1E47EA690090A89C /* SessionError.swift */,
 				48B7F0CC1E47E3B30090A89C /* SessionFactory.swift */,
 				48A902961E4656C2003FE741 /* Session+Listing.swift */,
 				48A8CE511E3945E10009AF45 /* Session+MineSubreddits.swift */,
+				482F17C11F2D3435009CDFF8 /* Session+Identity.swift */,
 			);
-			name = Network;
+			name = Session;
+			path = Sources/Session;
+			sourceTree = "<group>";
+		};
+		483922461F2A15CC00F10023 /* Context */ = {
+			isa = PBXGroup;
+			children = (
+				4884AC9E1E374EBB00A8085D /* ApplicationType.swift */,
+				48C31ACB1F2A06870006C532 /* AuthorizationContext.swift */,
+				483922411F2A159B00F10023 /* AuthorizationFlowType.swift */,
+				4884AC9C1E374CA000A8085D /* Grant.swift */,
+			);
+			path = Context;
+			sourceTree = "<group>";
+		};
+		4839224B1F2A6C9400F10023 /* Authorizer */ = {
+			isa = PBXGroup;
+			children = (
+				48B306D71F31050100B3F745 /* ApplicationAuthorizer.swift */,
+				483922471F2A606000F10023 /* Authorizer.swift */,
+				483922461F2A15CC00F10023 /* Context */,
+				48EBF85E1E15CB2600A4281E /* UserCodeFlowAuthorizer.swift */,
+			);
+			name = Authorizer;
+			path = Sources/Authorization/Authorizer;
 			sourceTree = "<group>";
 		};
 		484D9DFA1E059E8E00FFFBCF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				484D9DFB1E059E8E00FFFBCF /* Security.framework */,
-				60950F26B7A8905B0F9EF41D /* Pods_Helios.framework */,
-				15DD38AC7DBBB24C6D39A22E /* Pods_HeliosTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -225,17 +230,15 @@
 		487639391E055D1A00E9F9BD /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
-				48EB89491E3007CD0025D0C0 /* Token */,
-				48EBF85E1E15CB2600A4281E /* UserCodeFlowProcessAuthorizer.swift */,
-				48717CE81E2D54D900B7F4CC /* CodeFlowAuthorizationProcessComponents.swift */,
-				48717CE61E2D4C0B00B7F4CC /* AuthorizationPageLoader.swift */,
+				482F17BF1F2D26AA009CDFF8 /* AuthorizationError.swift */,
 				4884AC9A1E374B5A00A8085D /* AuthorizationProcessComponents.swift */,
-				4884AC981E3749C800A8085D /* ApplicationAuthorizationProcessComponents.swift */,
-				4884ACA01E3768CB00A8085D /* ApplicationOnlyAuthorizationProcessAuthorizer.swift */,
-				4884AC9C1E374CA000A8085D /* Grant.swift */,
-				4884AC9E1E374EBB00A8085D /* ApplicationType.swift */,
-				48AE3CB71E2EA5D7009C6A73 /* AuthorizationError.swift */,
-				48A3A2101E37F07900787C8D /* LoginAuthorizerError.swift */,
+				48C31AC71F29E59F0006C532 /* AuthorizationRequestResponse.swift */,
+				48C31AC91F29EE690006C532 /* AuthorizationRequestCallbackValidation.swift */,
+				48717CE61E2D4C0B00B7F4CC /* AuthorizationPageLoader.swift */,
+				4827802E1F2CFC5C00B4DE61 /* TokenRequestFactory.swift */,
+				48D599CF1F30A0D600F18907 /* TokenRetrievalResponse.swift */,
+				4839224B1F2A6C9400F10023 /* Authorizer */,
+				48EB89491E3007CD0025D0C0 /* Token */,
 			);
 			name = Authorization;
 			sourceTree = "<group>";
@@ -243,7 +246,6 @@
 		48876D401E045D7C00CD0C5C = {
 			isa = PBXGroup;
 			children = (
-				48001E581E6247860092E868 /* Helios.podspec */,
 				485A8F6C1E3548E100F3D5F3 /* AppCredentials-Template.plist */,
 				485A8F6A1E35475700F3D5F3 /* README.md */,
 				487639411E0573D300E9F9BD /* LICENSE */,
@@ -251,7 +253,6 @@
 				48876D4C1E045D7D00CD0C5C /* Helios */,
 				48876D4B1E045D7D00CD0C5C /* Products */,
 				484D9DFA1E059E8E00FFFBCF /* Frameworks */,
-				4500E9626319D6941AD9D6B9 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -299,7 +300,6 @@
 		489E81B61E16FBC20091DDCF /* ModelParser */ = {
 			isa = PBXGroup;
 			children = (
-				48885A6F1E1C55D900265874 /* LinkParser.swift */,
 				48885A701E1C55D900265874 /* SubredditParser.swift */,
 				4887A97C1E181AC100068756 /* RedditParser.swift */,
 				4887A97E1E181DCB00068756 /* ListingParser.swift */,
@@ -326,7 +326,6 @@
 				48885A661E1C55C500265874 /* SubmissionType.swift */,
 				48885A671E1C55C500265874 /* Subreddit.swift */,
 				48885A681E1C55C500265874 /* SubredditType.swift */,
-				48885A691E1C55C500265874 /* UserSubredditRelations.swift */,
 			);
 			name = Subreddit;
 			sourceTree = "<group>";
@@ -348,21 +347,22 @@
 		48EBF8531E15BF6A00A4281E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				48D35FDE1E1AE23300E4FDF3 /* Link.swift */,
+				48885A631E1C543A00265874 /* Account.swift */,
+				48EBF87F1E16EF3E00A4281E /* Comment.swift */,
+				48EBF87D1E16EDAF00A4281E /* Created.swift */,
 				489E81B71E1703E00091DDCF /* Distinguishment.swift */,
 				489E81B81E1703E00091DDCF /* Edited.swift */,
 				489E81B91E1703E00091DDCF /* Flair.swift */,
-				489E81BA1E1703E00091DDCF /* ModerationProperties.swift */,
 				48EBF86D1E15CC1100A4281E /* Kind.swift */,
-				48EBF86E1E15CC1100A4281E /* Thing.swift */,
+				48D35FDE1E1AE23300E4FDF3 /* Link.swift */,
 				48EBF8771E16EC3A00A4281E /* Listing.swift */,
-				48EBF87B1E16ED0C00A4281E /* Votable.swift */,
-				48EBF87D1E16EDAF00A4281E /* Created.swift */,
-				48EBF87F1E16EF3E00A4281E /* Comment.swift */,
-				48AC96D51E19CBFB005539D5 /* Thumbnail.swift */,
-				48D35FEC1E1B0A3000E4FDF3 /* Subreddit */,
-				48885A631E1C543A00265874 /* Account.swift */,
+				489E81BA1E1703E00091DDCF /* ModerationProperties.swift */,
 				48A6E7CA1E1D962500F65149 /* More.swift */,
+				48BB0B561F38A4C3007B73EF /* Preview.swift */,
+				48F883031F39D60C000D5493 /* Score.swift */,
+				48D35FEC1E1B0A3000E4FDF3 /* Subreddit */,
+				48EBF86E1E15CC1100A4281E /* Thing.swift */,
+				48EBF87B1E16ED0C00A4281E /* Votable.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -370,12 +370,12 @@
 		48EBF8681E15CB3000A4281E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				48EBF8691E15CB7A00A4281E /* Credentials.swift */,
 				487639391E055D1A00E9F9BD /* Authorization */,
+				48EBF8691E15CB7A00A4281E /* Credentials.swift */,
 				48EBF8531E15BF6A00A4281E /* Model */,
-				48BD3B931E68CC99002F9D91 /* ModelSerialization */,
 				489E81B61E16FBC20091DDCF /* ModelParser */,
-				480440681E259381009ED70A /* Network */,
+				48BD3B931E68CC99002F9D91 /* ModelSerialization */,
+				480440681E259381009ED70A /* Session */,
 				481EF1211E317B19007C6085 /* String+subscript.swift */,
 			);
 			name = Sources;
@@ -414,12 +414,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 48876D5E1E045D7D00CD0C5C /* Build configuration list for PBXNativeTarget "Helios" */;
 			buildPhases = (
-				F081E95BBDAC60469B75F9E2 /* [CP] Check Pods Manifest.lock */,
 				48876D451E045D7D00CD0C5C /* Sources */,
 				48876D461E045D7D00CD0C5C /* Frameworks */,
 				48876D471E045D7D00CD0C5C /* Headers */,
 				48876D481E045D7D00CD0C5C /* Resources */,
-				C89908AF4A21CC23E3668B62 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -434,12 +432,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 48876D611E045D7D00CD0C5C /* Build configuration list for PBXNativeTarget "HeliosTests" */;
 			buildPhases = (
-				178309C7465E20EED7FA0032 /* [CP] Check Pods Manifest.lock */,
 				48876D4F1E045D7D00CD0C5C /* Sources */,
 				48876D501E045D7D00CD0C5C /* Frameworks */,
 				48876D511E045D7D00CD0C5C /* Resources */,
-				0CEAB4DE97B668B86B97C9FE /* [CP] Embed Pods Frameworks */,
-				8308AB7359A9BEBB77BC1706 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -458,19 +453,19 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = Stegman;
 				TargetAttributes = {
 					48876D491E045D7D00CD0C5C = {
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = 34S7DCU8S9;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					48876D521E045D7D00CD0C5C = {
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = 34S7DCU8S9;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -502,7 +497,6 @@
 				48F591461E339608009164ED /* LICENSE in Resources */,
 				48F591471E339608009164ED /* .gitignore in Resources */,
 				485A8F6D1E3548E100F3D5F3 /* AppCredentials-Template.plist in Resources */,
-				48001E591E6247860092E868 /* Helios.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,116 +509,41 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		0CEAB4DE97B668B86B97C9FE /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-HeliosTests/Pods-HeliosTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		178309C7465E20EED7FA0032 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		8308AB7359A9BEBB77BC1706 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-HeliosTests/Pods-HeliosTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C89908AF4A21CC23E3668B62 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Helios/Pods-Helios-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F081E95BBDAC60469B75F9E2 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		48876D451E045D7D00CD0C5C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				48EB894B1E300A9E0025D0C0 /* TokenStore.swift in Sources */,
-				48885A711E1C55D900265874 /* LinkParser.swift in Sources */,
-				48717CE91E2D54D900B7F4CC /* CodeFlowAuthorizationProcessComponents.swift in Sources */,
 				48A6E7CD1E1D980800F65149 /* MoreParser.swift in Sources */,
 				48F123F41E1EFEF900DA0CC4 /* RedditTyped.swift in Sources */,
 				4887A97F1E181DCB00068756 /* ListingParser.swift in Sources */,
+				482F17C01F2D26AA009CDFF8 /* AuthorizationError.swift in Sources */,
 				489E81BC1E1703E00091DDCF /* Edited.swift in Sources */,
 				48A8CE521E3945E10009AF45 /* Session+MineSubreddits.swift in Sources */,
-				48AE3CB81E2EA5D7009C6A73 /* AuthorizationError.swift in Sources */,
-				4884AC991E3749C800A8085D /* ApplicationAuthorizationProcessComponents.swift in Sources */,
 				489E81BD1E1703E00091DDCF /* Flair.swift in Sources */,
 				48A902971E4656C2003FE741 /* Session+Listing.swift in Sources */,
-				48B7F0C91E4795580090A89C /* URLRequest+Authorized.swift in Sources */,
 				48EBF8631E15CB2600A4281E /* Scope.swift in Sources */,
 				481EF1221E317B19007C6085 /* String+subscript.swift in Sources */,
-				48885A6E1E1C55C500265874 /* UserSubredditRelations.swift in Sources */,
+				48C31AC81F29E59F0006C532 /* AuthorizationRequestResponse.swift in Sources */,
+				48BB0B571F38A4C3007B73EF /* Preview.swift in Sources */,
 				48D35FDF1E1AE23300E4FDF3 /* Link.swift in Sources */,
 				48EBF8671E15CB2600A4281E /* AuthorizationDuration.swift in Sources */,
 				48EBF8701E15CC1100A4281E /* Kind.swift in Sources */,
+				482F17C21F2D3435009CDFF8 /* Session+Identity.swift in Sources */,
 				48B7F0CB1E47D1F70090A89C /* Authorization.swift in Sources */,
 				48BD3B971E68CD59002F9D91 /* Serialization.swift in Sources */,
 				48BD3B951E68CD01002F9D91 /* SubredditSerializer.swift in Sources */,
+				48D599D01F30A0D600F18907 /* TokenRetrievalResponse.swift in Sources */,
+				48B306D81F31050100B3F745 /* ApplicationAuthorizer.swift in Sources */,
+				4827802F1F2CFC5C00B4DE61 /* TokenRequestFactory.swift in Sources */,
 				4858A77C1E2917B70061E009 /* UserToken.swift in Sources */,
 				48EBF87E1E16EDAF00A4281E /* Created.swift in Sources */,
+				48C31ACA1F29EE690006C532 /* AuthorizationRequestCallbackValidation.swift in Sources */,
 				48885A6B1E1C55C500265874 /* SubmissionType.swift in Sources */,
 				48885A6A1E1C55C500265874 /* Header.swift in Sources */,
 				48885A721E1C55D900265874 /* SubredditParser.swift in Sources */,
+				483922421F2A159B00F10023 /* AuthorizationFlowType.swift in Sources */,
 				48F591431E32D8CB009164ED /* Session.swift in Sources */,
 				48885A641E1C543A00265874 /* Account.swift in Sources */,
 				489E81BB1E1703E00091DDCF /* Distinguishment.swift in Sources */,
@@ -634,19 +553,19 @@
 				48EBF8781E16EC3A00A4281E /* Listing.swift in Sources */,
 				489E81BE1E1703E00091DDCF /* ModerationProperties.swift in Sources */,
 				48885A6D1E1C55C500265874 /* SubredditType.swift in Sources */,
-				48EBF8641E15CB2600A4281E /* UserCodeFlowProcessAuthorizer.swift in Sources */,
+				48F883041F39D60C000D5493 /* Score.swift in Sources */,
+				48EBF8641E15CB2600A4281E /* UserCodeFlowAuthorizer.swift in Sources */,
+				483922481F2A606000F10023 /* Authorizer.swift in Sources */,
 				4884AC9D1E374CA100A8085D /* Grant.swift in Sources */,
 				48EBF8801E16EF3E00A4281E /* Comment.swift in Sources */,
 				48A6E7CB1E1D962500F65149 /* More.swift in Sources */,
 				4884AC9F1E374EBB00A8085D /* ApplicationType.swift in Sources */,
+				48C31ACC1F2A06870006C532 /* AuthorizationContext.swift in Sources */,
 				48B7F0CD1E47E3B30090A89C /* SessionFactory.swift in Sources */,
-				48AC96D61E19CBFB005539D5 /* Thumbnail.swift in Sources */,
 				48B7F0CF1E47EA690090A89C /* SessionError.swift in Sources */,
 				48EBF86A1E15CB7A00A4281E /* Credentials.swift in Sources */,
-				48A3A2111E37F07900787C8D /* LoginAuthorizerError.swift in Sources */,
 				4887A9811E1827D100068756 /* CommentParser.swift in Sources */,
 				48885A6C1E1C55C500265874 /* Subreddit.swift in Sources */,
-				4884ACA11E3768CB00A8085D /* ApplicationOnlyAuthorizationProcessAuthorizer.swift in Sources */,
 				4884AC9B1E374B5A00A8085D /* AuthorizationProcessComponents.swift in Sources */,
 				48EBF8711E15CC1100A4281E /* Thing.swift in Sources */,
 				4858A77E1E2918CA0061E009 /* ApplicationToken.swift in Sources */,
@@ -683,7 +602,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -691,7 +612,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -736,7 +661,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -744,7 +671,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -775,7 +706,6 @@
 		};
 		48876D5F1E045D7D00CD0C5C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1D0A408655E25949E4FFAC4F /* Pods-Helios.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -791,14 +721,14 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		48876D601E045D7D00CD0C5C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0BDE65D77D19403397F3D65C /* Pods-Helios.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -813,14 +743,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = nl.stegman.Helios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 		48876D621E045D7D00CD0C5C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7F8475F5712D65E75451B6AC /* Pods-HeliosTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
@@ -830,13 +760,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = nl.stegman.HeliosTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
 		48876D631E045D7D00CD0C5C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 18E953304ABA3416C71F6CF0 /* Pods-HeliosTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
@@ -845,7 +775,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nl.stegman.HeliosTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

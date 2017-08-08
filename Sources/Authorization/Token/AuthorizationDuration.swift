@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum AuthorizationDuration: String {
+public enum AuthorizationDuration: String, Codable {
 
     /// Permanent access, unless the user revokes it.
     case permanent

@@ -9,10 +9,13 @@
 import Foundation
 
 /// A token that can be used for Reddit authorization.
-protocol Token {
+protocol Token: Codable {
 
     /// The access token.
     var accessToken: String { get }
+
+    /// The token that can be used to refresh this token.
+    var refreshToken: String? { get }
 
     /// The list of scopes the token is valid for.
     var scopes: [Scope] { get }
@@ -20,13 +23,9 @@ protocol Token {
     /// The expiration date of the token.
     var expiresAt: Date { get }
 
-    /// A data representation of the token.
-    var data: Data { get }
-
     var authorizationType: Authorization { get }
 
-    /// Initialize the token from a data object.
-    init?(from data: Data)
+    var refreshable: Bool { get }
 }
 
 extension Token {
