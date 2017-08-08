@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum SubmissionType: String {
+public enum SubmissionType: String, Decodable {
     case link
     case `self`
     case any

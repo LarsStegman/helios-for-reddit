@@ -24,17 +24,26 @@ public protocol Votable {
 /// - upvote: Like
 /// - downvote: Not like
 /// - noVote: No assessment
-public enum Vote {
+public enum Vote: Codable {
     case upvote
     case downvote
     case noVote
 
-    /// - Parameter value: true == .upvote, false == .downvote, nil == .noVote
-    init(value: Bool?) {
-        if let value = value {
-            self = value ? .upvote : .downvote
-        } else {
+    public init(from decoder: Decoder) throws {
+        let value = try decoder.singleValueContainer()
+        if value.decodeNil() {
             self = .noVote
+        } else {
+            self = try value.decode(Bool.self) ? .upvote : .downvote
+        }
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        switch self {
+        case .upvote: try container.encode(true)
+        case .downvote: try container.encode(false)
+        case .noVote: try container.encodeNil()
         }
     }
 }
@@ -52,7 +61,6 @@ extension Votable {
             score += 1
         }
         liked = .upvote
-        // TODO: Call reddit
     }
 
     public mutating func downvote() {
@@ -67,7 +75,6 @@ extension Votable {
             score -= 1
         }
         liked = .downvote
-        // TODO: Call reddit
     }
 
     public mutating func unvote() {
@@ -81,6 +88,5 @@ extension Votable {
         case .noVote: return
         }
         liked = .noVote
-        // TODO: Call reddit
     }
 }

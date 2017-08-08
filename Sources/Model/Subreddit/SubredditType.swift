@@ -8,10 +8,10 @@
 
 import Foundation
 
-public enum SubredditType: String {
+public enum SubredditType: String, Decodable {
     case `public`
     case `private`
     case restricted
-    case goldRestricted
+    case goldRestricted = "gold_restricted"
     case archived
 }

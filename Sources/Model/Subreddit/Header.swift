@@ -8,12 +8,18 @@
 
 import Foundation
 
-public struct Header: Equatable {
+public struct Header: Decodable, Equatable {
     public let imageUrl: URL
     public let size: CGSize
     public let title: String
 
     public static func ==(lhs: Header, rhs: Header) -> Bool {
         return lhs.imageUrl == rhs.imageUrl && lhs.size == rhs.size && lhs.title == rhs.title
+    }
+
+    private enum CodingKeys: String, CodingKey {
+        case imageUrl = "header_img"
+        case size = "header_size"
+        case title = "header_title"
     }
 }

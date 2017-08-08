@@ -8,9 +8,14 @@
 
 import Foundation
 
-public protocol Thing {
+public protocol Thing: Kindable {
     var id: String { get }
     var fullname: String { get }
     static var kind: Kind { get }
 }
 
+extension Thing {
+    var fullname: String {
+        return "\(Self.kind.rawValue)_\(id)"
+    }
+}
