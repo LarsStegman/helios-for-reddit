@@ -71,7 +71,7 @@ public struct Subreddit: Thing, Equatable, Hashable {
         numberOfActiveAccounts = try container.decodeIfPresent(Int.self, forKey: .numberOfActiveAccounts)
         isOver18 = try container.decode(Bool.self, forKey: .isOver18)
         relativeUrl = try container.decode(String.self, forKey: .relativeUrl)
-        header = try Header(from: decoder)
+        header = try? Header(from: decoder)
         commentScoreHiddenDuration = try container.decode(TimeInterval.self, forKey: .commentScoreHiddenDuration)
         trafficIsPublicallyAccessible = try container.decode(Bool.self, forKey: .trafficIsPublicallyAccessible)
         allowedSubmissionTypes = try container.decode(SubmissionType.self, forKey: .allowedSubmissionTypes)
@@ -111,7 +111,8 @@ public struct Subreddit: Thing, Equatable, Hashable {
             moderator = try container.decode(Bool.self, forKey: .moderator)
             muted = try container.decode(Bool.self, forKey: .muted)
             subscriber = try container.decode(Bool.self, forKey: .subscriber)
-            if try container.decode(Bool.self, forKey: .subredditHasFlair) {
+            favorite = try container.decode(Bool.self, forKey: .favorite)
+            if try container.decodeIfPresent(Bool.self, forKey: .subredditHasFlair) ?? false {
                 flairText = try container.decode(String.self, forKey: .flairText)
             } else {
                 flairText = nil

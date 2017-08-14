@@ -151,15 +151,13 @@ public class UserCodeFlowAuthorizer: NSObject, Authorizer, URLSessionTaskDelegat
         }
 
         let userSession = HELSession(token: token)
-        userSession.identity { [weak self] (identityDct, error) in
-            guard let name = identityDct?["name"] as? String else {
-                self?.delegate?.authorizer(self!, authorizationFailedWith: .reddit)
-                return
-            }
-
-            self?.authorizingToken = UserToken(username: name, token: token)
-            self?.storeToken(for: name)
-        }
+        userSession.identity(result: { [weak self] (identity) in
+            self?.authorizingToken = UserToken(username: identity.username, token: token)
+            self?.storeToken(for: identity.username)
+        }, error: { [weak self] (error) in
+            self?.delegate?.authorizer(self!, authorizationFailedWith: .reddit)
+            self?.reset()
+        })
     }
 
     private func storeToken(for username: String) {

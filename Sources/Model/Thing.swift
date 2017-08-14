@@ -8,14 +8,14 @@
 
 import Foundation
 
-public protocol Thing: Kindable {
+public protocol Thing: Decodable, Kindable {
     var id: String { get }
     var fullname: String { get }
     static var kind: Kind { get }
 }
 
 extension Thing {
-    var fullname: String {
+    public var fullname: String {
         return "\(Self.kind.rawValue)_\(id)"
     }
 }

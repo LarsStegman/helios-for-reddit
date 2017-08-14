@@ -14,10 +14,10 @@ public struct Listing: Kindable, Decodable {
     let modhash: String?
     var source: URL?
 
-    public let children: [Thing]
+    public let children: [KindWrapper]
     public static let kind = Kind.listing
 
-    init(before: String?, after: String?, modhash: String?, source: URL?, children: [Thing]) {
+    init(before: String?, after: String?, modhash: String?, source: URL?, children: [KindWrapper]) {
         self.before = before
         self.after = after
         self.modhash = modhash
@@ -41,12 +41,7 @@ public struct Listing: Kindable, Decodable {
         after = try dataContainer.decodeIfPresent(String.self, forKey: .after)
         before = try dataContainer.decodeIfPresent(String.self, forKey: .before)
         modhash = try dataContainer.decodeIfPresent(String.self, forKey: .modhash)
-
-        if let wrappedChildren = try? dataContainer.decode([KindWrapper].self, forKey: .children) {
-            children = wrappedChildren.map({ $0.data }) as! [Thing]
-        } else {
-            children = try dataContainer.decode([Thing].self, forKey: .children)
-        }
+        children = try dataContainer.decode([KindWrapper].self, forKey: .children)
     }
     
     enum CodingKeys: String, CodingKey {

@@ -57,10 +57,13 @@ public final class TokenStore {
             return nil
         }
 
+        let token: Token?
         switch authorization {
-        case .user(_): return try? pList.decoder.decode(UserToken.self, from: data)
-        case .application: return try? pList.decoder.decode(ApplicationToken.self, from: data)
+        case .user(_): token = try? pList.decoder.decode(UserToken.self, from: data)
+        case .application: token = try? pList.decoder.decode(ApplicationToken.self, from: data)
         }
+
+        return token
     }
 
 
@@ -105,8 +108,7 @@ public final class TokenStore {
             return
         }
 
-        let revokeTask = URLSession.shared.dataTask(with: revokeRequest) {
-            (_, response, _) in
+        let revokeTask = URLSession.shared.dataTask(with: revokeRequest) { (_, response, _) in
             if let response = response as? HTTPURLResponse {
                 let logString: String
                 if response.statusCode == 204 {

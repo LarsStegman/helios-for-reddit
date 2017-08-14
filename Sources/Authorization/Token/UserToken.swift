@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct UserToken: Token {
+struct UserToken: Token, Equatable {
     let username: String?
     let accessToken: String
     let refreshToken: String?
@@ -51,7 +51,11 @@ struct UserToken: Token {
 
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(username, forKey: .username)
+        if let name = username {
+            try container.encode(name, forKey: .username)
+        } else {
+            try container.encodeNil(forKey: .username)
+        }
         try container.encode(accessToken, forKey: .accessToken)
         try container.encode(refreshToken, forKey: .refreshToken)
         try container.encode(scopes, forKey: .scopes)
@@ -74,6 +78,15 @@ struct UserToken: Token {
         } else {
             expiresAt = Date(timeIntervalSinceNow: try container.decode(TimeInterval.self, forKey: .expiresIn))
         }
+    }
+
+    static func ==(lhs: UserToken, rhs: UserToken) -> Bool {
+        print("Equal!")
+        return lhs.username == rhs.username &&
+            lhs.accessToken == rhs.accessToken &&
+            lhs.refreshToken == rhs.refreshToken &&
+            lhs.scopes == rhs.scopes &&
+            lhs.expiresAt == rhs.expiresAt
     }
 }
 

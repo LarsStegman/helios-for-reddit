@@ -7,39 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		481EF1221E317B19007C6085 /* String+subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481EF1211E317B19007C6085 /* String+subscript.swift */; };
 		482590A81E0738D0009E67BA /* Helios.h in Headers */ = {isa = PBXBuildFile; fileRef = 482590A71E0738D0009E67BA /* Helios.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4827802F1F2CFC5C00B4DE61 /* TokenRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4827802E1F2CFC5C00B4DE61 /* TokenRequestFactory.swift */; };
 		482F17C01F2D26AA009CDFF8 /* AuthorizationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482F17BF1F2D26AA009CDFF8 /* AuthorizationError.swift */; };
-		482F17C21F2D3435009CDFF8 /* Session+Identity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482F17C11F2D3435009CDFF8 /* Session+Identity.swift */; };
 		483922421F2A159B00F10023 /* AuthorizationFlowType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483922411F2A159B00F10023 /* AuthorizationFlowType.swift */; };
 		483922481F2A606000F10023 /* Authorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483922471F2A606000F10023 /* Authorizer.swift */; };
+		483C80CF1F39F9850016959E /* Identity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483C80CE1F39F9840016959E /* Identity.swift */; };
+		483C80D61F3A2AD90016959E /* UserTokenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483C80D51F3A2AD90016959E /* UserTokenTests.swift */; };
 		484D9DFC1E059E8F00FFFBCF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 484D9DFB1E059E8E00FFFBCF /* Security.framework */; };
 		4858A77C1E2917B70061E009 /* UserToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4858A77B1E2917B70061E009 /* UserToken.swift */; };
 		4858A77E1E2918CA0061E009 /* ApplicationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4858A77D1E2918CA0061E009 /* ApplicationToken.swift */; };
 		485A8F6B1E35475700F3D5F3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 485A8F6A1E35475700F3D5F3 /* README.md */; };
 		485A8F6D1E3548E100F3D5F3 /* AppCredentials-Template.plist in Resources */ = {isa = PBXBuildFile; fileRef = 485A8F6C1E3548E100F3D5F3 /* AppCredentials-Template.plist */; };
 		48717CE71E2D4C0B00B7F4CC /* AuthorizationPageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48717CE61E2D4C0B00B7F4CC /* AuthorizationPageLoader.swift */; };
-		4884AC9B1E374B5A00A8085D /* AuthorizationProcessComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4884AC9A1E374B5A00A8085D /* AuthorizationProcessComponents.swift */; };
 		4884AC9D1E374CA100A8085D /* Grant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4884AC9C1E374CA000A8085D /* Grant.swift */; };
 		4884AC9F1E374EBB00A8085D /* ApplicationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4884AC9E1E374EBB00A8085D /* ApplicationType.swift */; };
 		48876D541E045D7D00CD0C5C /* Helios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48876D4A1E045D7D00CD0C5C /* Helios.framework */; };
-		4887A97D1E181AC100068756 /* RedditParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4887A97C1E181AC100068756 /* RedditParser.swift */; };
-		4887A97F1E181DCB00068756 /* ListingParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4887A97E1E181DCB00068756 /* ListingParser.swift */; };
-		4887A9811E1827D100068756 /* CommentParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4887A9801E1827D100068756 /* CommentParser.swift */; };
 		48885A641E1C543A00265874 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48885A631E1C543A00265874 /* Account.swift */; };
 		48885A6A1E1C55C500265874 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48885A651E1C55C500265874 /* Header.swift */; };
 		48885A6B1E1C55C500265874 /* SubmissionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48885A661E1C55C500265874 /* SubmissionType.swift */; };
 		48885A6C1E1C55C500265874 /* Subreddit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48885A671E1C55C500265874 /* Subreddit.swift */; };
 		48885A6D1E1C55C500265874 /* SubredditType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48885A681E1C55C500265874 /* SubredditType.swift */; };
-		48885A721E1C55D900265874 /* SubredditParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48885A701E1C55D900265874 /* SubredditParser.swift */; };
-		488F8FAD1E6A1000002FAD10 /* SubredditSerializationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488F8FAA1E69E631002FAD10 /* SubredditSerializationTests.swift */; };
 		489E81BB1E1703E00091DDCF /* Distinguishment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E81B71E1703E00091DDCF /* Distinguishment.swift */; };
 		489E81BC1E1703E00091DDCF /* Edited.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E81B81E1703E00091DDCF /* Edited.swift */; };
 		489E81BD1E1703E00091DDCF /* Flair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E81B91E1703E00091DDCF /* Flair.swift */; };
 		489E81BE1E1703E00091DDCF /* ModerationProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489E81BA1E1703E00091DDCF /* ModerationProperties.swift */; };
 		48A6E7CB1E1D962500F65149 /* More.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A6E7CA1E1D962500F65149 /* More.swift */; };
-		48A6E7CD1E1D980800F65149 /* MoreParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A6E7CC1E1D980800F65149 /* MoreParser.swift */; };
 		48A8CE521E3945E10009AF45 /* Session+MineSubreddits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A8CE511E3945E10009AF45 /* Session+MineSubreddits.swift */; };
 		48A902971E4656C2003FE741 /* Session+Listing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A902961E4656C2003FE741 /* Session+Listing.swift */; };
 		48B306D81F31050100B3F745 /* ApplicationAuthorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B306D71F31050100B3F745 /* ApplicationAuthorizer.swift */; };
@@ -47,8 +40,6 @@
 		48B7F0CD1E47E3B30090A89C /* SessionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B7F0CC1E47E3B30090A89C /* SessionFactory.swift */; };
 		48B7F0CF1E47EA690090A89C /* SessionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B7F0CE1E47EA690090A89C /* SessionError.swift */; };
 		48BB0B571F38A4C3007B73EF /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BB0B561F38A4C3007B73EF /* Preview.swift */; };
-		48BD3B951E68CD01002F9D91 /* SubredditSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BD3B941E68CD01002F9D91 /* SubredditSerializer.swift */; };
-		48BD3B971E68CD59002F9D91 /* Serialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BD3B961E68CD59002F9D91 /* Serialization.swift */; };
 		48C31AC81F29E59F0006C532 /* AuthorizationRequestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C31AC71F29E59F0006C532 /* AuthorizationRequestResponse.swift */; };
 		48C31ACA1F29EE690006C532 /* AuthorizationRequestCallbackValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C31AC91F29EE690006C532 /* AuthorizationRequestCallbackValidation.swift */; };
 		48C31ACC1F2A06870006C532 /* AuthorizationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C31ACB1F2A06870006C532 /* AuthorizationContext.swift */; };
@@ -67,7 +58,6 @@
 		48EBF87E1E16EDAF00A4281E /* Created.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF87D1E16EDAF00A4281E /* Created.swift */; };
 		48EBF8801E16EF3E00A4281E /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EBF87F1E16EF3E00A4281E /* Comment.swift */; };
 		48F123F01E1E3BF300DA0CC4 /* VotableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F123EF1E1E3BF300DA0CC4 /* VotableTests.swift */; };
-		48F123F41E1EFEF900DA0CC4 /* RedditTyped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F123F31E1EFEF900DA0CC4 /* RedditTyped.swift */; };
 		48F591431E32D8CB009164ED /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F591421E32D8CB009164ED /* Session.swift */; };
 		48F591461E339608009164ED /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 487639411E0573D300E9F9BD /* LICENSE */; };
 		48F591471E339608009164ED /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 48876D641E0461EA00CD0C5C /* .gitignore */; };
@@ -85,13 +75,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		481EF1211E317B19007C6085 /* String+subscript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+subscript.swift"; path = "Sources/String+subscript.swift"; sourceTree = SOURCE_ROOT; };
 		482590A71E0738D0009E67BA /* Helios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Helios.h; path = Sources/Helios.h; sourceTree = SOURCE_ROOT; };
 		4827802E1F2CFC5C00B4DE61 /* TokenRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRequestFactory.swift; sourceTree = SOURCE_ROOT; };
 		482F17BF1F2D26AA009CDFF8 /* AuthorizationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthorizationError.swift; path = Sources/Authorization/AuthorizationError.swift; sourceTree = SOURCE_ROOT; };
-		482F17C11F2D3435009CDFF8 /* Session+Identity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Session+Identity.swift"; sourceTree = SOURCE_ROOT; };
 		483922411F2A159B00F10023 /* AuthorizationFlowType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthorizationFlowType.swift; path = Sources/Authorization/Authorizer/Context/AuthorizationFlowType.swift; sourceTree = SOURCE_ROOT; };
 		483922471F2A606000F10023 /* Authorizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Authorizer.swift; path = Sources/Authorization/Authorizer/Authorizer.swift; sourceTree = SOURCE_ROOT; };
+		483C80CE1F39F9840016959E /* Identity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Identity.swift; path = Sources/Authorization/Token/Identity.swift; sourceTree = SOURCE_ROOT; };
+		483C80D51F3A2AD90016959E /* UserTokenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserTokenTests.swift; path = Tests/AuthorizationTests/TokenTests/UserTokenTests.swift; sourceTree = SOURCE_ROOT; };
 		484D9DFB1E059E8E00FFFBCF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		4858A77B1E2917B70061E009 /* UserToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserToken.swift; path = Sources/Authorization/Token/UserToken.swift; sourceTree = SOURCE_ROOT; };
 		4858A77D1E2918CA0061E009 /* ApplicationToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApplicationToken.swift; path = Sources/Authorization/Token/ApplicationToken.swift; sourceTree = SOURCE_ROOT; };
@@ -100,29 +90,22 @@
 		48637D671E05EBE900ADEE6A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Sources/Info.plist; sourceTree = SOURCE_ROOT; };
 		48717CE61E2D4C0B00B7F4CC /* AuthorizationPageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthorizationPageLoader.swift; path = Sources/Authorization/AuthorizationPageLoader.swift; sourceTree = SOURCE_ROOT; };
 		487639411E0573D300E9F9BD /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		4884AC9A1E374B5A00A8085D /* AuthorizationProcessComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthorizationProcessComponents.swift; path = Sources/Authorization/AuthorizationProcessComponents.swift; sourceTree = SOURCE_ROOT; };
 		4884AC9C1E374CA000A8085D /* Grant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Grant.swift; path = Sources/Authorization/Authorizer/Context/Grant.swift; sourceTree = SOURCE_ROOT; };
 		4884AC9E1E374EBB00A8085D /* ApplicationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApplicationType.swift; path = Sources/Authorization/Authorizer/Context/ApplicationType.swift; sourceTree = SOURCE_ROOT; };
 		4886CCDA1E1F91D1003B7934 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Tests/Info.plist; sourceTree = SOURCE_ROOT; };
 		48876D4A1E045D7D00CD0C5C /* Helios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Helios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48876D531E045D7D00CD0C5C /* HeliosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeliosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		48876D641E0461EA00CD0C5C /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		4887A97C1E181AC100068756 /* RedditParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RedditParser.swift; path = Sources/ModelParser/RedditParser.swift; sourceTree = SOURCE_ROOT; };
-		4887A97E1E181DCB00068756 /* ListingParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListingParser.swift; path = Sources/ModelParser/ListingParser.swift; sourceTree = SOURCE_ROOT; };
-		4887A9801E1827D100068756 /* CommentParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentParser.swift; path = Sources/ModelParser/CommentParser.swift; sourceTree = SOURCE_ROOT; };
 		48885A631E1C543A00265874 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Account.swift; path = Sources/Model/Account.swift; sourceTree = SOURCE_ROOT; };
 		48885A651E1C55C500265874 /* Header.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Header.swift; path = Sources/Model/Subreddit/Header.swift; sourceTree = SOURCE_ROOT; };
 		48885A661E1C55C500265874 /* SubmissionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubmissionType.swift; path = Sources/Model/Subreddit/SubmissionType.swift; sourceTree = SOURCE_ROOT; };
 		48885A671E1C55C500265874 /* Subreddit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Subreddit.swift; path = Sources/Model/Subreddit/Subreddit.swift; sourceTree = SOURCE_ROOT; };
 		48885A681E1C55C500265874 /* SubredditType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubredditType.swift; path = Sources/Model/Subreddit/SubredditType.swift; sourceTree = SOURCE_ROOT; };
-		48885A701E1C55D900265874 /* SubredditParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubredditParser.swift; path = Sources/ModelParser/SubredditParser.swift; sourceTree = SOURCE_ROOT; };
-		488F8FAA1E69E631002FAD10 /* SubredditSerializationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubredditSerializationTests.swift; path = Tests/ModelSerializationTests/SubredditSerializationTests.swift; sourceTree = SOURCE_ROOT; };
 		489E81B71E1703E00091DDCF /* Distinguishment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Distinguishment.swift; path = Sources/Model/Distinguishment.swift; sourceTree = SOURCE_ROOT; };
 		489E81B81E1703E00091DDCF /* Edited.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Edited.swift; path = Sources/Model/Edited.swift; sourceTree = SOURCE_ROOT; };
 		489E81B91E1703E00091DDCF /* Flair.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Flair.swift; path = Sources/Model/Flair.swift; sourceTree = SOURCE_ROOT; };
 		489E81BA1E1703E00091DDCF /* ModerationProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModerationProperties.swift; path = Sources/Model/ModerationProperties.swift; sourceTree = SOURCE_ROOT; };
 		48A6E7CA1E1D962500F65149 /* More.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = More.swift; path = Sources/Model/More.swift; sourceTree = SOURCE_ROOT; };
-		48A6E7CC1E1D980800F65149 /* MoreParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MoreParser.swift; path = Sources/ModelParser/MoreParser.swift; sourceTree = SOURCE_ROOT; };
 		48A8CE511E3945E10009AF45 /* Session+MineSubreddits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Session+MineSubreddits.swift"; path = "Sources/Session/Session+MineSubreddits.swift"; sourceTree = SOURCE_ROOT; };
 		48A902961E4656C2003FE741 /* Session+Listing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Session+Listing.swift"; path = "Sources/Session/Session+Listing.swift"; sourceTree = SOURCE_ROOT; };
 		48B306D71F31050100B3F745 /* ApplicationAuthorizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationAuthorizer.swift; path = Sources/Authorization/Authorizer/ApplicationAuthorizer.swift; sourceTree = SOURCE_ROOT; };
@@ -130,8 +113,6 @@
 		48B7F0CC1E47E3B30090A89C /* SessionFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionFactory.swift; path = Sources/Session/SessionFactory.swift; sourceTree = SOURCE_ROOT; };
 		48B7F0CE1E47EA690090A89C /* SessionError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionError.swift; path = Sources/Session/SessionError.swift; sourceTree = SOURCE_ROOT; };
 		48BB0B561F38A4C3007B73EF /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = SOURCE_ROOT; };
-		48BD3B941E68CD01002F9D91 /* SubredditSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubredditSerializer.swift; path = Sources/ModelSerialization/SubredditSerializer.swift; sourceTree = SOURCE_ROOT; };
-		48BD3B961E68CD59002F9D91 /* Serialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Serialization.swift; path = Sources/ModelSerialization/Serialization.swift; sourceTree = SOURCE_ROOT; };
 		48C31AC71F29E59F0006C532 /* AuthorizationRequestResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRequestResponse.swift; sourceTree = SOURCE_ROOT; };
 		48C31AC91F29EE690006C532 /* AuthorizationRequestCallbackValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRequestCallbackValidation.swift; sourceTree = SOURCE_ROOT; };
 		48C31ACB1F2A06870006C532 /* AuthorizationContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthorizationContext.swift; path = Sources/Authorization/Authorizer/Context/AuthorizationContext.swift; sourceTree = SOURCE_ROOT; };
@@ -150,7 +131,6 @@
 		48EBF87D1E16EDAF00A4281E /* Created.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Created.swift; path = Sources/Model/Created.swift; sourceTree = SOURCE_ROOT; };
 		48EBF87F1E16EF3E00A4281E /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Comment.swift; path = Sources/Model/Comment.swift; sourceTree = SOURCE_ROOT; };
 		48F123EF1E1E3BF300DA0CC4 /* VotableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VotableTests.swift; path = Tests/ModelTests/VotableTests.swift; sourceTree = SOURCE_ROOT; };
-		48F123F31E1EFEF900DA0CC4 /* RedditTyped.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RedditTyped.swift; path = Sources/ModelParser/RedditTyped.swift; sourceTree = SOURCE_ROOT; };
 		48F591421E32D8CB009164ED /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Session.swift; path = Sources/Session/Session.swift; sourceTree = SOURCE_ROOT; };
 		48F883031F39D60C000D5493 /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Score.swift; path = Sources/Model/Score.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -183,7 +163,6 @@
 				48B7F0CC1E47E3B30090A89C /* SessionFactory.swift */,
 				48A902961E4656C2003FE741 /* Session+Listing.swift */,
 				48A8CE511E3945E10009AF45 /* Session+MineSubreddits.swift */,
-				482F17C11F2D3435009CDFF8 /* Session+Identity.swift */,
 			);
 			name = Session;
 			path = Sources/Session;
@@ -212,6 +191,14 @@
 			path = Sources/Authorization/Authorizer;
 			sourceTree = "<group>";
 		};
+		483C80D01F3A28E60016959E /* TokenTests */ = {
+			isa = PBXGroup;
+			children = (
+				483C80D51F3A2AD90016959E /* UserTokenTests.swift */,
+			);
+			path = TokenTests;
+			sourceTree = "<group>";
+		};
 		484D9DFA1E059E8E00FFFBCF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -223,6 +210,7 @@
 		485FF7181E2170BB00FEB50D /* AuthorizationTests */ = {
 			isa = PBXGroup;
 			children = (
+				483C80D01F3A28E60016959E /* TokenTests */,
 			);
 			name = AuthorizationTests;
 			sourceTree = "<group>";
@@ -231,7 +219,6 @@
 			isa = PBXGroup;
 			children = (
 				482F17BF1F2D26AA009CDFF8 /* AuthorizationError.swift */,
-				4884AC9A1E374B5A00A8085D /* AuthorizationProcessComponents.swift */,
 				48C31AC71F29E59F0006C532 /* AuthorizationRequestResponse.swift */,
 				48C31AC91F29EE690006C532 /* AuthorizationRequestCallbackValidation.swift */,
 				48717CE61E2D4C0B00B7F4CC /* AuthorizationPageLoader.swift */,
@@ -279,45 +266,13 @@
 		48876D571E045D7D00CD0C5C /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				488F8FA91E69E60C002FAD10 /* ModelSerializationTests */,
 				485FF7181E2170BB00FEB50D /* AuthorizationTests */,
 				48F123ED1E1E3B1900DA0CC4 /* ModelTests */,
-				48F123EC1E1E3A4100DA0CC4 /* ModelParserTests */,
 				4886CCDA1E1F91D1003B7934 /* Info.plist */,
 			);
 			name = Tests;
 			path = HeliosTests;
 			sourceTree = SOURCE_ROOT;
-		};
-		488F8FA91E69E60C002FAD10 /* ModelSerializationTests */ = {
-			isa = PBXGroup;
-			children = (
-				488F8FAA1E69E631002FAD10 /* SubredditSerializationTests.swift */,
-			);
-			name = ModelSerializationTests;
-			sourceTree = "<group>";
-		};
-		489E81B61E16FBC20091DDCF /* ModelParser */ = {
-			isa = PBXGroup;
-			children = (
-				48885A701E1C55D900265874 /* SubredditParser.swift */,
-				4887A97C1E181AC100068756 /* RedditParser.swift */,
-				4887A97E1E181DCB00068756 /* ListingParser.swift */,
-				4887A9801E1827D100068756 /* CommentParser.swift */,
-				48A6E7CC1E1D980800F65149 /* MoreParser.swift */,
-				48F123F31E1EFEF900DA0CC4 /* RedditTyped.swift */,
-			);
-			name = ModelParser;
-			sourceTree = "<group>";
-		};
-		48BD3B931E68CC99002F9D91 /* ModelSerialization */ = {
-			isa = PBXGroup;
-			children = (
-				48BD3B961E68CD59002F9D91 /* Serialization.swift */,
-				48BD3B941E68CD01002F9D91 /* SubredditSerializer.swift */,
-			);
-			name = ModelSerialization;
-			sourceTree = "<group>";
 		};
 		48D35FEC1E1B0A3000E4FDF3 /* Subreddit */ = {
 			isa = PBXGroup;
@@ -363,6 +318,7 @@
 				48D35FEC1E1B0A3000E4FDF3 /* Subreddit */,
 				48EBF86E1E15CC1100A4281E /* Thing.swift */,
 				48EBF87B1E16ED0C00A4281E /* Votable.swift */,
+				483C80CE1F39F9840016959E /* Identity.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -373,19 +329,9 @@
 				487639391E055D1A00E9F9BD /* Authorization */,
 				48EBF8691E15CB7A00A4281E /* Credentials.swift */,
 				48EBF8531E15BF6A00A4281E /* Model */,
-				489E81B61E16FBC20091DDCF /* ModelParser */,
-				48BD3B931E68CC99002F9D91 /* ModelSerialization */,
 				480440681E259381009ED70A /* Session */,
-				481EF1211E317B19007C6085 /* String+subscript.swift */,
 			);
 			name = Sources;
-			sourceTree = "<group>";
-		};
-		48F123EC1E1E3A4100DA0CC4 /* ModelParserTests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = ModelParserTests;
 			sourceTree = "<group>";
 		};
 		48F123ED1E1E3B1900DA0CC4 /* ModelTests */ = {
@@ -515,25 +461,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				48EB894B1E300A9E0025D0C0 /* TokenStore.swift in Sources */,
-				48A6E7CD1E1D980800F65149 /* MoreParser.swift in Sources */,
-				48F123F41E1EFEF900DA0CC4 /* RedditTyped.swift in Sources */,
-				4887A97F1E181DCB00068756 /* ListingParser.swift in Sources */,
 				482F17C01F2D26AA009CDFF8 /* AuthorizationError.swift in Sources */,
 				489E81BC1E1703E00091DDCF /* Edited.swift in Sources */,
 				48A8CE521E3945E10009AF45 /* Session+MineSubreddits.swift in Sources */,
 				489E81BD1E1703E00091DDCF /* Flair.swift in Sources */,
 				48A902971E4656C2003FE741 /* Session+Listing.swift in Sources */,
 				48EBF8631E15CB2600A4281E /* Scope.swift in Sources */,
-				481EF1221E317B19007C6085 /* String+subscript.swift in Sources */,
 				48C31AC81F29E59F0006C532 /* AuthorizationRequestResponse.swift in Sources */,
 				48BB0B571F38A4C3007B73EF /* Preview.swift in Sources */,
 				48D35FDF1E1AE23300E4FDF3 /* Link.swift in Sources */,
 				48EBF8671E15CB2600A4281E /* AuthorizationDuration.swift in Sources */,
 				48EBF8701E15CC1100A4281E /* Kind.swift in Sources */,
-				482F17C21F2D3435009CDFF8 /* Session+Identity.swift in Sources */,
 				48B7F0CB1E47D1F70090A89C /* Authorization.swift in Sources */,
-				48BD3B971E68CD59002F9D91 /* Serialization.swift in Sources */,
-				48BD3B951E68CD01002F9D91 /* SubredditSerializer.swift in Sources */,
 				48D599D01F30A0D600F18907 /* TokenRetrievalResponse.swift in Sources */,
 				48B306D81F31050100B3F745 /* ApplicationAuthorizer.swift in Sources */,
 				4827802F1F2CFC5C00B4DE61 /* TokenRequestFactory.swift in Sources */,
@@ -542,13 +481,11 @@
 				48C31ACA1F29EE690006C532 /* AuthorizationRequestCallbackValidation.swift in Sources */,
 				48885A6B1E1C55C500265874 /* SubmissionType.swift in Sources */,
 				48885A6A1E1C55C500265874 /* Header.swift in Sources */,
-				48885A721E1C55D900265874 /* SubredditParser.swift in Sources */,
 				483922421F2A159B00F10023 /* AuthorizationFlowType.swift in Sources */,
 				48F591431E32D8CB009164ED /* Session.swift in Sources */,
 				48885A641E1C543A00265874 /* Account.swift in Sources */,
 				489E81BB1E1703E00091DDCF /* Distinguishment.swift in Sources */,
 				48EBF86C1E15CBD100A4281E /* Token.swift in Sources */,
-				4887A97D1E181AC100068756 /* RedditParser.swift in Sources */,
 				48717CE71E2D4C0B00B7F4CC /* AuthorizationPageLoader.swift in Sources */,
 				48EBF8781E16EC3A00A4281E /* Listing.swift in Sources */,
 				489E81BE1E1703E00091DDCF /* ModerationProperties.swift in Sources */,
@@ -564,9 +501,8 @@
 				48B7F0CD1E47E3B30090A89C /* SessionFactory.swift in Sources */,
 				48B7F0CF1E47EA690090A89C /* SessionError.swift in Sources */,
 				48EBF86A1E15CB7A00A4281E /* Credentials.swift in Sources */,
-				4887A9811E1827D100068756 /* CommentParser.swift in Sources */,
+				483C80CF1F39F9850016959E /* Identity.swift in Sources */,
 				48885A6C1E1C55C500265874 /* Subreddit.swift in Sources */,
-				4884AC9B1E374B5A00A8085D /* AuthorizationProcessComponents.swift in Sources */,
 				48EBF8711E15CC1100A4281E /* Thing.swift in Sources */,
 				4858A77E1E2918CA0061E009 /* ApplicationToken.swift in Sources */,
 				48EBF87C1E16ED0C00A4281E /* Votable.swift in Sources */,
@@ -577,8 +513,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				483C80D61F3A2AD90016959E /* UserTokenTests.swift in Sources */,
 				48F123F01E1E3BF300DA0CC4 /* VotableTests.swift in Sources */,
-				488F8FAD1E6A1000002FAD10 /* SubredditSerializationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

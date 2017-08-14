@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum Distinguishment: String {
+public enum Distinguishment: String, Codable {
     case admin
     case moderator
     case special

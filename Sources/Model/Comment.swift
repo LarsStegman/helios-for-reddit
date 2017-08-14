@@ -10,36 +10,73 @@ import Foundation
 
 
 /// A comment
-public struct Comment: Created, Thing, Votable {
+public struct Comment /*: Created, Thing, Votable*/ {
     public let id: String
-    public let fullname: String
     public static let kind: Kind = .comment
 
-    public let author: String
-    public let authorFlair: Flair?
-    public let authorLink: String?
+    public let author: AuthorMetaData
     public let distinguished: Distinguishment?
 
-    public let linkId: String
-    public let linkTitle: String?
-    public let linkUrl: URL?
-    public let parentId: String
+    public let linkData: LinkMetaData?
 
+    public let parentId: String
     public let body: String
     public let edited: Edited
     public var replies: Listing?
     public let createdUtc: Date
     
     public var liked: Vote
-    public var upvotes: Int
-    public var downvotes: Int
-    public var score: Int
-    public let scoreHidden: Bool
-    public let numberOfTimesGilded: Int
+    public var score: Score
     public let moderationProperties: ModerationProperties?
 
     public var saved: Bool
 
-    public let subreddit: String
-    public let subredditId: String
+    public let subredditData: SubredditMetaData
+
+//    public init(from decoder: Decoder) throws {
+//        let container = try decoder.container(keyedBy: CodingKeys.self)
+//    }
+//
+//    private enum CodingKeys: String, CodingKey {
+//        case id
+//        case author
+//        case distinguished
+//        case
+//    }
+
+    public struct LinkMetaData: Decodable {
+        public let fullname: String
+        public let title: String
+        public let url: URL
+        public let author: String
+
+        private enum CodingKeys: String, CodingKey {
+            case fullname = "link_id"
+            case title = "link_title"
+            case url = "link_permalink"
+            case author = "link_author"
+        }
+    }
+
+    public struct AuthorMetaData: Decodable {
+        public let name: String
+        public let flairText: String?
+
+        private enum CodingKeys: String, CodingKey {
+            case name = "link_author"
+            case flairText = "author_flair_text"
+        }
+    }
+
+    public struct SubredditMetaData: Decodable {
+        public let name: String
+        public let fullname: String
+
+        private enum CodingKeys: String, CodingKey {
+            case name = "subreddit"
+            case fullname = "subreddit_id"
+        }
+    }
 }
+
+

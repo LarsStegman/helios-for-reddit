@@ -12,6 +12,6 @@ public enum SubredditType: String, Decodable {
     case `public`
     case `private`
     case restricted
-    case goldRestricted = "gold_restricted"
+    case goldRestricted = "gold_only"
     case archived
 }
