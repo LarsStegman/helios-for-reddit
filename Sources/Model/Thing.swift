@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol Thing: Decodable, Kindable {
+public protocol Thing: Kindable {
     var id: String { get }
     var fullname: String { get }
     static var kind: Kind { get }

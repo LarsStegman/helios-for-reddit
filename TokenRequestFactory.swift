@@ -11,7 +11,7 @@ import Foundation
 protocol AuthorizerRequestFactory {
     func createTokenRetrievalRequest(context: AuthorizationContext) -> URLRequest?
 
-    func createTokenRefreshingRequest(token: String) -> URLRequest?
+    func createTokenRefreshingRequest(token: String) -> URLRequest
 
     func createTokenRevokingRequest(token: String, type: TokenType) -> URLRequest?
 
@@ -62,8 +62,12 @@ struct RedditTokenRequestFactory: AuthorizerRequestFactory {
         return request
     }
 
-    func createTokenRefreshingRequest(token: String) -> URLRequest? {
-        fatalError("Refreshing token request not yet implemented")
+    func createTokenRefreshingRequest(token: String) -> URLRequest {
+        var request = createBasicRedditTokenRequest(url: redditAccessTokenURL)
+
+        let postContent = "grant_type=refresh_token&refresh_token=\(token)"
+        request.httpBody = postContent.data(using: .utf8)
+        return request
     }
 
     func createTokenRevokingRequest(token: String, type: TokenType) -> URLRequest? {

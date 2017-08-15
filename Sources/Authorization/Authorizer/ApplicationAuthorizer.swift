@@ -39,7 +39,7 @@ public class ApplicationAuthorizer: Authorizer {
     public func authorizationRequestResponse(url: URL) { }
     
     private func storeToken(token: ApplicationToken) {
-        let stored = TokenStore.saveTokenSecurely(token: token, forAuthorization: .application)
+        let stored = TokenStore.saveTokenSecurely(token: token)
         if stored {
             delegate?.authorizer(self, authorized: .application)
         } else {

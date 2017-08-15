@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class HELSession {
+public class HELSession: TokenRefreshingDelegate {
 
     /// The completion handler called when the request is successfull.
     ///
@@ -24,9 +24,12 @@ public class HELSession {
 
     private var token: Token {
         didSet {
-            urlSession.configuration.httpAdditionalHeaders = httpHeaders()
+            setTokenDependencies()
             resumeQueuedTasks()
         }
+    }
+    private func setTokenDependencies() {
+        urlSession.configuration.httpAdditionalHeaders = httpHeaders()
     }
 
     /// The authorization type which this session uses.
@@ -37,16 +40,9 @@ public class HELSession {
     /// The Reddit base url to which requests are made.
     public var apiHost = URL(string: "https://oauth.reddit.com")!
 
-    private var canMakeRequests: Bool {
-        return !token.expired
-    }
-
-    private var willBeAbleToMakeRequest: Bool {
-        return token.refreshable
-    }
-
     init(token: Token) {
         self.token = token
+        setTokenDependencies()
     }
     
     /// The headers for the http requests.
@@ -65,25 +61,14 @@ public class HELSession {
         return URLSession(configuration: configuration)
     }()
 
-    /// The queued tasks.
-    private var queuedTasks: [URLSessionTask] = []
-
     /// Tasks added to the queue will be executed as soon as possible. Before the task is resumed
     /// the token is checked for validity. If the token has expired, it is refreshed and the added
     /// task is entered into a queue. Once the token is refreshed, the task will be executed.
     ///
-    /// - Parameter task: The task to perform.
-    private func queue(task: URLSessionTask) {
-        guard !token.expired else {
-            print("Task queued, expired: \(token.expired)")
-            queuedTasks.append(task)
-            // Refresh
-            return
-        }
-
-        task.resume()
-    }
-
+    /// - Parameters:
+    ///   - url: The url to make the request to
+    ///   - result: Called when a result has been received
+    ///   - error: Called when something went wrong while executing the task.
     func queueTask<T: Decodable>(url: URL, result: @escaping ResultHandler<T>, error: @escaping ErrorHandler) {
         let task = urlSession.dataTask(with: url) { (data, response, taskError) in
             guard let data = data else {
@@ -102,15 +87,41 @@ public class HELSession {
         queue(task: task)
     }
 
+    /// The queued tasks.
+    private var queuedTasks: [URLSessionTask] = []
+
+    ///
+    /// - Parameter task: The task to perform.
+    private func queue(task: URLSessionTask) {
+        guard canMakeRequests else {
+            if willBeAbleToMakeRequest {
+                queuedTasks.append(task)
+                reallowRequests()
+            } else {
+                task.cancel()
+            }
+
+            return
+        }
+
+        task.resume()
+    }
+
     /// Resume all queued tasks. If the token has expired, it will not execute the queued tasks.
     private func resumeQueuedTasks() {
-        guard !token.expired else {
-            // Refresh
+        guard canMakeRequests else {
+            reallowRequests()
             return
         }
 
         while !queuedTasks.isEmpty {
             queuedTasks.removeFirst().resume()
+        }
+    }
+
+    private func flushQueuedTasks() {
+        while !queuedTasks.isEmpty {
+            queuedTasks.removeFirst().cancel()
         }
     }
 
@@ -126,5 +137,40 @@ public class HELSession {
 
     func url(for endpoint: String) -> URL? {
         return URL(string: endpoint, relativeTo: apiHost)
+    }
+
+    // MARK: - Token refreshing
+
+    /// Indicates whether requests can be made at the moment.
+    private var canMakeRequests: Bool {
+        return !token.expired
+    }
+
+    /// Indicates whether requests will be able to be made in the future.
+    private var willBeAbleToMakeRequest: Bool {
+        return token.refreshable
+    }
+
+    /// Attempts to resolve problems preventing the making of requests.
+    private func reallowRequests() {
+        if token.expired {
+            refreshToken()
+        }
+    }
+
+    /// Refreshes the token if possible.
+    private func refreshToken() {
+        if !token.refreshing {
+            token.refresh(delegate: self)
+        }
+    }
+
+    func tokenRefreshing(didRefresh token: Token, with newToken: Token) {
+        self.token = newToken
+        resumeQueuedTasks()
+    }
+
+    func tokenRefreshing(failedToRefresh token: Token) {
+        flushQueuedTasks()
     }
 }

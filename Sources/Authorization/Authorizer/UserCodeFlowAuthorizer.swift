@@ -20,10 +20,10 @@ public extension Notification.Name {
 /// Handles the Code Flow Authorization process for a user which wants to authorize the application.
 public class UserCodeFlowAuthorizer: NSObject, Authorizer, URLSessionTaskDelegate, URLSessionDataDelegate {
 
+    public var compactAuthorizationPage = false
+
     public static let sharedInstance = UserCodeFlowAuthorizer()
     public weak var delegate: AuthorizerDelegate?
-
-    public var compactAuthorizationPage = false
 
     private lazy var urlSession = { [unowned self] in
         return URLSession(configuration: .default, delegate: self, delegateQueue: nil)
@@ -165,7 +165,7 @@ public class UserCodeFlowAuthorizer: NSObject, Authorizer, URLSessionTaskDelegat
             return
         }
 
-        let stored = TokenStore.saveTokenSecurely(token: token, forAuthorization: .user(name: username))
+        let stored = TokenStore.saveTokenSecurely(token: token)
         if stored {
             delegate?.authorizer(self, authorized: .user(name: username))
         } else {

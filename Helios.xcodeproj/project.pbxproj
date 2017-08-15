@@ -14,6 +14,8 @@
 		483922481F2A606000F10023 /* Authorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483922471F2A606000F10023 /* Authorizer.swift */; };
 		483C80CF1F39F9850016959E /* Identity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483C80CE1F39F9840016959E /* Identity.swift */; };
 		483C80D61F3A2AD90016959E /* UserTokenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483C80D51F3A2AD90016959E /* UserTokenTests.swift */; };
+		4848C1681F41B33A00ED999F /* TokenRefreshAuthorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4848C1671F41B33A00ED999F /* TokenRefreshAuthorizer.swift */; };
+		4849006F1F430C33003CF7FA /* UserTokenRefreshing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4849006E1F430C33003CF7FA /* UserTokenRefreshing.swift */; };
 		484D9DFC1E059E8F00FFFBCF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 484D9DFB1E059E8E00FFFBCF /* Security.framework */; };
 		4858A77C1E2917B70061E009 /* UserToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4858A77B1E2917B70061E009 /* UserToken.swift */; };
 		4858A77E1E2918CA0061E009 /* ApplicationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4858A77D1E2918CA0061E009 /* ApplicationToken.swift */; };
@@ -62,6 +64,7 @@
 		48F591461E339608009164ED /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 487639411E0573D300E9F9BD /* LICENSE */; };
 		48F591471E339608009164ED /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 48876D641E0461EA00CD0C5C /* .gitignore */; };
 		48F883041F39D60C000D5493 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F883031F39D60C000D5493 /* Score.swift */; };
+		48F906DE1F4355DD00289131 /* Session+Identity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F906DD1F4355DD00289131 /* Session+Identity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +85,8 @@
 		483922471F2A606000F10023 /* Authorizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Authorizer.swift; path = Sources/Authorization/Authorizer/Authorizer.swift; sourceTree = SOURCE_ROOT; };
 		483C80CE1F39F9840016959E /* Identity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Identity.swift; path = Sources/Authorization/Token/Identity.swift; sourceTree = SOURCE_ROOT; };
 		483C80D51F3A2AD90016959E /* UserTokenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserTokenTests.swift; path = Tests/AuthorizationTests/TokenTests/UserTokenTests.swift; sourceTree = SOURCE_ROOT; };
+		4848C1671F41B33A00ED999F /* TokenRefreshAuthorizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TokenRefreshAuthorizer.swift; path = Sources/Authorization/Authorizer/TokenRefreshAuthorizer.swift; sourceTree = SOURCE_ROOT; };
+		4849006E1F430C33003CF7FA /* UserTokenRefreshing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserTokenRefreshing.swift; path = Sources/Authorization/Authorizer/UserTokenRefreshing.swift; sourceTree = SOURCE_ROOT; };
 		484D9DFB1E059E8E00FFFBCF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		4858A77B1E2917B70061E009 /* UserToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserToken.swift; path = Sources/Authorization/Token/UserToken.swift; sourceTree = SOURCE_ROOT; };
 		4858A77D1E2918CA0061E009 /* ApplicationToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApplicationToken.swift; path = Sources/Authorization/Token/ApplicationToken.swift; sourceTree = SOURCE_ROOT; };
@@ -133,6 +138,7 @@
 		48F123EF1E1E3BF300DA0CC4 /* VotableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VotableTests.swift; path = Tests/ModelTests/VotableTests.swift; sourceTree = SOURCE_ROOT; };
 		48F591421E32D8CB009164ED /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Session.swift; path = Sources/Session/Session.swift; sourceTree = SOURCE_ROOT; };
 		48F883031F39D60C000D5493 /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Score.swift; path = Sources/Model/Score.swift; sourceTree = SOURCE_ROOT; };
+		48F906DD1F4355DD00289131 /* Session+Identity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Session+Identity.swift"; path = "Sources/Session/Session+Identity.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +169,7 @@
 				48B7F0CC1E47E3B30090A89C /* SessionFactory.swift */,
 				48A902961E4656C2003FE741 /* Session+Listing.swift */,
 				48A8CE511E3945E10009AF45 /* Session+MineSubreddits.swift */,
+				48F906DD1F4355DD00289131 /* Session+Identity.swift */,
 			);
 			name = Session;
 			path = Sources/Session;
@@ -186,6 +193,8 @@
 				483922471F2A606000F10023 /* Authorizer.swift */,
 				483922461F2A15CC00F10023 /* Context */,
 				48EBF85E1E15CB2600A4281E /* UserCodeFlowAuthorizer.swift */,
+				4848C1671F41B33A00ED999F /* TokenRefreshAuthorizer.swift */,
+				4849006E1F430C33003CF7FA /* UserTokenRefreshing.swift */,
 			);
 			name = Authorizer;
 			path = Sources/Authorization/Authorizer;
@@ -477,12 +486,15 @@
 				48B306D81F31050100B3F745 /* ApplicationAuthorizer.swift in Sources */,
 				4827802F1F2CFC5C00B4DE61 /* TokenRequestFactory.swift in Sources */,
 				4858A77C1E2917B70061E009 /* UserToken.swift in Sources */,
+				4849006F1F430C33003CF7FA /* UserTokenRefreshing.swift in Sources */,
+				48F906DE1F4355DD00289131 /* Session+Identity.swift in Sources */,
 				48EBF87E1E16EDAF00A4281E /* Created.swift in Sources */,
 				48C31ACA1F29EE690006C532 /* AuthorizationRequestCallbackValidation.swift in Sources */,
 				48885A6B1E1C55C500265874 /* SubmissionType.swift in Sources */,
 				48885A6A1E1C55C500265874 /* Header.swift in Sources */,
 				483922421F2A159B00F10023 /* AuthorizationFlowType.swift in Sources */,
 				48F591431E32D8CB009164ED /* Session.swift in Sources */,
+				4848C1681F41B33A00ED999F /* TokenRefreshAuthorizer.swift in Sources */,
 				48885A641E1C543A00265874 /* Account.swift in Sources */,
 				489E81BB1E1703E00091DDCF /* Distinguishment.swift in Sources */,
 				48EBF86C1E15CBD100A4281E /* Token.swift in Sources */,

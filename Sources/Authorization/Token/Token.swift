@@ -26,6 +26,13 @@ protocol Token: Codable {
     var authorizationType: Authorization { get }
 
     var refreshable: Bool { get }
+
+    var refreshing: Bool { get }
+
+    /// Refreshes this token. The delegate will be called with the refreshed token, or be informed when something went wrong.
+    ///
+    /// - Parameter delegate: The refreshing delegate.
+    mutating func refresh(delegate: TokenRefreshingDelegate)
 }
 
 extension Token {

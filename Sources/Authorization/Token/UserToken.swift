@@ -26,6 +26,8 @@ struct UserToken: Token, Equatable {
         return refreshToken != nil
     }
 
+    private(set) var refreshing: Bool = false
+
     init(username: String?, accessToken: String, refreshToken: String?, scopes: [Scope],
          expiresAt: Date) {
         self.username = username
@@ -81,12 +83,27 @@ struct UserToken: Token, Equatable {
     }
 
     static func ==(lhs: UserToken, rhs: UserToken) -> Bool {
-        print("Equal!")
         return lhs.username == rhs.username &&
             lhs.accessToken == rhs.accessToken &&
             lhs.refreshToken == rhs.refreshToken &&
             lhs.scopes == rhs.scopes &&
             lhs.expiresAt == rhs.expiresAt
+    }
+
+    private var refresher: UserTokenRefreshing? = nil
+
+    /// Refreshes this token. The delegate will be called with the refreshed token, or be informed when something went wrong.
+    ///
+    /// - Parameter delegate: The refreshing delegate.
+    mutating func refresh(delegate: TokenRefreshingDelegate) {
+        guard !refreshing else {
+            return
+        }
+        
+        refreshing = true
+        refresher = UserTokenRefreshing()
+        refresher?.delegate = delegate
+        refresher?.refresh(token: self)
     }
 }
 

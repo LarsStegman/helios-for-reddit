@@ -15,9 +15,14 @@ struct ApplicationToken: Token {
     let expiresAt: Date
     let authorizationType = Authorization.application
     let refreshable = false
+    private(set) var refreshing = false
 
     init(accessToken: String, expiresAt: Date) {
         self.accessToken = accessToken
         self.expiresAt = expiresAt
+    }
+
+    func refresh(delegate: TokenRefreshingDelegate) {
+        fatalError("Application token cannot refresh yet")
     }
 }

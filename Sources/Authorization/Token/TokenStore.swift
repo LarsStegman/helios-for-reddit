@@ -66,35 +66,21 @@ public final class TokenStore {
         return token
     }
 
-
-    /// Refreshes the token for the authorization. A notification will be posted when the token is refreshed, or
-    /// refreshing failed.
-    /// It is encouraged to delete/revoke the authorization if it cannot be refreshed.
-    ///
-    /// - Parameters:
-    ///   - authorization: The authorization to refresh
-    ///   - completionHandler: Called with the new token.
-    static func refreshToken(for authorization: Authorization) {
-        fatalError("Refreshing not implemented!")
-    }
-
     /// Revokes a token for a certain authorization. Locally stored tokens are always revoked, however the tokens are
     /// invalided on a best effort basis.
     ///
     /// - Parameter authorization: The authorization to revoke the token for.
     static func revokeToken(for authorization: Authorization) {
         guard authorizations.contains(authorization),
-            let tokenData = retrieveSecureTokenData(forAuthorizationType: authorization),
+            let token = retrieveToken(for: authorization),
             deleteSecurelyStoredToken(forAuthorization: authorization) else {
             return
         }
 
         authorizations.remove(authorization)
-        if let token = try? pList.decoder.decode(UserToken.self, from: tokenData) {
-            revokeRemote(.accessToken, token: token.accessToken)
-            if let refresh = token.refreshToken {
-                revokeRemote(.refreshToken, token: refresh)
-            }
+        revokeRemote(.accessToken, token: token.accessToken)
+        if let refresh = token.refreshToken {
+            revokeRemote(.refreshToken, token: refresh)
         }
     }
 
@@ -160,7 +146,9 @@ public final class TokenStore {
     ///   - key: The key used to identify the token
     ///   - token: The token to be stored
     /// - Returns: Whether the storing succeeded.
-    static func saveTokenSecurely<T: Token>(token: T, forAuthorization authorization: Authorization) -> Bool {
+    @discardableResult
+    static func saveTokenSecurely<T: Token>(token: T) -> Bool {
+        let authorization = token.authorizationType
         let deleteOldTokenSuccess = TokenStore.deleteSecurelyStoredToken(forAuthorization: authorization)
         if !deleteOldTokenSuccess {
             return false
