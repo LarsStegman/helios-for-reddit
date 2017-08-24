@@ -22,14 +22,10 @@ public class HELSession: TokenRefreshingDelegate {
 
     // MARK: - Authorization handling
 
-    private var token: Token {
+    fileprivate var token: Token {
         didSet {
-            setTokenDependencies()
-            resumeQueuedTasks()
+            setupUrlSession()
         }
-    }
-    private func setTokenDependencies() {
-        urlSession.configuration.httpAdditionalHeaders = httpHeaders()
     }
 
     /// The authorization type which this session uses.
@@ -42,9 +38,18 @@ public class HELSession: TokenRefreshingDelegate {
 
     init(token: Token) {
         self.token = token
-        setTokenDependencies()
+        setupUrlSession()
     }
-    
+
+    /// The urlSession through which all the http requests for this session are routed.
+    private var urlSession: URLSession!
+
+    private func setupUrlSession() {
+        let configuration = URLSessionConfiguration.default
+        configuration.httpAdditionalHeaders = httpHeaders()
+        urlSession = URLSession(configuration: configuration)
+    }
+
     /// The headers for the http requests.
     private func httpHeaders() -> [AnyHashable : Any] {
         return ["Authorization" : "bearer \(token.accessToken)",
@@ -54,12 +59,12 @@ public class HELSession: TokenRefreshingDelegate {
 
     // MARK: - Task management
 
-    /// The urlSession through which all the http requests for this session are routed.
-    private(set) lazy var urlSession: URLSession = {
-        var configuration = URLSessionConfiguration.default
-        configuration.httpAdditionalHeaders = httpHeaders()
-        return URLSession(configuration: configuration)
-    }()
+    /// The queued tasks.
+    private var queuedTasks: [URLTask] = [] {
+        didSet {
+            print("Changed queuedTasks from \(oldValue) to \(queuedTasks)")
+        }
+    }
 
     /// Tasks added to the queue will be executed as soon as possible. Before the task is resumed
     /// the token is checked for validity. If the token has expired, it is refreshed and the added
@@ -70,58 +75,64 @@ public class HELSession: TokenRefreshingDelegate {
     ///   - result: Called when a result has been received
     ///   - error: Called when something went wrong while executing the task.
     func queueTask<T: Decodable>(url: URL, result: @escaping ResultHandler<T>, error: @escaping ErrorHandler) {
-        let task = urlSession.dataTask(with: url) { (data, response, taskError) in
+        let task: URLTask = (url, { (data, response, taskError) in
             guard let data = data else {
                 error(.noResult)
                 return
             }
+
             do {
                 let resultValue = try JSONDecoder().decode(T.self, from: data)
                 result(resultValue)
-            } catch let errorMessage {
-                print(errorMessage)
-                error(.noResult)
+            } catch _ {
+                if let redditError = try? JSONDecoder().decode(ApiError.self, from: data) {
+                    error(redditError.sessionError ?? .apiError(redditError))
+                } else {
+                    error(.noResult)
+                }
+
             }
-        }
+        })
 
         queue(task: task)
     }
 
-    /// The queued tasks.
-    private var queuedTasks: [URLSessionTask] = []
-
+    /// Queues a task for execution. If a task cannot be executed yet, it is queued for later execution. If it will
+    /// never be possible to perform the task, it will be canceled.
     ///
-    /// - Parameter task: The task to perform.
-    private func queue(task: URLSessionTask) {
+    /// - Parameter task: The task to queue.
+    private func queue(task: URLTask) {
+        let urlSessionTask = urlSession.dataTask(from: task)
         guard canMakeRequests else {
             if willBeAbleToMakeRequest {
                 queuedTasks.append(task)
                 reallowRequests()
             } else {
-                task.cancel()
+                urlSessionTask.cancel()
             }
 
             return
         }
 
-        task.resume()
+        urlSessionTask.resume()
     }
 
     /// Resume all queued tasks. If the token has expired, it will not execute the queued tasks.
-    private func resumeQueuedTasks() {
+    private func resumeTasks() {
         guard canMakeRequests else {
-            reallowRequests()
             return
         }
 
         while !queuedTasks.isEmpty {
-            queuedTasks.removeFirst().resume()
+            let queuedTask = queuedTasks.removeFirst()
+            urlSession.dataTask(from: queuedTask).resume()
         }
     }
 
-    private func flushQueuedTasks() {
+    private func flushTasks() {
         while !queuedTasks.isEmpty {
-            queuedTasks.removeFirst().cancel()
+            let queuedTask = queuedTasks.removeLast()
+            urlSession.dataTask(from: queuedTask).cancel()
         }
     }
 
@@ -133,10 +144,6 @@ public class HELSession: TokenRefreshingDelegate {
     /// - Returns: Whether the token gives authorization for the scope.
     public func authorized(for scope: Scope) -> Bool {
         return token.scopes.contains(scope)
-    }
-
-    func url(for endpoint: String) -> URL? {
-        return URL(string: endpoint, relativeTo: apiHost)
     }
 
     // MARK: - Token refreshing
@@ -151,26 +158,39 @@ public class HELSession: TokenRefreshingDelegate {
         return token.refreshable
     }
 
+    /// Whether we are working on reallowing the requests.
+    private var reallowing = false
+
     /// Attempts to resolve problems preventing the making of requests.
     private func reallowRequests() {
-        if token.expired {
-            refreshToken()
+        guard !reallowing else {
+            return
         }
-    }
 
-    /// Refreshes the token if possible.
-    private func refreshToken() {
-        if !token.refreshing {
+        reallowing = true
+        if token.expired {
             token.refresh(delegate: self)
+            return
         }
+        reallowing = false
     }
 
     func tokenRefreshing(didRefresh token: Token, with newToken: Token) {
         self.token = newToken
-        resumeQueuedTasks()
+        resumeTasks()
+        reallowing = false
     }
 
     func tokenRefreshing(failedToRefresh token: Token) {
-        flushQueuedTasks()
+        flushTasks()
+        reallowing = false
+    }
+}
+
+fileprivate typealias URLTask = (url: URL, completion: (Data?, URLResponse?, Error?) -> Void)
+
+fileprivate extension URLSession {
+    func dataTask(from: URLTask) -> URLSessionDataTask {
+        return self.dataTask(with: from.url, completionHandler: from.completion)
     }
 }

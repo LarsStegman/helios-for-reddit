@@ -42,6 +42,7 @@
 		48B7F0CD1E47E3B30090A89C /* SessionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B7F0CC1E47E3B30090A89C /* SessionFactory.swift */; };
 		48B7F0CF1E47EA690090A89C /* SessionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B7F0CE1E47EA690090A89C /* SessionError.swift */; };
 		48BB0B571F38A4C3007B73EF /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BB0B561F38A4C3007B73EF /* Preview.swift */; };
+		48BCF2BF1F4CCE1C005CCC54 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BCF2BE1F4CCE1C005CCC54 /* ApiError.swift */; };
 		48C31AC81F29E59F0006C532 /* AuthorizationRequestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C31AC71F29E59F0006C532 /* AuthorizationRequestResponse.swift */; };
 		48C31ACA1F29EE690006C532 /* AuthorizationRequestCallbackValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C31AC91F29EE690006C532 /* AuthorizationRequestCallbackValidation.swift */; };
 		48C31ACC1F2A06870006C532 /* AuthorizationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C31ACB1F2A06870006C532 /* AuthorizationContext.swift */; };
@@ -118,6 +119,7 @@
 		48B7F0CC1E47E3B30090A89C /* SessionFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionFactory.swift; path = Sources/Session/SessionFactory.swift; sourceTree = SOURCE_ROOT; };
 		48B7F0CE1E47EA690090A89C /* SessionError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionError.swift; path = Sources/Session/SessionError.swift; sourceTree = SOURCE_ROOT; };
 		48BB0B561F38A4C3007B73EF /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = SOURCE_ROOT; };
+		48BCF2BE1F4CCE1C005CCC54 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApiError.swift; path = Sources/Session/ApiError.swift; sourceTree = SOURCE_ROOT; };
 		48C31AC71F29E59F0006C532 /* AuthorizationRequestResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRequestResponse.swift; sourceTree = SOURCE_ROOT; };
 		48C31AC91F29EE690006C532 /* AuthorizationRequestCallbackValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRequestCallbackValidation.swift; sourceTree = SOURCE_ROOT; };
 		48C31ACB1F2A06870006C532 /* AuthorizationContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthorizationContext.swift; path = Sources/Authorization/Authorizer/Context/AuthorizationContext.swift; sourceTree = SOURCE_ROOT; };
@@ -170,6 +172,7 @@
 				48A902961E4656C2003FE741 /* Session+Listing.swift */,
 				48A8CE511E3945E10009AF45 /* Session+MineSubreddits.swift */,
 				48F906DD1F4355DD00289131 /* Session+Identity.swift */,
+				48BCF2BE1F4CCE1C005CCC54 /* ApiError.swift */,
 			);
 			name = Session;
 			path = Sources/Session;
@@ -492,6 +495,7 @@
 				48C31ACA1F29EE690006C532 /* AuthorizationRequestCallbackValidation.swift in Sources */,
 				48885A6B1E1C55C500265874 /* SubmissionType.swift in Sources */,
 				48885A6A1E1C55C500265874 /* Header.swift in Sources */,
+				48BCF2BF1F4CCE1C005CCC54 /* ApiError.swift in Sources */,
 				483922421F2A159B00F10023 /* AuthorizationFlowType.swift in Sources */,
 				48F591431E32D8CB009164ED /* Session.swift in Sources */,
 				4848C1681F41B33A00ED999F /* TokenRefreshAuthorizer.swift in Sources */,

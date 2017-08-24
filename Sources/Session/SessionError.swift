@@ -15,4 +15,5 @@ public enum SessionError: Error {
     case noResult
     case invalidSource
     case networkFailure
+    case apiError(ApiError)
 }
